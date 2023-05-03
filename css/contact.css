@@ -10,13 +10,11 @@ body {
 .overflow {
     position: relative;
     overflow-x: hidden;
-    /* height: 100vh; */
 }
 
 .contacts-main-container {
     display: flex;
     margin-left: 236px;
-    /* margin-top: 89px; */
 }
 
 h1 {
@@ -356,7 +354,7 @@ h1 {
 
 .contact-form-overlay {
     position: absolute;
-    top: 54%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 100;
@@ -364,7 +362,6 @@ h1 {
     box-shadow: 0 0 14px 3px rgb(0 0 0 / 4%);
     border-radius: 30px;
     background: white;
-    /* padding: 15px 50px; */
 }
 
 .contact-form-background {
@@ -572,7 +569,6 @@ select::-ms-expand {
     width: 100%;
     gap: 10px;
     margin-top: 6px;
-    /* margin-bottom: 20px; */
 }
 
 .date {
@@ -606,7 +602,6 @@ select::-ms-expand {
 
 .prio-btn:hover {
     box-shadow: 0 4px 4px 0 rgb(0 0 0 / 25%);
-    /* height: 52px; */
     width: 110%;
 }
 
@@ -692,11 +687,6 @@ select::-ms-expand {
     height: 100%;
 }
 
-/* #closeAddContactPopup {
-    height: 73vh;
-    width: 100vw;
-} */
-
 .popup-contact-added {
     position: fixed;
     bottom: 0;
@@ -744,7 +734,7 @@ select::-ms-expand {
         display: flex;
         flex-direction: column;
         height: 100vh;
-        width: 104%;
+        width: 100%;
         transform: translateX(100%);
         transition: all 250ms ease-in-out;
     }
@@ -812,12 +802,10 @@ select::-ms-expand {
     .contact-form-overlay {
         display: unset;
         border-radius: 30px;
-        /* top: 465px; */
     }
     .contact-form-overlay-position {
         position: absolute;
         top: 50%;
-        /* left: -48%!important; */
     }
     .contact-form-left-neutral {
         flex-direction: column;
@@ -945,11 +933,7 @@ select::-ms-expand {
 
 @media(max-width: 400px) {
 
-    /* .overflow {
-        z-index: 100;
-    } */
     .contact-form-overlay {
-        /* width: 100%; */
         border-radius: 0px;
     }
     .contact-form-left {
