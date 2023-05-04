@@ -20,7 +20,7 @@
     <title>Contact | Join</title>
 </head>
 
-<body onload="initContact()" ; onclick="closeLogoutMenu()">
+<body onload="initContact()" ; onclick="closeLogoutMenu(), closeAddContactForm()">
     <!-- Header + Nav Templates> -->
     <div w3-include-html="assets/templates/header.html"></div>
     <div w3-include-html="assets/templates/nav.html"></div>
@@ -43,7 +43,7 @@
                 <div id="contactSelection"></div>
                 <div id="formContainer"></div>
             </section>
-            <button onclick="showContactForm()" title="add contact" class="contact-add-btn contact-btn-position"
+            <button onclick="showContactForm(), event.stopPropagation()" title="add contact" class="contact-add-btn contact-btn-position"
                 id="contact-add-btn">
                 <p>New Contact</p>
                 <img class="contact-btn-icon" src="./assets/img/add_contact.svg" alt="#">
@@ -51,7 +51,7 @@
         </main>
     </div>
 
-        <div id="contactForm" class="contact-form-overlay contact-form-overlay-position edit-contact d-none">
+        <div id="contactForm" class="contact-form-overlay contact-form-overlay-position edit-contact d-none" onclick="event.stopPropagation()">
             <div class="contact-form-left">
                 <img class="contact-form-logo" src="./assets/img/Logo-Join.png" alt="#">
                 <span class="contact-form-heading">Add Contact</span>
