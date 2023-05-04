@@ -278,6 +278,7 @@ async function addTaskContact(userShort) {
     checkAssignedTo(userShort);
     document.getElementById('formTaskContainer').classList.remove('d-none');
     currentFormId = document.getElementById('formTaskContainer');
+    // document.getElementById('hide-contacts').classList.add('height-unset');
 }
 
 

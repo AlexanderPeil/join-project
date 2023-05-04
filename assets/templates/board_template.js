@@ -99,7 +99,7 @@ function loadAddTaskTmp() {
             </div>
             <form onsubmit="addTask();return false">
                 <div class="content-container">
-                    <div class="left-container">
+                    <div class="left-container width-unset">
                         <div class="selection-container">
                             <label>Title</label>
                             <input placeholder="Enter a title" id="title_textfield" required>
@@ -183,7 +183,7 @@ function loadAddTaskTmp() {
                 </div>
             </div>
             <div class="middle-gap"></div>
-            <div class="right-container">
+            <div class="right-container width-unset">
                 <div class="features-container">
                     <label for="date">Due Date</label>
                     <input class="date" type="date" id="date" name="date" min="" required>
@@ -296,7 +296,7 @@ function loadEditAddTaskTmp(id) {
     <div class="headerPopUp"><h2>Add Task</h2><img src="./assets/img/xicon.png" onclick="closePopUpAddTask()"></div>
     <form onsubmit="editAddTask(${id});return false">
         <div class="content-container">
-            <div class="left-container">
+            <div class="left-container width-unset">
                 <div class="selection-container">
                     <label>Title</label>
                     <input placeholder="Enter a title" id="title_textfield" required>
@@ -387,7 +387,7 @@ function loadEditAddTaskTmp(id) {
         </div>
     </div>
     <div class="middle-gap"></div>
-    <div class="right-container">
+    <div class="right-container width-unset">
         <div class="features-container">
             <label for="date">Due Date</label>
             <input class="date" type="date" id="date" name="date" min="" required>

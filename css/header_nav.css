@@ -80,13 +80,16 @@ header {
     .headline {
         display: none;
     }
+    
     .header-logo {
         display: block;
     }
+
     header {
         padding: 0 25px;
         height: 80px;
     }
+
      :root {
         --header-height: 0;
     }
@@ -201,26 +204,32 @@ nav {
         width: unset;
         padding: 0;
     }
+
     .nav-bar {
         flex-direction: row;
         justify-content: space-around;
         gap: 0;
         height: 80px;
     }
+
     .nav-content {
         flex-direction: column;
         gap: 13px;
     }
+
     .nav-main {
         height: 100%;
         padding: 0 53px;
     }
+
     .nav-icon-container {
         padding: 0;
     }
+
     .legal-notice {
         display: none;
     }
+    
     .summary-logo {
         display: none;
     }

@@ -105,7 +105,7 @@ select,
     flex-direction: column;
     position: absolute;
     background-color: white;
-    width: 100%;
+    width: 101%;
     top: 50px;
     left: 0;
     z-index: 11;
@@ -275,7 +275,7 @@ select::-ms-expand {
     border-radius: 10px;
     padding: 18px 10px;
     margin-left: 25px;
-    transition: background 255ms ease-in-out;
+    /* transition: background 255ms ease-in-out; */
 }
 
 .btn-createTask {
@@ -495,6 +495,7 @@ fieldset {
     border-radius: 10px;
 }
 
+
 @media(max-width:1400px) {
     .main-container {
         margin-right: 10px;
@@ -529,15 +530,18 @@ fieldset {
     .middle-gap {
         display: none;
     }
+
     .content-container {
         flex-direction: column;
         gap: 0;
     }
+
     .right-container {
         align-items: center;
         height: unset;
         margin-bottom: 30px;
     }
+    
     .submit-and-clear {
         position: unset;
         display: flex;
@@ -589,7 +593,7 @@ fieldset {
     h1 {
         font-size: 47px;
     }
-
+/* 
     label {
         font-size: 16px;
     }
@@ -612,10 +616,14 @@ fieldset {
 
     .prio-btn {
         font-size: 16px;
-    }
+    } */
 
     .left-container {
         height: auto;
+    }
+
+    .contact-addTask-bottom {
+        width: 108%;
     }
 }
 
@@ -624,20 +632,16 @@ fieldset {
         margin-right: 0;
     }
 
-    .title-container {
-        width: unset;
-    }
-
-    .left-container {
-        width: unset;
-    }
-
-    .right-container {
+    .width-unset {
         width: unset;
     }
     
     .popUp-content_add_task {
         padding-top: 100px;
+    }
+
+    .contact-addTask-bottom {
+        width: 100%;
     }
 }
 

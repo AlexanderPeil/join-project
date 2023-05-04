@@ -19,11 +19,6 @@ async function init() {
 }
 
 
-function initBoard() {
-    // 
-}
-
-
 /**
  * Loads the board with the specified set of tasks, cleaning out any
  * existing content and adding new content to the board.
@@ -158,15 +153,6 @@ async function moveTo(category) {
     loadBoard(tasks);
     await saveNotes();
 }
-
-
-/**
- * Ends dragging of an element.
- * @param {string} id - The id of the element being dragged.
- */
-// function endDragging(id) {
-//     document.getElementById('card' + id).style.transform = "rotate(0deg)";
-// }
 
 
 /**
@@ -359,6 +345,7 @@ function openContextMenu(id) {
     currenContextMenu = id;
 }
 
+
 /**
  * Hides the context menu.
  * @param {string} id - The ID of the context menu to hide.
@@ -380,6 +367,7 @@ async function changeSplit(split, id) {
     loadNewBoard(tasks);
 }
 
+
 /**
  * Function to edit a task
  * @param {string} id - The id of the task to edit
@@ -391,6 +379,7 @@ function editTask(id) {
     fillTheTasks(id)
 }
 
+
 /**
  * Hides the the popup.
  * @param {string} currentCard - The ID of the card for which to close the popup.
@@ -399,6 +388,7 @@ function closePopup(currentCard) {
     document.getElementById(`close-popup${currentCard}`).classList.add('d-none');
 }
 
+
 /**
  * Closes the add task popup window.
  */
@@ -406,6 +396,7 @@ function closePopupAddTask() {
     document.getElementById('popUp-background').classList.add('d-none');
     document.getElementById('board-section').classList.remove('d-none');
 }
+
 
 /**
  * Closes add task popup.

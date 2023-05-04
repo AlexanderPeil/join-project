@@ -16,11 +16,6 @@ async function init() {
 }
 
 
-function initAddTask() {
-    // 
-}
-
-
 /**
  * Saves the current tasks object as a JSON string to local storage using the backend object.
  * 

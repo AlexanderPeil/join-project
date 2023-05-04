@@ -219,7 +219,7 @@ function openAddTaskContactFormHTML() {
                 <div onclick="closeFormById('formTaskContainer')" class="icon-top-right" title="close form">
                     <img class="contact-cancel-icon-mobile" src="./assets/img/contact-cancel-icon.svg" alt="#">
                 </div>
-                <div>
+                <div class="contact-addTask-bottom">
                     <div class="features-container">
                         <label for="date">Due Date</label>
                         <input class="date" type="date" id="date" name="date" min="" required>
