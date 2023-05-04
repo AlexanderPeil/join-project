@@ -362,7 +362,7 @@ h1 {
     box-shadow: 0 0 14px 3px rgb(0 0 0 / 4%);
     border-radius: 30px;
     background: white;
-    overflow: scroll;
+    overflow: hidden;
 }
 
 .contact-form-background {
@@ -804,6 +804,7 @@ select::-ms-expand {
     .contact-form-overlay {
         display: unset;
         border-radius: 30px;
+        overflow: scroll;
     }
     .contact-form-overlay-position {
         position: absolute;

@@ -115,21 +115,6 @@ select,
     margin-left: -1px;
 }
 
-/* .assigned-to-choices {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    background-color: white;
-    width: 452px;
-    top: 50px;
-    left: 0;
-    z-index: 11;
-    border-radius: 10px;
-    max-height: 200px;
-    overflow-y: auto;
-    margin-left: -1px;
-} */
-
 select {
     appearance: none;
     background: url(/assets/img/arrow.png) 96% / 3% no-repeat white;
@@ -654,23 +639,11 @@ fieldset {
     .popUp-content_add_task {
         padding-top: 100px;
     }
-
-    .category-choices  {
-        width: 373px;
-    }
-
-    .assigned-to-choices {
-        width: 373px;
-    }
 }
 
 @media(max-width: 400px) {
     .popUp-content_add_task {
         padding-top: 252px;
-        width: 350px;
-    }
-
-    .assigned-to-choices {
         width: 350px;
     }
 
