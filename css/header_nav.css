@@ -58,6 +58,10 @@ header {
     display: none;
 }
 
+.active {
+    background-color: #29ABE2;
+}
+
 @media(max-width:1200px) {
      :root {
         --nav-width: 0;

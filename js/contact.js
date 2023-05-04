@@ -8,10 +8,12 @@ let previouslySelectedContact = null;
  * @param {Array} contacts
  */
 async function initContact() {
+    currentSection = "contact-page";
     await includeHTML();
     await downloadFromServer();
     contacts = JSON.parse(backend.getItem('contacts')) || [];
     loadContacts();
+    setCurrentSectionStyle();
 }
 
 
@@ -250,10 +252,10 @@ function editContact(i) {
  * @param {*} i - The index of the contact to delete 
  */
 function deleteSelectedContact(i) {
-    if (i < 3) {
-        alert("Test data cannot be deleted. Thanks for testing.");
-        return;
-    }
+    // if (i < 3) {
+    //     alert("Test data cannot be deleted. Thanks for testing.");
+    //     return;
+    // }
     contacts.splice(i, 1);
     backend.setItem('contacts', JSON.stringify(contacts));
     updateContactList();

@@ -6,11 +6,18 @@ let tasks = [];
  * 
  */
 async function init() {
+    currentSection = "add-task-page";
     includeHTML();
     await loadNotes();
     await loadContacts();
     addAssignedToList();
     setDateToday();
+    setCurrentSectionStyle();
+}
+
+
+function initAddTask() {
+    // 
 }
 
 

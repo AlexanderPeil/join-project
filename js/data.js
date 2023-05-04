@@ -1,11 +1,27 @@
 let users = [];
 let currentUser;
 let currentTaskCard;
+let previousMenuItem = null;
+let currentSection;
 
 
 // Body onload function for legal notice and help site
 function init() {
     includeHTML();
+}
+
+
+function setCurrentSectionStyle() {
+
+    if (currentSection == 'summary-page') {
+        document.getElementById('summary').classList.add('active');
+    } else if (currentSection == 'board-page') {
+        document.getElementById('board').classList.add('active');
+    } else if (currentSection == 'add-task-page') {
+        document.getElementById('add-task').classList.add('active');
+    } else if (currentSection == 'contact-page') {
+        document.getElementById('contact').classList.add('active');
+    }
 }
 
 
@@ -49,7 +65,7 @@ function dontClose(event) {
 /**
  * Logs out the current user by deleting their information from the local storage and redirecting the user to the index page.
  */
- function logOut() {
+function logOut() {
     localStorage.removeItem('current-user');
     window.location.href = 'index.html';
 }
@@ -61,7 +77,7 @@ function dontClose(event) {
  */
 function checkRememberMe(currentUser) {
     let rememberMe = document.getElementById('remember-me');
-    
+
     if (rememberMe.checked == true) {
         setRememberMeLocal(currentUser);
     }
@@ -131,9 +147,9 @@ function checkStatus() {
     let status;
     try {
         status = currentTaskCard;
-    } catch (e) {}
-    
-    if(status) {
+    } catch (e) { }
+
+    if (status) {
         return status;
     } else {
         return 'to_do'

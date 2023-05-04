@@ -10,10 +10,17 @@ let splits = ['to_do', 'in_progress', 'awaiting_feedback', 'done'];
  * and loading the board with the initial set of tasks.
  */
 async function init() {
+    currentSection = "board-page";
     includeHTML();
     await loadNotes();
     loadBoard(tasks);
     loadContacts();
+    setCurrentSectionStyle();
+}
+
+
+function initBoard() {
+    // 
 }
 
 

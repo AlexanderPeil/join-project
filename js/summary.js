@@ -4,6 +4,8 @@ async function initSummary() {
     await loadAllTasks();
     showGreetMobile();
     showGreetDesktop();
+    currentSection = "summary-page";
+    setCurrentSectionStyle();
 }
 
 

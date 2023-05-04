@@ -56,7 +56,7 @@ function showContactDetailsHTML(selectedContact, i, userShort) {
             <div title="edit contact info" onclick="editContact(${i})" class="contact-edit"><img class="contact-edit-icon" src="./assets/img/edit_icon.svg">Edit Contact</div>
         </div>
         <h4>Email</h4>
-        <div class="contact-email">${selectedContact.email}</div>
+        <a href="mailto:${selectedContact.email}" class="contact-email">${selectedContact.email}</a>
         <h4>Phone</h4>
         <div class="contact-name">${selectedContact.phone}</div>
         <div class="contact-edit-tools">

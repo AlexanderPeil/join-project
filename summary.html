@@ -53,11 +53,11 @@
                         <span id="countInBoard" class="counter"></span>
                         <span class="counter-title">Tasks in Board</span>
                     </a>
-                    <a class="nav-to-content" href="board.html">
+                    <a class="nav-to-content" href="board.html" onclick="highlightTask('in-progress')">
                         <span id="countInProgress" class="counter"></span>
                         <span class="counter-title">Tasks in Progress</span>
                     </a>
-                    <a class="nav-to-content" href="board.html">
+                    <a class="nav-to-content"  href="board.html" onclick="highlightTask('awaiting-feedback')">
                         <span id="countAwaitFeedback" class="counter"></span>
                         <span class="counter-title">Awaiting Feedback</span>
                     </a>
@@ -85,7 +85,7 @@
                 <!--To-do-done-Content-->
                 <div class="nav-to-container">
                     <div class="todo-done-container">
-                        <a class="todo-done center" href="board.html">
+                        <a class="todo-done center" href="board.html" onclick="highlightTask('to-do')">
                             <div class="todo-cont no-gap">
                                 <img class="pencil-check-img" src="assets/img/pencil.png">
                                 <img class="d-none hover-img" src="assets/img/check_white.png">
@@ -97,7 +97,7 @@
                         </a>
                     </div>
                     <div class="todo-done-container">
-                        <a class="todo-done center" href="board.html">
+                        <a class="todo-done center" href="board.html" onclick="highlightTask('done')">
                             <div class="done-cont no-gap">
                                 <img class="pencil-check-img" src="assets/img/check.png">
                                 <img class="d-none hover-img" src="assets/img/check_white.png">
