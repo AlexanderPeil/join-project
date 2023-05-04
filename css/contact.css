@@ -362,7 +362,7 @@ h1 {
     box-shadow: 0 0 14px 3px rgb(0 0 0 / 4%);
     border-radius: 30px;
     background: white;
-    overflow: hidden;
+    overflow: scroll;
 }
 
 .contact-form-background {
@@ -506,6 +506,7 @@ label {
     border-bottom-left-radius: 30px;
     border-top-left-radius: 30px;
     padding: 40px;
+    width: 360px;
 }
 
 .add-form-right {

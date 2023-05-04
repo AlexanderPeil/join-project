@@ -100,22 +100,22 @@ select,
     padding: 0;
 }
 
-.category-choices {
+.category-assigned-to {
     display: flex;
     flex-direction: column;
     position: absolute;
     background-color: white;
-    width: 452px;
+    width: 100%;
     top: 50px;
     left: 0;
     z-index: 11;
     border-radius: 10px;
-    max-height: 230px;
+    height: 150px;
     overflow-y: auto;
     margin-left: -1px;
 }
 
-.assigned-to-choices {
+/* .assigned-to-choices {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -128,7 +128,7 @@ select,
     max-height: 200px;
     overflow-y: auto;
     margin-left: -1px;
-}
+} */
 
 select {
     appearance: none;
@@ -567,6 +567,10 @@ fieldset {
     .prio-btn,
     .submit-and-clear {
         font-size: 16px;
+    }
+
+    .category-choices {
+        width: 242px;
     }
 }
 

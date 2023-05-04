@@ -12,15 +12,18 @@ function init() {
 
 
 function setCurrentSectionStyle() {
-
-    if (currentSection == 'summary-page') {
-        document.getElementById('summary').classList.add('active');
-    } else if (currentSection == 'board-page') {
-        document.getElementById('board').classList.add('active');
-    } else if (currentSection == 'add-task-page') {
-        document.getElementById('add-task').classList.add('active');
-    } else if (currentSection == 'contact-page') {
-        document.getElementById('contact').classList.add('active');
+    try {
+        if (currentSection == 'summary-page') {
+            document.getElementById('summary').classList.add('active');
+        } else if (currentSection == 'board-page') {
+            document.getElementById('board').classList.add('active');
+        } else if (currentSection == 'add-task-page') {
+            document.getElementById('add-task').classList.add('active');
+        } else if (currentSection == 'contact-page') {
+            document.getElementById('contact').classList.add('active');
+        }
+    } catch (error) {
+        return;
     }
 }
 

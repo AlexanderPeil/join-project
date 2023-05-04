@@ -125,7 +125,7 @@ function loadAddTaskTmp() {
                                         <p id="category-header">Select your Category</p>
                                         <img src="./assets/img/arrow_down.png">
                                     </div>
-                                    <div class="category-choices d-none" id="category-choices">
+                                    <div class="category-assigned-to d-none" id="category-choices">
                                         <div class="category" onclick="openAddNewCategory('category-choices')">New Category<img class="new-category-img" src="assets/img/add_task_mob.svg">
                                     </div>
                                     <div class="category" onclick="changeCategoryHeader('Marketing')">
@@ -157,7 +157,7 @@ function loadAddTaskTmp() {
                                 <div class="sector_top" onclick="openDropdown('assigned-to-choices')">
                                     <p id="assigned-to-header">Select your Members</p><img src="./assets/img/arrow_down.png">
                                 </div>
-                                <div class="assigned-to-choices d-none" id="assigned-to-choices">
+                                <div class="category-assigned-to d-none" id="assigned-to-choices">
                                     <div class="assigned-to" onclick="changeCategoryHeader('Marketing')">
                                         <div id="marketing">Marketing </div>
                                         <div class="circle" style="background: #0038ff;"></div>
