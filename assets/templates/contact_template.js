@@ -53,7 +53,7 @@ function showContactDetailsHTML(selectedContact, i, userShort) {
         </div>
         <div class="contact-information-title">
             <p>Contact Information</p>
-            <div title="edit contact info" onclick="editContact(${i})" class="contact-edit"><img class="contact-edit-icon" src="./assets/img/edit_icon.svg">Edit Contact</div>
+            <div title="edit contact info" onclick="editContact(${i}), event.stopPropagation()" class="contact-edit"><img class="contact-edit-icon" src="./assets/img/edit_icon.svg">Edit Contact</div>
         </div>
         <h4>Email</h4>
         <a href="mailto:${selectedContact.email}" class="contact-email">${selectedContact.email}</a>
@@ -61,7 +61,7 @@ function showContactDetailsHTML(selectedContact, i, userShort) {
         <div class="contact-name">${selectedContact.phone}</div>
         <div class="contact-edit-tools">
             <div title="delete contact"><img onclick="deleteSelectedContact(${i})" class="contact-trash-icon" src="./assets/img/empty-trash-32.png"></div>
-            <div class="icon-bottom-right" title="edit contact info" onclick="editContact(${i})"><img class="edit-pencil-icon" src="./assets/img/edit_pencil.svg"></div>
+            <div class="icon-bottom-right" title="edit contact info" onclick="editContact(${i}), event.stopPropagation()"><img class="edit-pencil-icon" src="./assets/img/edit_pencil.svg"></div>
         </div>
     `;
 }
@@ -74,7 +74,7 @@ function showContactDetailsHTML(selectedContact, i, userShort) {
  */
 function openEditContactFormHTML(selectedContact) {
     return `
-        <div id="contactForm" class="contact-form-overlay">
+        <div id="contactFormEdit" class="contact-form-overlay" onclick="event.stopPropagation()">
             <div class="contact-form-left">
                 <img class="contact-form-logo" src="./assets/img/Logo-Join.png" alt="#">
                 <span class="contact-form-heading">Edit Contact</span>
@@ -83,9 +83,9 @@ function openEditContactFormHTML(selectedContact) {
             <div class="contact-form-right">
             <div id="selectedContactColor" class="contact-letters big-letters margin-letters" style="background-color: ${selectedContact.color}">${selectedContact.lastName.charAt(0)} ${selectedContact.firstName.charAt(0)}</div>
             <div class="contact-input-container margin-top">
-                <div onclick="closeFormById('contactForm')" class="icon-top-right" title="close form">
-                    <img class="contact-cancel-icon" src="./assets/img/contact-cancel-icon.svg" alt="#">
-                    <img class="contact-cancel-icon-mobile hide-content" src="assets/img/x_ixon.png" alt="">
+                <div class="icon-top-right" title="close form">
+                    <img onclick="closeFormById('contactFormEdit')" class="contact-cancel-icon" src="./assets/img/contact-cancel-icon.svg" alt="#">
+                    <img class="contact-cancel-icon-mobile hide-content" src="assets/img/x_ixon.png" alt="" onclick="closeFormById('contactFormEdit')">
                 </div>
                 <form onsubmit="updateContact(); return false;">
                     <div class="form-group">
@@ -125,7 +125,7 @@ function openEditContactFormHTML(selectedContact) {
 function openAddTaskContactFormHTML() {
     return `
     <div>
-    <form id="formTaskContainer" class="contact-form-overlay" onsubmit="addTask(); return false;">
+    <form id="formTaskContainer" class="contact-form-overlay" onsubmit="addTask(); return false;" onclick="event.stopPropagation()">
         <div class="add-form-left">
             <span class="contact-form-heading">Add Task</span>
             <div>

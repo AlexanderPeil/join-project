@@ -2,6 +2,7 @@ let contacts = [];
 let newContact = [];
 let tasks = [];
 let previouslySelectedContact = null;
+let currentFormId;
 
 /**
  * Loading the contacts from the server
@@ -196,7 +197,7 @@ function updateContact() {
     backend.setItem('contacts', JSON.stringify(contacts));
     updateContactList();
     updateContactSelection();
-    const contactForm = document.getElementById("contactForm");
+    const contactForm = document.getElementById("contactFormEdit");
     contactForm.remove(); // close form again
 }
 
@@ -243,6 +244,7 @@ function editContact(i) {
     selectedContact = contacts[i];
     const formEditContainer = document.getElementById("formContainer");
     formEditContainer.innerHTML += openEditContactFormHTML(selectedContact);
+    currentFormId = document.getElementById('contactFormEdit');
 }
 
 
@@ -252,10 +254,6 @@ function editContact(i) {
  * @param {*} i - The index of the contact to delete 
  */
 function deleteSelectedContact(i) {
-    // if (i < 3) {
-    //     alert("Test data cannot be deleted. Thanks for testing.");
-    //     return;
-    // }
     contacts.splice(i, 1);
     backend.setItem('contacts', JSON.stringify(contacts));
     updateContactList();
@@ -279,6 +277,7 @@ async function addTaskContact(userShort) {
     setDateToday();
     checkAssignedTo(userShort);
     document.getElementById('formTaskContainer').classList.remove('d-none');
+    currentFormId = document.getElementById('formTaskContainer');
 }
 
 
@@ -321,4 +320,13 @@ async function loadNotes() {
 async function saveNotes() {
     let tasksAsJson = JSON.stringify(tasks);
     await backend.setItem('allTasks', tasksAsJson);
+}
+
+
+function tryCloseFormById() {
+    try {
+        currentFormId.remove();
+    } catch (err) {
+        return;
+    }
 }

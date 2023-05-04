@@ -20,12 +20,12 @@
     <title>Contact | Join</title>
 </head>
 
-<body onload="initContact()" ; onclick="closeLogoutMenu(), closeAddContactForm()">
+<body onload="initContact()" ; onclick="closeLogoutMenu(), closeAddContactForm(), tryCloseFormById()">
     <!-- Header + Nav Templates> -->
     <div w3-include-html="assets/templates/header.html"></div>
     <div w3-include-html="assets/templates/nav.html"></div>
     <!-- Main Content -->
-    <div class="overflow">
+    <div class="overflow" onclick="tryCloseFormById()">
         <main class="contacts-main-container">
             <!-- Content - left side -->
             <section class="contact-list-container" id="hide-contacts">
