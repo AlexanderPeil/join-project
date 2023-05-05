@@ -5,12 +5,16 @@ let previousMenuItem = null;
 let currentSection;
 
 
-// Body onload function for legal notice and help site
+
 function init() {
     includeHTML();
 }
 
 
+/**
+ * Sets the 'active' class to the current section in the navigation bar based on the value of the global variable 'currentSection'.
+ * @returns - If the current section is not recognized or cannot be found, this function returns immediately.
+ */
 function setCurrentSectionStyle() {
     try {
         if (currentSection == 'summary-page') {

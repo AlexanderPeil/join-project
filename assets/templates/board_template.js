@@ -58,7 +58,7 @@ function loadCardBoardText(tasks_name, id) {
                 </div>
             </div>
     
-            <div>
+            <div class="wish-container">
                 <div class="popUpWish d-none" id="contextMenu${id}">
                     <div class="headContextMenu"><h3>Choose your wish</h3><img onclick="closeHeadContextMenu(${id}); event.stopPropagation(); " src="./assets/img/xicon.png"></div>
                     <img src="./assets/img/summary_underline.svg">

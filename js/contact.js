@@ -4,6 +4,7 @@ let tasks = [];
 let previouslySelectedContact = null;
 let currentFormId;
 
+
 /**
  * Loading the contacts from the server
  * @param {Array} contacts
@@ -42,6 +43,9 @@ function addContacts() {
 }
 
 
+/**
+ * Shows a popup message indicating that a contact has been successfully created.
+ */
 function popupSuccess(){
     const popup = document.createElement('div');
     popup.classList.add('popup-contact-added');
@@ -104,6 +108,7 @@ function showContactList(contactList, firstLetters) {
     for (let i = 0; i < firstLetters.length; i++) {
         const firstLetter = firstLetters[i];
         contactList.innerHTML += showContactFirstLettersHTML(firstLetter);
+
         for (let j = 0; j < contacts.length; j++) {
             const contact = contacts[j];
             let contactFirstLetter = contact.lastName.charAt(0).toLowerCase();
@@ -136,6 +141,7 @@ function showContactDetails(i) {
 function hightlightContact(i) {
     let currentHighlightContact = document.getElementById('highlight-' + i);
     currentHighlightContact.classList.add('selected-contact-box');
+
     if (previouslySelectedContact !== null) {
         previouslySelectedContact.classList.remove('selected-contact-box');
     }
@@ -210,7 +216,6 @@ function showContactForm() {
     contactForm.classList.remove("d-none");
     document.getElementById('contact-add-btn').classList.add('d-none');
     document.getElementById('hide-contacts').classList.add('d-none');
-    // document.getElementById('closeAddContactPopup').classList.remove('d-none');  
 }
 
 
@@ -230,9 +235,7 @@ function closeAddContactForm() {
     let contactForm = document.getElementById("contactForm");
     contactForm.classList.add("d-none");
     document.getElementById('contact-add-btn').classList.remove('d-none');
-    document.getElementById('hide-contacts').classList.remove('d-none');
-    // document.getElementById('closeAddContactPopup').classList.add('d-none');  
-    
+    document.getElementById('hide-contacts').classList.remove('d-none');    
 }
 
 
@@ -267,10 +270,11 @@ function deleteSelectedContact(i) {
  */
 async function addTaskContact(userShort) {
     const formTaskContainer = document.getElementById("formContainer");
+
     if (!formTaskContainer) {
         console.error('Error: formContainer is null or undefined.');
         return;
-    }
+    }    
     formTaskContainer.innerHTML += openAddTaskContactFormHTML();
     addAssignedToList();
     await loadNotes();
@@ -278,7 +282,6 @@ async function addTaskContact(userShort) {
     checkAssignedTo(userShort);
     document.getElementById('formTaskContainer').classList.remove('d-none');
     currentFormId = document.getElementById('formTaskContainer');
-    // document.getElementById('hide-contacts').classList.add('height-unset');
 }
 
 
@@ -324,6 +327,10 @@ async function saveNotes() {
 }
 
 
+/**
+ * Tries to close the form element that has the currentFormId, if it exists.
+ * @returns - If it doesn't exist, does nothing (Without errors in the console).
+ */
 function tryCloseFormById() {
     try {
         currentFormId.remove();
