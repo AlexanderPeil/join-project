@@ -24,6 +24,7 @@
     <!-- Header + Nav Templates> -->
     <div w3-include-html="assets/templates/header.html"></div>
     <div w3-include-html="assets/templates/nav.html"></div>
+    <div id="blur-container" class="d-none"></div>
     <!-- Main Content -->
     <div class="overflow" onclick="tryCloseFormById()">
         <main class="contacts-main-container">
@@ -57,9 +58,9 @@
                 <span class="contact-form-heading">Add Contact</span>
                 <p class="contact-form-slogan">Tasks are better with a team!</p>
                 <img class="contact-form-underline" src="assets/img/underline.svg" alt="">
+                <img class="contact-form-user-icon" src="./assets/img/contact-user-icon.svg">
             </div>
             <div class="contact-form-right">
-                <img class="contact-form-user-icon" src="./assets/img/contact-user-icon.svg">
                 <div class="contact-input-container margin-top">
                     <div class="icon-top-right" title="close form">
                         <img class="contact-cancel-icon" src="./assets/img/contact-cancel-icon.svg" alt="#"  onclick="closeAddContactForm()" >

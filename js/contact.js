@@ -218,6 +218,8 @@ function showContactForm() {
     contactForm.classList.remove("d-none");
     document.getElementById('contact-add-btn').classList.add('d-none');
     document.getElementById('hide-contacts').classList.add('d-none');
+    document.getElementById('blur-container').classList.remove('d-none');
+    // document.body.classList.add('overflow-hidden');
 }
 
 
@@ -238,6 +240,8 @@ function closeAddContactForm() {
     contactForm.classList.add("d-none");
     document.getElementById('contact-add-btn').classList.remove('d-none');
     document.getElementById('hide-contacts').classList.remove('d-none');    
+    document.getElementById('blur-container').classList.add('d-none');    
+    // document.body.classList.remove('overflow-hidden');
 }
 
 
