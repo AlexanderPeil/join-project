@@ -131,6 +131,7 @@ function showContactDetails(i) {
     let userShort = selectedContact['firstName'].charAt(0).toLowerCase() + selectedContact['lastName'].charAt(0).toLowerCase()
     contactSelection.innerHTML += showContactDetailsHTML(selectedContact, i, userShort);
     document.getElementById('contactOverlay').classList.add('show-contact-selection-overlay');
+    document.body.classList.add('overflow-hidden');
 }
 
 
@@ -154,6 +155,7 @@ function hightlightContact(i) {
  */
 function closeContactOverlay(){
     document.getElementById('contactOverlay').classList.remove('show-contact-selection-overlay');
+    document.body.classList.remove('overflow-hidden');
 }
 
 
