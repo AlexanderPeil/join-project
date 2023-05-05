@@ -424,5 +424,3 @@ function closePopupAddTask() {
 function closeAddtask() {
     document.getElementById('close-add-task').classList.add('d-none');
 }
-
-

@@ -248,6 +248,7 @@ function editContact(i) {
     const formEditContainer = document.getElementById("formContainer");
     formEditContainer.innerHTML += openEditContactFormHTML(selectedContact);
     currentFormId = document.getElementById('contactFormEdit');
+    document.body.classList.add('overflow-hidden');
 }
 
 
@@ -306,6 +307,7 @@ function checkAssignedTo(userShort) {
 function closeFormById(formId) {
     const form = document.getElementById(formId);
     form.remove();
+    document.body.classList.remove('overflow-hidden');
 }
 
 
@@ -334,6 +336,7 @@ async function saveNotes() {
 function tryCloseFormById() {
     try {
         currentFormId.remove();
+        document.body.classList.remove('overflow-hidden');
     } catch (err) {
         return;
     }

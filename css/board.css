@@ -294,6 +294,7 @@ a {
     border-radius: 30px;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     padding: 50px;
+    margin: 10px;
 }
 
 .makeRow {
@@ -454,7 +455,7 @@ a {
 
 @media(max-width: 1000px) {
     .popUp-background {
-        overflow-x: hidden;
+        overflow: hidden;
     }
 
     .headline-mobile {
