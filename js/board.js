@@ -3,6 +3,7 @@ let users_color = loadContacts();
 let onMobile = isMobileDevice();
 let currentDraggedElement;
 let splits = ['to_do', 'in_progress', 'awaiting_feedback', 'done'];
+let currentWishMenu;
 
 
 /**
@@ -342,7 +343,8 @@ function checkMobile() {
  */
 function openContextMenu(id) {
     document.getElementById(`contextMenu${id}`).classList.remove('d-none');
-    currenContextMenu = id;
+    currentWishMenu = id;
+    document.body.classList.add('overflow-hidden')
 }
 
 
@@ -352,6 +354,24 @@ function openContextMenu(id) {
  */
 function closeHeadContextMenu(id) {
     document.getElementById(`contextMenu${id}`).classList.add('d-none');
+    document.body.classList.remove('overflow-hidden');
+}
+
+
+/**
+ * Sets the 'active' class to the current section in the navigation bar 
+ * based on the value of the global variable 'currentSection'.
+ * @returns - If the current section is not recognized or cannot be found, 
+ *            this function returns immediately.
+ */
+function closeWishMenu() {
+    try {
+        id = currentWishMenu;
+        closeHeadContextMenu(id);
+        document.body.classList.remove('overflow-hidden');
+    } catch (error) {
+        return;
+    }
 }
 
 
