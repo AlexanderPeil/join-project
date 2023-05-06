@@ -74,7 +74,7 @@ function showContactDetailsHTML(selectedContact, i, userShort) {
  */
 function openEditContactFormHTML(selectedContact) {
     return `
-        <div id="contactFormEdit" class="contact-form-overlay" onclick="event.stopPropagation()">
+        <div id="contactFormEdit" class="contact-form-overlay contact-form-edit" onclick="event.stopPropagation()">
             <div class="contact-form-left">
                 <img class="contact-form-logo" src="./assets/img/Logo-Join.png" alt="#">
                 <span class="contact-form-heading">Edit Contact</span>
@@ -124,7 +124,6 @@ function openEditContactFormHTML(selectedContact) {
  */
 function openAddTaskContactFormHTML() {
     return `
-    <div>
     <form id="formTaskContainer" class="contact-form-overlay" onsubmit="addTask(); return false;" onclick="event.stopPropagation()">
         <div class="add-form-left">
             <span class="contact-form-heading">Add Task</span>
@@ -273,6 +272,5 @@ function openAddTaskContactFormHTML() {
             </div>
         </div>
     </form>
-    </div>
     `;
 }

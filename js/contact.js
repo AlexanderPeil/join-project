@@ -219,7 +219,6 @@ function showContactForm() {
     document.getElementById('contact-add-btn').classList.add('d-none');
     document.getElementById('hide-contacts').classList.add('d-none');
     document.getElementById('blur-container').classList.remove('d-none');
-    // document.body.classList.add('overflow-hidden');
 }
 
 
@@ -241,7 +240,6 @@ function closeAddContactForm() {
     document.getElementById('contact-add-btn').classList.remove('d-none');
     document.getElementById('hide-contacts').classList.remove('d-none');    
     document.getElementById('blur-container').classList.add('d-none');    
-    // document.body.classList.remove('overflow-hidden');
 }
 
 
@@ -255,6 +253,7 @@ function editContact(i) {
     formEditContainer.innerHTML += openEditContactFormHTML(selectedContact);
     currentFormId = document.getElementById('contactFormEdit');
     document.body.classList.add('overflow-hidden');
+    // document.getElementById('blur-container').classList.remove('d-none');    
 }
 
 
@@ -277,7 +276,6 @@ function deleteSelectedContact(i) {
  */
 async function addTaskContact(userShort) {
     const formTaskContainer = document.getElementById("formContainer");
-
     if (!formTaskContainer) {
         console.error('Error: formContainer is null or undefined.');
         return;
@@ -289,6 +287,7 @@ async function addTaskContact(userShort) {
     checkAssignedTo(userShort);
     document.getElementById('formTaskContainer').classList.remove('d-none');
     currentFormId = document.getElementById('formTaskContainer');
+    document.getElementById('blur-container').classList.remove('d-none');   
 }
 
 
@@ -314,6 +313,7 @@ function closeFormById(formId) {
     const form = document.getElementById(formId);
     form.remove();
     document.body.classList.remove('overflow-hidden');
+    document.getElementById('blur-container').classList.add('d-none');    
 }
 
 

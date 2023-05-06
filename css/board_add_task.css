@@ -246,6 +246,7 @@ select::-ms-expand {
 
 .plus-icon {
     cursor: pointer;
+    margin-right: -7px;
 }
 
 .subtask-img-container {

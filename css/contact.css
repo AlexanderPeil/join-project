@@ -319,6 +319,7 @@ h1 {
     position: absolute;
     right: 32px;
     bottom: 64px;
+    font-size: 18px;
 }
 
 .contact-cancel-btn {
@@ -357,7 +358,6 @@ h1 {
     position: absolute;
     top: 15%;
     left: 20%;
-    z-index: 100;
     display: flex;
     box-shadow: 0 0 14px 3px rgb(0 0 0 / 4%);
     border-radius: 30px;
@@ -365,6 +365,7 @@ h1 {
     overflow: hidden;
     z-index: 211;
 }
+
 
 .contact-form-background {
     position: fixed;
@@ -409,9 +410,7 @@ h1 {
 .contact-form-user-icon {
     height: 90px;
     width: 90px;
-    padding-top: 25px;
-    margin-left: -9px;
-    /* padding: 0px 0px 0px 30px; */
+    padding: 0px 0px 0px 30px;
 }
 
 .contact-input-container {
@@ -662,7 +661,7 @@ select::-ms-expand {
 
 .plus-icon {
     cursor: pointer;
-    padding: 10px;
+    /* padding: 10px; */
 }
 
 .mobile-contact-back-icon {
@@ -740,6 +739,10 @@ select::-ms-expand {
         height: unset;
     }
 
+    .contact-form-edit {
+        top: 2% !important;
+    }
+
     .contact-form-left-neutral {
         flex-direction: column;
         align-items: center;
@@ -768,7 +771,9 @@ select::-ms-expand {
     }
 
     .contact-form-user-icon {
-        margin: unset;
+        padding-left: 0!important;
+        position: fixed;
+        top: 30%;
     }
 }
 
@@ -892,16 +897,9 @@ select::-ms-expand {
         margin-right: 40px;
     }
 
-    .big-letters {
-        height: 110px;
-        width: 110px;
-    }
-
     .margin-letters {
-        margin-top: 20px;
+        margin-top: -17px;
         margin-left: 0px !important;
-        position: fixed;
-        top: 22%;
     }
 
     .contact-input-container {
@@ -910,7 +908,7 @@ select::-ms-expand {
     }
 
     .margin-top {
-        margin-top: 60px;
+        margin-top: 15px;
     }
 
     .contact-form-buttons {
@@ -1001,11 +999,6 @@ select::-ms-expand {
 }
 
 @media(max-width: 400px) {
-
-    .big-letters {
-        height: 80px;
-        width: 90px;
-    }
 
     .contact-form-left {
         border-top-left-radius: unset;
