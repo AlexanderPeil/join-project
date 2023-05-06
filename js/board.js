@@ -122,13 +122,13 @@ function openAddTask(id) {
 function startDragging(id) {
     currentDraggedElement = id;
     curentDraggedCard = id;
-    setTimeout(() => {
-        document.querySelectorAll('.dropArea').forEach(element => {
-            element.classList.add('z-index');
-        });
-    }, 50);
+        setTimeout(() => {
+            document.querySelectorAll('.dropArea').forEach(element => {
+                element.classList.add('z-index');
+            });
+        }, 50);
 
-    document.addEventListener('mouseup', stopDragging);
+        document.addEventListener('mouseup', stopDragging);
 }
 
 function stopDragging() {
@@ -136,7 +136,7 @@ function stopDragging() {
         element.classList.remove('z-index');
     });
 }
-  
+
 
 
 
@@ -364,7 +364,7 @@ function checkMobile() {
 function openContextMenu(id) {
     document.getElementById(`contextMenu${id}`).classList.remove('d-none');
     currentWishMenu = id;
-    document.body.classList.add('overflow-hidden')
+    // document.body.classList.add('overflow-hidden')
 }
 
 
@@ -374,7 +374,7 @@ function openContextMenu(id) {
  */
 function closeHeadContextMenu(id) {
     document.getElementById(`contextMenu${id}`).classList.add('d-none');
-    document.body.classList.remove('overflow-hidden');
+    // document.body.classList.remove('overflow-hidden');
 }
 
 

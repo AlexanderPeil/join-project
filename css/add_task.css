@@ -75,6 +75,7 @@ select,
     align-items: center;
     font-size: 18px;
     padding: 5px 20px;
+    cursor: pointer;
 }
 
 .sector_top img {
@@ -84,7 +85,7 @@ select,
 .select-wrapper {
     display: flex;
     flex-direction: column;
-    cursor: pointer;
+    /* cursor: pointer; */
     padding: 0;
 }
 
@@ -477,6 +478,10 @@ fieldset {
     color: white;
     padding: 5px;
     border-radius: 10px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
 }
 
 @media(max-width:1400px) {

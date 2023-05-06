@@ -197,7 +197,7 @@ function addAssignedToList() {
         let firstName = contact['firstName'];
         let lastName = contact['lastName'];
         let acronym = firstName[0] + lastName[0];
-        document.getElementById('assigned-to-choices').innerHTML += `<div class="assigned-to-line"><label for="assigned-to-${i}" id="assigned_name${i}">${firstName + ' ' + lastName}</label><input type="checkbox" id="assigned-to-${i}" value="${acronym}"></div>`
+        document.getElementById('assigned-to-choices').innerHTML += `<div class="assigned-to-line"><label for="assigned-to-${i}" class="cursor-pointer" id="assigned_name${i}">${firstName + ' ' + lastName}</label><input type="checkbox" class="cursor-pointer" id="assigned-to-${i}" value="${acronym}"></div>`
     }
 }
 

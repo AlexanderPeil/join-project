@@ -96,7 +96,7 @@ select,
     height: 50px; 
     display: flex;
     flex-direction: column;
-    cursor: pointer;
+    /* cursor: pointer; */
     padding: 0;
 }
 
