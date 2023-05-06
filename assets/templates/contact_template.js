@@ -74,6 +74,7 @@ function showContactDetailsHTML(selectedContact, i, userShort) {
  */
 function openEditContactFormHTML(selectedContact) {
     return `
+    <div id="contactFormEdit-bg" class="contact-popup-bg">
         <div id="contactFormEdit" class="contact-form-overlay contact-form-edit" onclick="event.stopPropagation()">
             <div class="contact-form-left">
                 <img class="contact-form-logo" src="./assets/img/Logo-Join.png" alt="#">
@@ -100,6 +101,7 @@ function openEditContactFormHTML(selectedContact) {
                     <div class="form-group">
                         <input class="contact-input-field input-phone-img" type="tel" placeholder="Phone" id="phone" name="phone" value="${selectedContact.phone}" pattern="[+0-9\s]+" required>
                     </div>
+                    <div class="contact-popup-bottom">
                     <div class="form-group">
                         <input class="p-none"type="color" id="color" name="color" value="${selectedContact.color}" required>
                     </div>
@@ -109,11 +111,12 @@ function openEditContactFormHTML(selectedContact) {
                             <img class="contact-create-icon" src="./assets/img/contact-create-icon.svg" alt="#">
                         </button>
                     </div>
+                    </div>
                 </form>
             </div>
             </div>
         </div>
-        
+    </div>
     `;
 }
 

@@ -218,7 +218,7 @@ function showContactForm() {
     contactForm.classList.remove("d-none");
     document.getElementById('contact-add-btn').classList.add('d-none');
     document.getElementById('hide-contacts').classList.add('d-none');
-    document.getElementById('blur-container').classList.remove('d-none');
+    document.getElementById('new-contact-bg').classList.remove('d-none');
 }
 
 
@@ -239,7 +239,7 @@ function closeAddContactForm() {
     contactForm.classList.add("d-none");
     document.getElementById('contact-add-btn').classList.remove('d-none');
     document.getElementById('hide-contacts').classList.remove('d-none');    
-    document.getElementById('blur-container').classList.add('d-none');    
+    document.getElementById('new-contact-bg').classList.add('d-none');
 }
 
 
@@ -252,8 +252,9 @@ function editContact(i) {
     const formEditContainer = document.getElementById("formContainer");
     formEditContainer.innerHTML += openEditContactFormHTML(selectedContact);
     currentFormId = document.getElementById('contactFormEdit');
-    document.body.classList.add('overflow-hidden');
-    // document.getElementById('blur-container').classList.remove('d-none');    
+    // document.body.classList.add('overflow-hidden');
+    document.getElementById('contactFormEdit-bg').classList.remove('d-none');   
+    document.getElementById('nav').classList.add('filter');
 }
 
 
@@ -310,10 +311,15 @@ function checkAssignedTo(userShort) {
  * @param {string} formId - The id of the form to be closed.
  */
 function closeFormById(formId) {
-    const form = document.getElementById(formId);
-    form.remove();
-    document.body.classList.remove('overflow-hidden');
-    document.getElementById('blur-container').classList.add('d-none');    
+    try {
+        const form = document.getElementById(formId);
+        form.remove();
+        document.body.classList.remove('overflow-hidden');
+        document.getElementById('blur-container').classList.add('d-none');    
+        document.getElementById('contactFormEdit-bg').remove();  
+    } catch (err) {
+        return;
+    }
 }
 
 
@@ -343,6 +349,8 @@ function tryCloseFormById() {
     try {
         currentFormId.remove();
         document.body.classList.remove('overflow-hidden');
+        document.getElementById('blur-container').classList.add('d-none');    
+        document.getElementById('contactFormEdit-bg').remove();   
     } catch (err) {
         return;
     }
