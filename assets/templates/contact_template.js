@@ -127,6 +127,7 @@ function openEditContactFormHTML(selectedContact) {
  */
 function openAddTaskContactFormHTML() {
     return `
+    <div id="contact-addTask-bg" class="contact-popup-bg">
     <form id="formTaskContainer" class="contact-form-overlay" onsubmit="addTask(); return false;" onclick="event.stopPropagation()">
         <div class="add-form-left">
             <span class="contact-form-heading">Add Task</span>
@@ -218,7 +219,7 @@ function openAddTaskContactFormHTML() {
         </div>
         <div class="add-form-right">
             <div class="contact-input-container">
-                <div onclick="closeFormById('formTaskContainer')" class="icon-top-right" title="close form">
+                <div onclick="closeFormById('contact-addTask-bg')" class="icon-top-right" title="close form">
                     <img class="contact-cancel-icon-mobile" src="./assets/img/contact-cancel-icon.svg" alt="#">
                 </div>
                 <div class="contact-addTask-bottom">
@@ -275,5 +276,6 @@ function openAddTaskContactFormHTML() {
             </div>
         </div>
     </form>
+    </div>
     `;
 }

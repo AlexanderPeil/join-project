@@ -244,8 +244,11 @@ a {
 
 .dropArea {
     width: 250px;
-    height: 200px;
+    height: 88%;
     border-radius: 25px;
+    position: absolute;
+    z-index: -1;
+    top: 0;
 }
 
 .borders {
@@ -439,6 +442,16 @@ a {
     overflow: hidden;
 }
 
+.drop-ground {
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+}
+
+.z-index {
+    z-index: 11;
+}
+
 @media(max-width: 1500px) {
     .board {
         flex-wrap: wrap;
@@ -533,6 +546,10 @@ a {
     
     .drop-ground {
         width: 360px;
+    }
+
+    .card-content {
+        width: 80%;
     }
 
     @media(max-width: 400px) {

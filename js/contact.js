@@ -252,7 +252,6 @@ function editContact(i) {
     const formEditContainer = document.getElementById("formContainer");
     formEditContainer.innerHTML += openEditContactFormHTML(selectedContact);
     currentFormId = document.getElementById('contactFormEdit');
-    // document.body.classList.add('overflow-hidden');
     document.getElementById('contactFormEdit-bg').classList.remove('d-none');   
     document.getElementById('nav').classList.add('filter');
 }
@@ -288,7 +287,6 @@ async function addTaskContact(userShort) {
     checkAssignedTo(userShort);
     document.getElementById('formTaskContainer').classList.remove('d-none');
     currentFormId = document.getElementById('formTaskContainer');
-    document.getElementById('blur-container').classList.remove('d-none');   
 }
 
 
@@ -317,6 +315,7 @@ function closeFormById(formId) {
         document.body.classList.remove('overflow-hidden');
         document.getElementById('blur-container').classList.add('d-none');    
         document.getElementById('contactFormEdit-bg').remove();  
+        // document.getElementById('contact-addTask-bg').remove();
     } catch (err) {
         return;
     }
@@ -348,9 +347,18 @@ async function saveNotes() {
 function tryCloseFormById() {
     try {
         currentFormId.remove();
-        document.body.classList.remove('overflow-hidden');
-        document.getElementById('blur-container').classList.add('d-none');    
+        // document.body.classList.remove('overflow-hidden');
+        // document.getElementById('blur-container').classList.add('d-none');    
         document.getElementById('contactFormEdit-bg').remove();   
+    } catch (err) {
+        return;
+    }
+}
+
+
+function tryCloseAddTask() {
+    try {
+        document.getElementById('contact-addTask-bg');
     } catch (err) {
         return;
     }

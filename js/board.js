@@ -4,6 +4,7 @@ let onMobile = isMobileDevice();
 let currentDraggedElement;
 let splits = ['to_do', 'in_progress', 'awaiting_feedback', 'done'];
 let currentWishMenu;
+let curentDraggedCard;
 
 
 /**
@@ -120,7 +121,23 @@ function openAddTask(id) {
  */
 function startDragging(id) {
     currentDraggedElement = id;
+    curentDraggedCard = id;
+    setTimeout(() => {
+        document.querySelectorAll('.dropArea').forEach(element => {
+            element.classList.add('z-index');
+        });
+    }, 50);
+
+    document.addEventListener('mouseup', stopDragging);
 }
+
+function stopDragging() {
+    document.querySelectorAll('.dropArea').forEach(element => {
+        element.classList.remove('z-index');
+    });
+}
+  
+
 
 
 /**
@@ -150,6 +167,9 @@ function diableDrop(ev) {
  * @param {string} category - The category to move the element to.
  */
 async function moveTo(category) {
+    document.querySelectorAll('.dropArea').forEach(element => {
+        element.classList.add('z-index');
+    });
     tasks[currentDraggedElement]['split'] = category;
     loadBoard(tasks);
     await saveNotes();
