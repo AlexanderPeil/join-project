@@ -206,12 +206,36 @@ function addAssignedToList() {
  * Toggles the visibility of a dropdown list.
  * @param {string} id - The id of the element to toggle.
  */
+// function openDropdown(id) {
+//     document.getElementById(id).classList.toggle('d-none');
+// }
+
+
 function openDropdown(id) {
-    if (document.getElementById(id).classList.contains('d-none')) {
-        document.getElementById(id).classList.remove('d-none');
+    var dropdowns = document.querySelectorAll('.category-assigned-to');
+    for (var i = 0; i < dropdowns.length; i++) {
+      dropdowns[i].classList.add('d-none');
     }
-    else if (!document.getElementById(id).classList.contains('d-none')) {
-        document.getElementById(id).classList.add('d-none');
+  
+    var dropdown = document.getElementById(id);
+    if (dropdown.classList.contains('d-none')) {
+      dropdown.classList.remove('d-none');
+    } else {
+      dropdown.classList.add('d-none');
+    }
+  }
+  
+
+
+function closeSelectWrapper() {
+    let category = document.getElementById('category-choices');
+    let assignedTo = document.getElementById('assigned-to-choices');
+
+    try {
+        category.classList.add('d-none');
+        assignedTo.classList.add('d-none');
+    } catch (err) {
+        return;
     }
 }
 

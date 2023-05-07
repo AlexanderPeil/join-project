@@ -250,9 +250,8 @@ select::-ms-expand {
 
 .submit-and-clear {
     display: flex;
-    position: absolute;
-    bottom: 0;
-    right: 0;
+    justify-content: center;
+    padding-top: 85px;
 }
 
 .submit-and-clear button {
@@ -411,6 +410,7 @@ fieldset {
     display: flex;
     justify-content: space-between;
     padding: 7px 20px;
+    /* cursor: pointer; */
 }
 
 .assigned-to-wrapper {
@@ -531,6 +531,8 @@ fieldset {
 
     .submit-and-clear {
         position: unset;
+        padding: unset;
+        padding-right: 15px;
     }
 
     .select-wrapper {

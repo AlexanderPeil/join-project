@@ -93,7 +93,7 @@ function loadCardBoardText(tasks_name, id) {
 function loadAddTaskTmp() {
     return /*html*/ `
     <div class="popUp-background"  id="popUp-background" onclick="closePopupAddTask()">
-        <div class="popUp-content_add_task" id="popup-add-task"  onclick="event.stopPropagation()">
+        <div class="popUp-content_add_task" id="popup-add-task"  onclick="event.stopPropagation(), closeSelectWrapper()">
             <div class="headerPopUp"><h2>Add Task</h2>
                 <img class="close-header-popup" src="./assets/img/xicon.png" onclick="closePopUpAddTask()">
             </div>
@@ -120,7 +120,7 @@ function loadAddTaskTmp() {
                                     <img src="./assets/img/cancel.png" alt="#" onclick="closeNewCategory()">
                                 </div>
                             </div>
-                                <div class="select-wrapper" id="select-wrapper" onclick="openDropdown('category-choices')">
+                                <div class="select-wrapper" id="select-wrapper" onclick="openDropdown('category-choices'), event.stopPropagation()">
                                     <div class="sector_top" id="sector-top">
                                         <p id="category-header">Select your Category</p>
                                         <img src="./assets/img/arrow_down.png">
@@ -154,7 +154,7 @@ function loadAddTaskTmp() {
                         <div class="selection-container prevent-select">
                             <label>Assigned To</label>
                             <div class="select-wrapper assigned-to-wrapper">
-                                <div class="sector_top" onclick="openDropdown('assigned-to-choices')">
+                                <div class="sector_top" onclick="openDropdown('assigned-to-choices'), event.stopPropagation()">
                                     <p id="assigned-to-header">Select your Members</p><img src="./assets/img/arrow_down.png">
                                 </div>
                                 <div class="category-assigned-to d-none" id="assigned-to-choices">
@@ -324,11 +324,11 @@ function loadEditAddTaskTmp(id) {
                 <div class="select-color" style="background:  #ff7a00;" onclick="selectColor(4)"></div>
                 <div class="select-color" style="background: #fc71ff;" onclick="selectColor(5)"></div>
             </div>
-            <div class="select-wrapper" id="select-wrapper" onclick="openDropdown('category-choices')">
+            <div class="select-wrapper" id="select-wrapper" onclick="openDropdown('category-choices'), event.stopPropagation()">
                 <div class="sector_top">
                     <p id="category-header">Select your Category</p><img src="./assets/img/arrow_down.png">
                 </div>
-                <div class="category-choices d-none" id="category-choices">
+                <div class="category-choices category-assigned-to d-none" id="category-choices">
                     <div class="category" onclick="openAddNewCategory('category-choices')">New Category<img class="new-category-img" src="assets/img/add_task_mob.svg">
                     </div>
                     <div class="category" onclick="changeCategoryHeader('Marketing')">
@@ -357,7 +357,7 @@ function loadEditAddTaskTmp(id) {
         <div class="selection-container prevent-select">
             <label>Assigned To</label>
             <div class="select-wrapper assigned-to-wrapper">
-                <div class="sector_top" onclick="openDropdown('assigned-to-choices')">
+                <div class="sector_top" onclick="openDropdown('assigned-to-choices'), event.stopPropagation()">
                     <p id="assigned-to-header">Select your Members</p><img
                     src="./assets/img/arrow_down.png">
                 </div>

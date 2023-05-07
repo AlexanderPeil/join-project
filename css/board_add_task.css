@@ -85,6 +85,7 @@ select,
     align-items: center;
     font-size: 18px;
     padding: 5px 20px;
+    cursor: pointer;
 }
 
 .sector_top img {
@@ -110,7 +111,7 @@ select,
     left: 0;
     z-index: 11;
     border-radius: 10px;
-    height: 150px;
+    height: 138px;
     overflow-y: auto;
     margin-left: -1px;
 }
@@ -266,9 +267,8 @@ select::-ms-expand {
 
 .submit-and-clear {
     display: flex;
-    position: absolute;
-    bottom: 35px;
-    right: 0;
+    justify-content: center;
+    padding-top: 85px;
 }
 
 .submit-and-clear button {
@@ -402,6 +402,7 @@ fieldset {
     display: flex;
     align-items: center;
     padding: 7px 20px;
+    cursor: pointer;
 }
 
 .new-cat {
@@ -496,6 +497,10 @@ fieldset {
     border-radius: 10px;
 }
 
+.cursor-pointer {
+    cursor: pointer;
+}
+
 
 @media(max-width:1400px) {
     .main-container {
@@ -506,6 +511,10 @@ fieldset {
 @media(max-width:1200px) {
     .btn-clear {
         margin-left: unset;
+    }
+
+    .submit-and-clear {
+        padding: unset;
     }
 
     .submit-and-clear button {
