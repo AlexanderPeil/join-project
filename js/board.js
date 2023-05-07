@@ -288,8 +288,14 @@ async function delCard(choicCard) {
  * Closes the pop-up for adding a task.
  */
 function closePopUpAddTask() {
-    document.getElementById('popUp').innerHTML = '';
-    document.getElementById('board-section').classList.remove('d-none');
+    try {
+        document.getElementById('popUp').innerHTML = '';
+        document.getElementById('board-section').classList.remove('d-none');
+        document.body.classList.remove('overflow-hidden');
+        document.getElementById('close-add-task').classList.remove('filter');
+    } catch (err) {
+        return;
+    }
 }
 
 
@@ -417,6 +423,8 @@ function editTask(id) {
     addAssignedToList();
     setDateToday();
     fillTheTasks(id)
+    document.body.classList.add('overflow-hidden');
+    document.getElementById('close-add-task').classList.add('filter');
 }
 
 
@@ -426,6 +434,7 @@ function editTask(id) {
  */
 function closePopup(currentCard) {
     document.getElementById(`close-popup${currentCard}`).classList.add('d-none');
+    document.body.classList.remove('overflow-hidden');
 }
 
 
@@ -443,4 +452,6 @@ function closePopupAddTask() {
  */
 function closeAddtask() {
     document.getElementById('close-add-task').classList.add('d-none');
+    document.body.classList.remove('overflow-hidden');
+    document.getElementById('close-add-task').classList.remove('filter');
 }

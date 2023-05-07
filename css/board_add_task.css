@@ -6,12 +6,34 @@
     --media: #ffc702;
 }
 
+::-webkit-scrollbar {
+    width: 20px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #d6dee1;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #a8bbbf;
+  }
+  
+
 .popUp-content_add_task {
     background: white;
-    border-radius: 30px;
+    border-radius: 10px;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     padding: 15px 50px;
     gap: 25px;
+    height: 750px;
+    overflow-y: auto;
 }
 
 .close-header-popup {
@@ -603,30 +625,6 @@ fieldset {
     h1 {
         font-size: 47px;
     }
-/* 
-    label {
-        font-size: 16px;
-    }
-
-    input {
-        font-size: 16px;
-    }
-
-     ::placeholder {
-        font-size: 16px;
-    }
-
-    textarea {
-        font-size: 16px;
-    }
-
-    p {
-        font-size: 16px;
-    }
-
-    .prio-btn {
-        font-size: 16px;
-    } */
 
     .left-container {
         height: auto;
@@ -634,6 +632,10 @@ fieldset {
 
     .contact-addTask-bottom {
         width: 108%;
+    }
+
+    .popUp-content_add_task {
+        height: 650px;
     }
 }
 
@@ -645,21 +647,22 @@ fieldset {
     .width-unset {
         width: unset;
     }
-    
-    .popUp-content_add_task {
-        padding-top: 100px;
-    }
 
     .contact-addTask-bottom {
         width: 100%;
     }
+
+    .submit-and-clear {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .prio-btn-container {
+        flex-direction: column;
+    }
 }
 
 @media(max-width: 400px) {
-    .popUp-content_add_task {
-        padding-top: 252px;
-        width: 350px;
-    }
 
     .submit-and-clear button{
         margin-left: 10px;

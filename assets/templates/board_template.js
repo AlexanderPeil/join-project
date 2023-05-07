@@ -292,7 +292,7 @@ function loadPrioIMGWithText(pri, prioIMG) {
 
 function loadEditAddTaskTmp(id) {
   return `<div class="popUp-background" id="close-add-task" onclick="closeAddtask()">
-    <div class="popUp-content_add_task" id="popup-add-task" onclick="event.stopPropagation()">
+    <div class="popUp-content_add_task" id="popup-add-task" onclick="closeSelectWrapper(), event.stopPropagation()">
     <div class="headerPopUp"><h2>Add Task</h2><img src="./assets/img/xicon.png" onclick="closePopUpAddTask()"></div>
     <form onsubmit="editAddTask(${id});return false">
         <div class="content-container">
@@ -361,7 +361,7 @@ function loadEditAddTaskTmp(id) {
                     <p id="assigned-to-header">Select your Members</p><img
                     src="./assets/img/arrow_down.png">
                 </div>
-                <div class="assigned-to-choices d-none" id="assigned-to-choices">
+                <div class="assigned-to-choices category-assigned-to d-none" id="assigned-to-choices">
                     <div class="assigned-to" onclick="changeCategoryHeader('Marketing')">
                         <div id="marketing">Marketing </div>
                         <div class="circle" style="background: #0038ff;"></div>

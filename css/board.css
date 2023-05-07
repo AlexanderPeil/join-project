@@ -156,6 +156,9 @@ a {
     margin: 25px 0;
     width: 90%;
     cursor: pointer;
+    /* max-height: 150px; */
+    overflow-y: auto;
+    height: 170px;
 }
 
 .trash-icon {
@@ -401,14 +404,6 @@ a {
 
 .wish-container {
     position: relative;
-    /* position: fixed;
-    width: 100%;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    z-index: 111;
-    backdrop-filter: brightness(0.4);
-    overflow: scroll; */
 }
 
 .popUpWish {
@@ -458,6 +453,10 @@ a {
 
 .z-index {
     z-index: 11;
+}
+
+.filter {
+    backdrop-filter: brightness(0.4);   
 }
 
 @media(max-width: 1500px) {
