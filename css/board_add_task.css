@@ -32,7 +32,7 @@
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     padding: 15px 50px;
     gap: 25px;
-    height: 750px;
+    height: 728px;
     overflow-y: auto;
 }
 
@@ -635,7 +635,15 @@ fieldset {
     }
 
     .popUp-content_add_task {
-        height: 650px;
+        height: 79%;
+        margin-bottom: 8px;
+    }
+}
+
+@media(max-width:600px) {
+    .popUp-content_add_task {
+        width: 100%;
+        padding: 15px;
     }
 }
 
@@ -670,5 +678,9 @@ fieldset {
 
     .category-choices  {
         width: 350px;
+    }
+
+    .popUp-content_add_task {
+        height: 72%;
     }
 }

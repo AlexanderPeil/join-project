@@ -112,6 +112,11 @@ function openAddTask(id) {
     document.getElementById('board-section').classList.add('d-none');
     addAssignedToList();
     setDateToday();
+    try {
+        document.getElementById('popUp-background').classList.add('filter');
+    } catch (err) {
+        return;
+    }
 }
 
 
