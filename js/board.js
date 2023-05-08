@@ -3,7 +3,7 @@ let users_color = loadContacts();
 let onMobile = isMobileDevice();
 let currentDraggedElement;
 let splits = ['to_do', 'in_progress', 'awaiting_feedback', 'done'];
-let currentWishMenu;
+let currentWishMenu = null;
 let curentDraggedCard;
 
 
@@ -346,6 +346,10 @@ function isMobileDevice() {
  * @param {string} id - The task ID.
  */
 function checkWhichMenu(id) {
+    if (currentWishMenu !== null && currentWishMenu !== id) {
+        closeAllMenus();
+      }
+
     let check = false;
     if (checkMobile()) {
         check = true;
@@ -376,6 +380,15 @@ function openContextMenu(id) {
     document.getElementById(`contextMenu${id}`).classList.remove('d-none');
     currentWishMenu = id;
     // document.body.classList.add('overflow-hidden')
+}
+
+
+function closeAllMenus() {
+    const menus = document.querySelectorAll('.popUpWish');
+    menus.forEach((menu) => {
+      menu.classList.add('d-none');
+    });
+    currentWishMenu = null;
 }
 
 

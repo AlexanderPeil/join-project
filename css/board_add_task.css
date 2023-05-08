@@ -645,6 +645,10 @@ fieldset {
         width: 100%;
         padding: 15px;
     }
+
+    .submit-and-clear {
+        width: 100%;
+    }
 }
 
 @media(max-width: 500px) {
@@ -658,15 +662,6 @@ fieldset {
 
     .contact-addTask-bottom {
         width: 100%;
-    }
-
-    .submit-and-clear {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .prio-btn-container {
-        flex-direction: column;
     }
 }
 

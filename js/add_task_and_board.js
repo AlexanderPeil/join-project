@@ -7,6 +7,7 @@ let currentCategory = '';
 let currentColor = '';
 let category;
 let selectedColor;
+let currentSelectMenu = null;
 
 
 
@@ -212,19 +213,29 @@ function addAssignedToList() {
 
 
 function openDropdown(id) {
-    var dropdowns = document.querySelectorAll('.category-assigned-to');
-    for (var i = 0; i < dropdowns.length; i++) {
-      dropdowns[i].classList.add('d-none');
-    }
-  
-    var dropdown = document.getElementById(id);
-    if (dropdown.classList.contains('d-none')) {
-      dropdown.classList.remove('d-none');
+    currentSelectMenu = id;
+    // checkCurrentSelectMenu(currentSelectMenu);
+    if (id == currentSelectMenu && !document.getElementById(id).classList.contains('d-none')) {
+        document.getElementById(id).classList.add('d-none');
     } else {
-      dropdown.classList.add('d-none');
+        var dropdowns = document.querySelectorAll('.category-assigned-to');
+        for (var i = 0; i < dropdowns.length; i++) {
+            dropdowns[i].classList.add('d-none');
+        }
+
+        var dropdown = document.getElementById(id);
+        if (dropdown.classList.contains('d-none')) {
+            dropdown.classList.remove('d-none');
+        } else {
+            dropdown.classList.add('d-none');
+        }
     }
-  }
-  
+}
+
+
+function checkCurrentSelectMenu(currentSelectMenu) {
+
+}
 
 
 function closeSelectWrapper() {
