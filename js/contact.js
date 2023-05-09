@@ -46,7 +46,7 @@ function addContacts() {
 /**
  * Shows a popup message indicating that a contact has been successfully created.
  */
-function popupSuccess(){
+function popupSuccess() {
     const popup = document.createElement('div');
     popup.classList.add('popup-contact-added');
     popup.innerHTML = `<p>contact successfully created</p>`;
@@ -153,7 +153,7 @@ function hightlightContact(i) {
 /**
  * Close contact details
  */
-function closeContactOverlay(){
+function closeContactOverlay() {
     document.getElementById('contactOverlay').classList.remove('show-contact-selection-overlay');
     document.body.classList.remove('overflow-hidden');
 }
@@ -238,7 +238,7 @@ function closeAddContactForm() {
     let contactForm = document.getElementById("contactForm");
     contactForm.classList.add("d-none");
     document.getElementById('contact-add-btn').classList.remove('d-none');
-    document.getElementById('hide-contacts').classList.remove('d-none');    
+    document.getElementById('hide-contacts').classList.remove('d-none');
     document.getElementById('new-contact-bg').classList.add('d-none');
 }
 
@@ -252,7 +252,7 @@ function editContact(i) {
     const formEditContainer = document.getElementById("formContainer");
     formEditContainer.innerHTML += openEditContactFormHTML(selectedContact);
     currentFormId = document.getElementById('contactFormEdit');
-    document.getElementById('contactFormEdit-bg').classList.remove('d-none');   
+    document.getElementById('contactFormEdit-bg').classList.remove('d-none');
     document.getElementById('nav').classList.add('filter');
 }
 
@@ -279,7 +279,7 @@ async function addTaskContact(userShort) {
     if (!formTaskContainer) {
         console.error('Error: formContainer is null or undefined.');
         return;
-    }    
+    }
     formTaskContainer.innerHTML += openAddTaskContactFormHTML();
     addAssignedToList();
     await loadNotes();
@@ -313,9 +313,8 @@ function closeFormById(formId) {
         const form = document.getElementById(formId);
         form.remove();
         document.body.classList.remove('overflow-hidden');
-        document.getElementById('blur-container').classList.add('d-none');    
-        document.getElementById('contactFormEdit-bg').remove();  
-        // document.getElementById('contact-addTask-bg').remove();
+        document.getElementById('blur-container').classList.add('d-none');
+        document.getElementById('contactFormEdit-bg').remove();
     } catch (err) {
         return;
     }
@@ -347,19 +346,12 @@ async function saveNotes() {
 function tryCloseFormById() {
     try {
         currentFormId.remove();
-        // document.body.classList.remove('overflow-hidden');
-        // document.getElementById('blur-container').classList.add('d-none');    
-        document.getElementById('contactFormEdit-bg').remove();   
-    } catch (err) {
-        return;
-    }
-}
-
-
-function tryCloseAddTask() {
-    try {
-        document.getElementById('contact-addTask-bg');
-    } catch (err) {
-        return;
+        document.getElementById('contact-addTask-bg').remove();
+    } catch (e) {
+        try {
+            document.getElementById('contactFormEdit-bg').remove();   
+        } catch (err) {
+            return;
+        }
     }
 }

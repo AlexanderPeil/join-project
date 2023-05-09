@@ -804,7 +804,7 @@ select::-ms-expand {
     }
 
     .contact-list-container {
-        margin-bottom: 80px;
+        padding-bottom: 80px;
         height: 100%;
         overflow: hidden;
     }
