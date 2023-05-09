@@ -286,6 +286,7 @@ async function addTaskContact(userShort) {
     setDateToday();
     checkAssignedTo(userShort);
     document.getElementById('formTaskContainer').classList.remove('d-none');
+    document.getElementById('header').classList.add('filter');
     currentFormId = document.getElementById('formTaskContainer');
 }
 
@@ -312,11 +313,14 @@ function closeFormById(formId) {
     try {
         const form = document.getElementById(formId);
         form.remove();
-        document.body.classList.remove('overflow-hidden');
-        document.getElementById('blur-container').classList.add('d-none');
+        // document.body.classList.remove('overflow-hidden');
         document.getElementById('contactFormEdit-bg').remove();
-    } catch (err) {
-        return;
+    } catch (e) {
+        try {
+            document.getElementById('header').classList.remove('filter');
+        } catch (err) {
+            return;
+        }
     }
 }
 
@@ -347,9 +351,10 @@ function tryCloseFormById() {
     try {
         currentFormId.remove();
         document.getElementById('contact-addTask-bg').remove();
+        document.getElementById('header').classList.remove('filter');
     } catch (e) {
         try {
-            document.getElementById('contactFormEdit-bg').remove();   
+            document.getElementById('contactFormEdit-bg').remove();
         } catch (err) {
             return;
         }
