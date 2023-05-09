@@ -200,7 +200,7 @@ nav {
     nav {
         top: unset;
         right: 0;
-        bottom: 0;
+        /* bottom: 0; */
         width: unset;
         padding: 0;
     }

@@ -7,6 +7,20 @@ body {
     height: 100vh;
 }
 
+
+::-webkit-scrollbar {
+    width: 0 !important;
+}
+
+::-webkit-scrollbar-thumb {
+    border: 0px solid black !important;
+}
+
+/* .container::-webkit-scrollbar-track {
+    background-color: #f1f1f1 !important; 
+    border-radius: 10px !important;
+  } */
+
 .overflow-hidden {
     overflow: hidden;
 }
@@ -356,12 +370,12 @@ h1 {
 
 .contact-form-overlay {
     position: absolute;
-    top: 15%;
+    top: 25%;
     left: 23%;
     display: flex;
     box-shadow: 0 0 14px 3px rgb(0 0 0 / 4%);
-    border-radius: 30px;
-    background: white;
+    border-radius: 10px;
+    /* background: white; */
     overflow: hidden;
     z-index: 211;
 }
@@ -752,22 +766,21 @@ select::-ms-expand {
 
     .contact-form-overlay {
         display: unset;
-        border-radius: 30px;
         overflow: auto;
-        top: 5%;
+        top: 13%;
         left: 29%;
-        height: unset;
+        max-height: calc(100vh - 150px);
     }
 
-    .contact-form-edit {
+    /* .contact-form-edit {
         top: 2% !important;
-    }
+    } */
 
     .contact-form-left-neutral {
         flex-direction: column;
         align-items: center;
-        border-top-left-radius: 30px;
-        border-top-right-radius: 30px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
         border-bottom-left-radius: unset;
         padding: 40px;
     }
@@ -775,15 +788,15 @@ select::-ms-expand {
     .contact-form-left {
         flex-direction: column;
         align-items: center;
-        border-top-left-radius: 30px;
-        border-top-right-radius: 30px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
         border-bottom-left-radius: unset;
         padding-bottom: 52px;
     }
 
     .contact-form-right {
-        border-bottom-right-radius: 30px;
-        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
         border-top-right-radius: unset;
         text-align: center;
         flex-direction: column;
@@ -987,9 +1000,9 @@ select::-ms-expand {
         width: 330px;
     }
 
-    .contact-popup-bottom {
+    /* .contact-popup-bottom {
         flex-direction: column;
-    }
+    } */
 }
 
 @media(max-width: 600px) {
@@ -1021,10 +1034,10 @@ select::-ms-expand {
 
     .contact-form-overlay {
         left: 9%;
-        top: 1%;
+        /* top: 1%; */
     }
 
-    .contact-form-left {
+    /* .contact-form-left {
         border-top-left-radius: unset;
         border-top-right-radius: unset;
     }
@@ -1042,7 +1055,7 @@ select::-ms-expand {
     .add-form-right {
         border-bottom-left-radius: unset;
         border-bottom-right-radius: unset;
-    }
+    } */
 
     .contact-input-field {
         width: 280px;
