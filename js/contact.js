@@ -286,8 +286,8 @@ async function addTaskContact(userShort) {
     setDateToday();
     checkAssignedTo(userShort);
     document.getElementById('formTaskContainer').classList.remove('d-none');
-    document.getElementById('header').classList.add('filter');
     currentFormId = document.getElementById('formTaskContainer');
+    document.getElementById('nav').classList.add('filter');
 }
 
 
@@ -313,11 +313,11 @@ function closeFormById(formId) {
     try {
         const form = document.getElementById(formId);
         form.remove();
-        // document.body.classList.remove('overflow-hidden');
         document.getElementById('contactFormEdit-bg').remove();
+        document.getElementById('nav').classList.remove('filter');
     } catch (e) {
         try {
-            document.getElementById('header').classList.remove('filter');
+            document.getElementById('nav').classList.remove('filter');
         } catch (err) {
             return;
         }
@@ -351,10 +351,11 @@ function tryCloseFormById() {
     try {
         currentFormId.remove();
         document.getElementById('contact-addTask-bg').remove();
-        document.getElementById('header').classList.remove('filter');
+        document.getElementById('nav').classList.remove('filter');
     } catch (e) {
         try {
             document.getElementById('contactFormEdit-bg').remove();
+            document.getElementById('nav').classList.remove('filter');
         } catch (err) {
             return;
         }

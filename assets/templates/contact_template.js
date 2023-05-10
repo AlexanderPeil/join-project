@@ -85,7 +85,7 @@ function openEditContactFormHTML(selectedContact) {
             <div id="selectedContactColor" class="contact-letters big-letters margin-letters" style="background-color: ${selectedContact.color}">${selectedContact.lastName.charAt(0)} ${selectedContact.firstName.charAt(0)}</div>
             <div class="contact-input-container margin-top">
                 <div class="icon-top-right" title="close form">
-                    <img onclick="closeFormById('contactFormEdit')" class="contact-cancel-icon" src="./assets/img/contact-cancel-icon.svg" alt="#">
+
                     <img class="contact-cancel-icon-mobile hide-content" src="assets/img/x_ixon.png" alt="" onclick="closeFormById('contactFormEdit')">
                 </div>
                 <form onsubmit="updateContact(); return false;">

@@ -750,16 +750,22 @@ select::-ms-expand {
     overflow: scroll;
 }
 
-@media(max-width: 1200px) {
+@media(max-width: 1300px) {
     .contact-form-overlay {
         left: 8%;
+    }
+}
+
+@media(max-width: 1200px) {
+    .contact-form-overlay {
+        left: 4%;
     }
 }
 
 @media(max-width: 1000px) and (max-height: 1000px) {
 
     #formTaskContainer {
-        top: 0 !important;
+        top: 81px !important;
     }
 
     /* Input Form Overlay */
@@ -767,14 +773,10 @@ select::-ms-expand {
     .contact-form-overlay {
         display: unset;
         overflow: auto;
-        top: 13%;
+        top: 12%;
         left: 29%;
         max-height: calc(100vh - 150px);
     }
-
-    /* .contact-form-edit {
-        top: 2% !important;
-    } */
 
     .contact-form-left-neutral {
         flex-direction: column;
@@ -801,6 +803,15 @@ select::-ms-expand {
         text-align: center;
         flex-direction: column;
         padding-top: 40px;
+    }
+
+    .contact-popup-bg {
+        height: 120vh;
+        top: -40px;
+    }
+
+    #contact-addTask-bg {
+        top: -80px !important;
     }
 }
 
