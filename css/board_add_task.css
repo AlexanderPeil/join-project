@@ -523,6 +523,10 @@ fieldset {
     cursor: pointer;
 }
 
+.user-btn {
+    height: 35px;
+}
+
 
 @media(max-width:1400px) {
     .main-container {
