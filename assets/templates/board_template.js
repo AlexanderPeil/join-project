@@ -51,10 +51,11 @@ function loadCardBoardText(tasks_name, id) {
                 </div>
                 <div class="priotity_users">
                     <div class="users" id="users${id}"></div>
-                    <div id="more-user-container" class="d-none">
+                    <div id="more-user-container${id}" class="d-none">
                         <div class="users" id="additional-users${id}"></div>
                     </div>
-                    <button id="additional-users-btn" onclick="showMoreUsers()">+</button>
+                    <button id="show-users-btn${id}" class="d-none" onclick="showMoreUsers(event, ${id})">+</button>
+                    <button id="hide-users-btn${id}" class="d-none" onclick="hideUsers(event, ${id})">-</button>
                     <div class="priotity">
                         <img src="${tasks_name['priotity'][0]['img']}" alt="">
                     </div>

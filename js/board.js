@@ -80,10 +80,25 @@ function loadUsersBoard(task, i) {
 
     if (additionalUsersHTML !== '') {
         document.getElementById('additional-users' + i).innerHTML = loadAdditionalUsersTmp(showMoreUsers.slice(3));
-        // document.getElementById('additional-users-btn').style.display = 'block';
+        document.getElementById('show-users-btn' + i).classList.remove('d-none');
     }
 }
 
+
+function showMoreUsers(event, id) {
+    event.stopPropagation();
+    document.getElementById('more-user-container' + id).classList.remove('d-none');
+    document.getElementById('show-users-btn' + id).classList.add('d-none');
+    document.getElementById('hide-users-btn' + id).classList.remove('d-none');
+}
+
+
+function hideUsers(event, id) {
+    event.stopPropagation();
+    document.getElementById('more-user-container' + id).classList.add('d-none');
+    document.getElementById('show-users-btn' + id).classList.remove('d-none');
+    document.getElementById('hide-users-btn' + id).classList.add('d-none');
+}
 
 
 /**
@@ -142,13 +157,13 @@ function openAddTask(id) {
 function startDragging(id) {
     currentDraggedElement = id;
     curentDraggedCard = id;
-        setTimeout(() => {
-            document.querySelectorAll('.dropArea').forEach(element => {
-                element.classList.add('z-index');
-            });
-        }, 50);
+    setTimeout(() => {
+        document.querySelectorAll('.dropArea').forEach(element => {
+            element.classList.add('z-index');
+        });
+    }, 50);
 
-        document.addEventListener('mouseup', stopDragging);
+    document.addEventListener('mouseup', stopDragging);
 }
 
 function stopDragging() {
@@ -363,7 +378,7 @@ function isMobileDevice() {
 function checkWhichMenu(id) {
     if (currentWishMenu !== null && currentWishMenu !== id) {
         closeAllMenus();
-      }
+    }
 
     let check = false;
     if (checkMobile()) {
@@ -401,7 +416,7 @@ function openContextMenu(id) {
 function closeAllMenus() {
     const menus = document.querySelectorAll('.popUpWish');
     menus.forEach((menu) => {
-      menu.classList.add('d-none');
+        menu.classList.add('d-none');
     });
     currentWishMenu = null;
 }
@@ -487,20 +502,4 @@ function closeAddtask() {
     document.getElementById('close-add-task').classList.add('d-none');
     document.body.classList.remove('overflow-hidden');
     document.getElementById('close-add-task').classList.remove('filter');
-}
-
-
-function addClickListenerToButton() {
-    const button = document.getElementById('additional-users-btn');
-  
-    button.addEventListener('click', function(event) {
-      event.stopPropagation();
-      showMoreUsers();
-    });
-  }
-  
-  
-
-function showMoreUsers() {
-document.getElementById('more-user-container').classList.remove('d-none');
-}
+} 
