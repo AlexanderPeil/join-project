@@ -29,7 +29,7 @@ async function init() {
 function loadBoard(choiceTasks) {
     cleanOldBoard();
     loadNewBoard(choiceTasks);
-    addDropArea();
+    // addDropArea();
 }
 
 
@@ -124,12 +124,12 @@ function loadSubtasks(task, i) {
 /**
  * Adds a drop area to each split of the Kanban board.
  */
-function addDropArea() {
-    for (let i = 0; i < splits.length; i++) {
-        const split = splits[i];
-        document.getElementById(split).innerHTML += loadDropArea(split);
-    }
-}
+// function addDropArea() {
+//     for (let i = 0; i < splits.length; i++) {
+//         const split = splits[i];
+//         document.getElementById(split).innerHTML += loadDropArea(split);
+//     }
+// }
 
 
 /**
@@ -156,21 +156,15 @@ function openAddTask(id) {
  */
 function startDragging(id) {
     currentDraggedElement = id;
-    curentDraggedCard = id;
-    setTimeout(() => {
-        document.querySelectorAll('.dropArea').forEach(element => {
-            element.classList.add('z-index');
-        });
-    }, 50);
-
-    document.addEventListener('mouseup', stopDragging);
 }
 
-function stopDragging() {
-    document.querySelectorAll('.dropArea').forEach(element => {
-        element.classList.remove('z-index');
-    });
-}
+
+
+// function stopDragging() {
+//     document.querySelectorAll('.dropArea').forEach(element => {
+//         element.classList.remove('z-index');
+//     });
+// }
 
 
 
@@ -194,6 +188,9 @@ function allowDrop(ev, test) {
 
 function diableDrop(ev) {
     document.getElementById('dropArea_' + ev).classList.remove('borders');
+    // document.querySelectorAll('.dropArea').forEach(element => {
+    //     element.classList.remove('z-index');
+    // });
 }
 
 
@@ -205,6 +202,7 @@ async function moveTo(category) {
     document.querySelectorAll('.dropArea').forEach(element => {
         element.classList.add('z-index');
     });
+    document.getElementById('dropArea_' + category).classList.remove('borders');
     tasks[currentDraggedElement]['split'] = category;
     loadBoard(tasks);
     await saveNotes();

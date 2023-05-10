@@ -250,9 +250,9 @@ a {
     width: 250px;
     height: 88%;
     border-radius: 25px;
-    position: absolute;
+    /* position: absolute;
     z-index: -1;
-    top: 0;
+    top: 0; */
 }
 
 .borders {

@@ -290,9 +290,9 @@ function loadTextUsersForFullTask(users, u) {
  * @param {string} split - The name of the split for the drop area
  * @returns {string} - The HTML code for the drop area
  */
-function loadDropArea(split) {
-    return `<div class="dropArea" id="dropArea_${split}" ondrop="moveTo('${split}')" ondragover="allowDrop(event, '${split}')" ondragleave="diableDrop('${split}')"></div>`
-}
+// function loadDropArea(split) {
+//     return `<div class="dropArea" id="dropArea_${split}" ondrop="moveTo('${split}')" ondragover="allowDrop(event, '${split}')" ondragleave="diableDrop('${split}')"></div>`
+// }
 
 
 /**
