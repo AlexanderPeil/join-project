@@ -64,11 +64,26 @@ function loadNewBoard(toLoadTasks) {
  * @param {number} i - The index of the task in the array of tasks.
  */
 function loadUsersBoard(task, i) {
+    let usersHTML = '';
+    let additionalUsersHTML = '';
+    let showMoreUsers = task['users'];
     for (let j = 0; j < task['users'].length; j++) {
         const user = task['users'][j];
-        document.getElementById('users' + i).innerHTML += loadUserShortsTmp(user)
+        if (j < 3) {
+            usersHTML += loadUserShortsTmp(user);
+        } else {
+            additionalUsersHTML += loadUserShortsTmp(user);
+        }
+    }
+
+    document.getElementById('users' + i).innerHTML += usersHTML;
+
+    if (additionalUsersHTML !== '') {
+        document.getElementById('additional-users' + i).innerHTML = loadAdditionalUsersTmp(showMoreUsers.slice(3));
+        // document.getElementById('additional-users-btn').style.display = 'block';
     }
 }
+
 
 
 /**
@@ -472,4 +487,20 @@ function closeAddtask() {
     document.getElementById('close-add-task').classList.add('d-none');
     document.body.classList.remove('overflow-hidden');
     document.getElementById('close-add-task').classList.remove('filter');
+}
+
+
+function addClickListenerToButton() {
+    const button = document.getElementById('additional-users-btn');
+  
+    button.addEventListener('click', function(event) {
+      event.stopPropagation();
+      showMoreUsers();
+    });
+  }
+  
+  
+
+function showMoreUsers() {
+document.getElementById('more-user-container').classList.remove('d-none');
 }

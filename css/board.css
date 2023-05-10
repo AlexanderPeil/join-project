@@ -134,7 +134,7 @@ a {
     align-items: center;
     cursor: pointer;
     transition: all 255ms ease-in-out;
-    z-index: 999;
+    /* z-index: 999; */
 }
 
 .add_plus:hover {

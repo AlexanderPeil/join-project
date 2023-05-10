@@ -50,8 +50,11 @@ function loadCardBoardText(tasks_name, id) {
                 <div id="progress${id}">
                 </div>
                 <div class="priotity_users">
-                    <div class="users" id="users${id}">
+                    <div class="users" id="users${id}"></div>
+                    <div id="more-user-container" class="d-none">
+                        <div class="users" id="additional-users${id}"></div>
                     </div>
+                    <button id="additional-users-btn" onclick="showMoreUsers()">+</button>
                     <div class="priotity">
                         <img src="${tasks_name['priotity'][0]['img']}" alt="">
                     </div>
@@ -253,6 +256,18 @@ function loadSubtaskBoardtmp(doneTasks, sumTasks) {
  */
 function loadUserShortsTmp(user) {
     return `<p class="circle" style="background-color: ${user['color'] || 'blue'} ;">${user['userShort']}</p>`
+}
+
+
+function loadAdditionalUsersTmp(showMoreUsers) {
+    let html = '';
+    for (let j = 0; j < showMoreUsers.length; j++) {
+        const user = showMoreUsers[j];
+        html += `<div class="additional-user">
+                    <p class="circle" style="background-color: ${user['color'] || 'blue'};">${user['userShort']}</p>
+                </div>`;
+    }
+    return html;
 }
 
 
