@@ -186,7 +186,7 @@ function allowDrop(ev, test) {
  */
 
 
-function diableDrop(ev) {
+function disableDrop(ev) {
     document.getElementById('dropArea_' + ev).classList.remove('borders');
     // document.querySelectorAll('.dropArea').forEach(element => {
     //     element.classList.remove('z-index');

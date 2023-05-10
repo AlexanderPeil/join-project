@@ -36,7 +36,7 @@ function loadCardFullText(task_name, choiceTask) {
  */
 function loadCardBoardText(tasks_name, id) {
     return `
-    <div id="single-cards${id}" class="single-cards z-index">
+    <div id="single-cards${id}" class="single-cards">
     <div id="card-head-${id}" class="card" id=card${id} draggable="true" ondragstart="startDragging(${id})" onclick="checkWhichMenu(${id}); event.stopPropagation();">
         
             <div class="card-content">                                      
@@ -291,7 +291,7 @@ function loadTextUsersForFullTask(users, u) {
  * @returns {string} - The HTML code for the drop area
  */
 // function loadDropArea(split) {
-//     return `<div class="dropArea" id="dropArea_${split}" ondrop="moveTo('${split}')" ondragover="allowDrop(event, '${split}')" ondragleave="diableDrop('${split}')"></div>`
+//     return `<div class="dropArea" id="dropArea_${split}" ondrop="moveTo('${split}')" ondragover="allowDrop(event, '${split}')" ondragleave="disableDrop('${split}')"></div>`
 // }
 
 

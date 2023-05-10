@@ -46,7 +46,7 @@
                     <h3>To Do</h3>
                     <div class="add_plus" onclick="openAddTask('to_do')">+</div>
                 </div>
-                <div class="dropArea" id="dropArea_to_do" ondrop="moveTo('to_do')" ondragover="allowDrop(event, 'to_do')" ondragleave="diableDrop('to_do')">
+                <div class="dropArea" id="dropArea_to_do" ondrop="moveTo('to_do')" ondragover="allowDrop(event, 'to_do')" ondragleave="disableDrop('to_do')">
                     <div class="drop-ground width" id="to_do"></div>
                 </div>
             </div>
@@ -56,7 +56,7 @@
                     <h3>In Progress</h3>
                     <div class="add_plus" onclick="openAddTask('in_progress')">+</div>
                 </div>
-                <div  class="dropArea" id="dropArea_in_progress" ondrop="moveTo('in_progress')" ondragover="allowDrop(event, 'in_progress')" ondragleave="diableDrop('in_progress')">
+                <div  class="dropArea" id="dropArea_in_progress" ondrop="moveTo('in_progress')" ondragover="allowDrop(event, 'in_progress')" ondragleave="disableDrop('in_progress')">
                     <div class="drop-ground width" id="in_progress"></div>
                 </div>
             </div>
@@ -66,7 +66,7 @@
                     <h3>Awaiting Feedback</h3>
                     <div class="add_plus" onclick="openAddTask('awaiting_feedback')">+</div>
                 </div>
-                <div  class="dropArea" id="dropArea_awaiting_feedback" ondrop="moveTo('awaiting_feedback')" ondragover="allowDrop(event, 'awaiting_feedback')" ondragleave="diableDrop('awaiting_feedback')">
+                <div  class="dropArea" id="dropArea_awaiting_feedback" ondrop="moveTo('awaiting_feedback')" ondragover="allowDrop(event, 'awaiting_feedback')" ondragleave="disableDrop('awaiting_feedback')">
                 <div class="drop-ground width" id="awaiting_feedback"></div>
             </div>
         </div>
@@ -76,7 +76,7 @@
                     <h3>Done</h3>
                     <div class="add_plus" onclick="openAddTask('done')">+</div>
                 </div>
-                <div   class="dropArea" id="dropArea_done" ondrop="moveTo('done')" ondragover="allowDrop(event, 'done')" ondragleave="diableDrop('done')">              
+                <div   class="dropArea" id="dropArea_done" ondrop="moveTo('done')" ondragover="allowDrop(event, 'done')" ondragleave="disableDrop('done')">              
                 <div class="drop-ground width" id="done"></div>
             </div>
         </div>  

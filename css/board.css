@@ -452,9 +452,9 @@ a {
     min-height: 100%;
 }
 
-.z-index {
+/* .z-index {
     z-index: 11;
-}
+} */
 
 .filter {
     backdrop-filter: brightness(0.4);   

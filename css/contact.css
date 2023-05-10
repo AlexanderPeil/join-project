@@ -750,6 +750,11 @@ select::-ms-expand {
     overflow: scroll;
 }
 
+#formTaskContainer {
+    padding-bottom: 70px;
+    top: 15% !important;
+}
+
 @media(max-width: 1300px) {
     .contact-form-overlay {
         left: 8%;
