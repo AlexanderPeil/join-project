@@ -79,6 +79,13 @@ function loadUsersBoard(task, i) {
 }
 
 
+/**
+ * Checks if there are additional users to display and,
+ * if so, updates the UI to show a button that can be used to display them.
+ * @param {string} additionalUsersHTML - The HTML content for the additional users to display.
+ * @param {string} showMoreUsers - The string representing the number of additional users to display (e.g., '+3').
+ * @param {number} i - The index of the current item.
+ */
 function checkAdditionalUsers(additionalUsersHTML, showMoreUsers, i) {
     let showuserBtn = document.getElementById('show-users-btn' + i);
 
@@ -242,6 +249,9 @@ function openTaskFull(choiceTask) {
     loadUsersToFullTask(choiceTask);
 
     addBodyOverflow();
+    
+    let closePopup = document.getElementById('close-popup' + choiceTask);
+    addClass(closePopup, 'filter');
 }
 
 

@@ -289,7 +289,7 @@ a {
     width: 100%;
     position: fixed;
     top: 0;
-    background-color: rgba(0, 0, 0, 0.087);
+    /* background-color: rgba(0, 0, 0, 0.087); */
     display: flex;
     justify-content: center;
     align-items: center;
