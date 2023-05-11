@@ -286,16 +286,6 @@ function loadTextUsersForFullTask(users, u) {
 
 
 /**
- * Generates HTML code for a drop area for a particular split
- * @param {string} split - The name of the split for the drop area
- * @returns {string} - The HTML code for the drop area
- */
-// function loadDropArea(split) {
-//     return `<div class="dropArea" id="dropArea_${split}" ondrop="moveTo('${split}')" ondragover="allowDrop(event, '${split}')" ondragleave="disableDrop('${split}')"></div>`
-// }
-
-
-/**
  * Generates HTML code for a priority icon and text
  * @param {string} pri - The priority level
  * @param {string} prioIMG - The name of the priority icon image file

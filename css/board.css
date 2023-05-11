@@ -5,6 +5,7 @@ body {
     scrollbar-width: none;
     /* for Firefox */
     overflow-y: scroll;
+    scroll-behavior: smooth;
 }
 
 body::-webkit-scrollbar {
@@ -134,7 +135,6 @@ a {
     align-items: center;
     cursor: pointer;
     transition: all 255ms ease-in-out;
-    /* z-index: 999; */
 }
 
 .add_plus:hover {
@@ -157,9 +157,11 @@ a {
     margin: 25px 0;
     width: 90%;
     cursor: pointer;
-    /* max-height: 150px; */
     overflow-y: auto;
     height: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .trash-icon {
@@ -250,9 +252,9 @@ a {
     width: 250px;
     height: 88%;
     border-radius: 25px;
-    /* position: absolute;
-    z-index: -1;
-    top: 0; */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .borders {
@@ -451,10 +453,6 @@ a {
     width: 100%;
     min-height: 100%;
 }
-
-/* .z-index {
-    z-index: 11;
-} */
 
 .filter {
     backdrop-filter: brightness(0.4);   

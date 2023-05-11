@@ -131,7 +131,10 @@ function showContactDetails(i) {
     let userShort = selectedContact['firstName'].charAt(0).toLowerCase() + selectedContact['lastName'].charAt(0).toLowerCase()
     contactSelection.innerHTML += showContactDetailsHTML(selectedContact, i, userShort);
     document.getElementById('contactOverlay').classList.add('show-contact-selection-overlay');
-    document.body.classList.add('overflow-hidden');
+    
+    if (window.innerWidth < 1000) {
+        document.body.classList.add('overflow-hidden');
+    }
 }
 
 

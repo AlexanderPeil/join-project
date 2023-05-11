@@ -85,7 +85,6 @@ function openEditContactFormHTML(selectedContact) {
             <div id="selectedContactColor" class="contact-letters big-letters margin-letters" style="background-color: ${selectedContact.color}">${selectedContact.lastName.charAt(0)} ${selectedContact.firstName.charAt(0)}</div>
             <div class="contact-input-container margin-top">
                 <div class="icon-top-right" title="close form">
-
                     <img class="contact-cancel-icon-mobile hide-content" src="assets/img/x_ixon.png" alt="" onclick="closeFormById('contactFormEdit')">
                 </div>
                 <form onsubmit="updateContact(); return false;">
@@ -233,17 +232,17 @@ function openAddTaskContactFormHTML() {
                             <input type="radio" class="checkbox_urgen" id="urgentBtn" name="radio">
                             <label for="urgentBtn" class="prio-btn prio-urgent urgentSection" for="checkbox_urgen"
                                 id="urgentSection">
-                                Urgent<img id="prioUrgentWhite" src="assets/img/Prio-urgent.png">
+                                Urgent<img class="add-task-img" id="prioUrgentWhite" src="assets/img/Prio-urgent.png">
                             </label>
                             <input type="radio" class="checkbox_medium" id="mediumBtn" name="radio">
                             <label for="mediumBtn" class="prio-btn prio-urgent mediumSection" for="checkbox_urgen"
                                 id="mediumSection">
-                                Medium<img id="prioUrgentWhite" src="assets/img/Prio-medium.png">
+                                Medium<img class="add-task-img" id="prioUrgentWhite" src="assets/img/Prio-medium.png">
                             </label>
                             <input type="radio" class="checkbox_low" id="lowBtn" name="radio" checked>
                             <label for="lowBtn" class="prio-btn prio-urgent lowSection" for="checkbox_urgen"
                                 id="lowSection">
-                                Low<img id="prioUrgentWhite" src="assets/img/Prio-low-white.png">
+                                Low<img class="add-task-img" id="prioUrgentWhite" src="assets/img/Prio-low-white.png">
                             </label>
                         </div>
                         <div class="features-container">

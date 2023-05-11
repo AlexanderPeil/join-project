@@ -58,6 +58,7 @@ function getAssignedUsers() {
 function isCategoryValid(category) {
     if (category === undefined) {
         document.getElementById('category-required').classList.remove('d-none');
+
         setTimeout(() => {
             document.getElementById('category-required').classList.add('d-none');
         }, 2000);
@@ -158,20 +159,35 @@ function changeColor() {
  */
 function checkChangedColor(priotity_urgent, priotity_medium, priotity_low) {
     if (priotity_urgent) {
-        document.getElementById('urgentSection').innerHTML = loadPrioIMGWithText('Urgent', 'Prio-urgent-white');
-        document.getElementById('mediumSection').innerHTML = loadPrioIMGWithText('Medium', 'Prio-medium');
-        document.getElementById('lowSection').innerHTML = loadPrioIMGWithText('Low', 'Prio-low');
+        setPrioUrgent();
     }
     if (priotity_medium) {
-        document.getElementById('urgentSection').innerHTML = loadPrioIMGWithText('Urgent', 'Prio-urgent');
-        document.getElementById('mediumSection').innerHTML = loadPrioIMGWithText('Medium', 'Prio-medium-white');
-        document.getElementById('lowSection').innerHTML = loadPrioIMGWithText('Low', 'Prio-low');
+        setPrioMedium();
     }
     if (priotity_low) {
-        document.getElementById('urgentSection').innerHTML = loadPrioIMGWithText('Urgent', 'Prio-urgent');
-        document.getElementById('mediumSection').innerHTML = loadPrioIMGWithText('Medium', 'Prio-medium');
-        document.getElementById('lowSection').innerHTML = loadPrioIMGWithText('Low', 'Prio-low-white');
+        setPrioLow();
     }
+}
+
+
+function setPrioUrgent() {
+    document.getElementById('urgentSection').innerHTML = loadPrioIMGWithText('Urgent', 'Prio-urgent-white');
+    document.getElementById('mediumSection').innerHTML = loadPrioIMGWithText('Medium', 'Prio-medium');
+    document.getElementById('lowSection').innerHTML = loadPrioIMGWithText('Low', 'Prio-low');
+}
+
+
+function setPrioMedium() {
+    document.getElementById('urgentSection').innerHTML = loadPrioIMGWithText('Urgent', 'Prio-urgent');
+    document.getElementById('mediumSection').innerHTML = loadPrioIMGWithText('Medium', 'Prio-medium-white');
+    document.getElementById('lowSection').innerHTML = loadPrioIMGWithText('Low', 'Prio-low');
+}
+
+
+function setPrioLow() {
+    document.getElementById('urgentSection').innerHTML = loadPrioIMGWithText('Urgent', 'Prio-urgent');
+    document.getElementById('mediumSection').innerHTML = loadPrioIMGWithText('Medium', 'Prio-medium');
+    document.getElementById('lowSection').innerHTML = loadPrioIMGWithText('Low', 'Prio-low-white');
 }
 
 
@@ -207,14 +223,8 @@ function addAssignedToList() {
  * Toggles the visibility of a dropdown list.
  * @param {string} id - The id of the element to toggle.
  */
-// function openDropdown(id) {
-//     document.getElementById(id).classList.toggle('d-none');
-// }
-
-
 function openDropdown(id) {
     currentSelectMenu = id;
-    // checkCurrentSelectMenu(currentSelectMenu);
     if (id == currentSelectMenu && !document.getElementById(id).classList.contains('d-none')) {
         document.getElementById(id).classList.add('d-none');
     } else {
@@ -233,11 +243,10 @@ function openDropdown(id) {
 }
 
 
-function checkCurrentSelectMenu(currentSelectMenu) {
-
-}
-
-
+/**
+ * Closes the category and assigned-to select wrapper containers.
+ * @returns - 
+ */
 function closeSelectWrapper() {
     let category = document.getElementById('category-choices');
     let assignedTo = document.getElementById('assigned-to-choices');
@@ -245,6 +254,7 @@ function closeSelectWrapper() {
     try {
         category.classList.add('d-none');
         assignedTo.classList.add('d-none');
+        document.getElementById('popup-add-task').classList.remove('height');
     } catch (err) {
         return;
     }

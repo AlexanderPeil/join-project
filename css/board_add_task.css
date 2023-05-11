@@ -32,7 +32,7 @@
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     padding: 15px 50px;
     gap: 25px;
-    height: 728px;
+    height: 600px;
     overflow-y: auto;
 }
 
@@ -298,7 +298,6 @@ select::-ms-expand {
     border-radius: 10px;
     padding: 18px 10px;
     margin-left: 25px;
-    /* transition: background 255ms ease-in-out; */
 }
 
 .btn-createTask {
@@ -358,42 +357,8 @@ fieldset {
     display: none;
 }
 
-.checkbox_urgen[type="radio"]:checked+label {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 0 10px;
-    gap: 10px;
-    border: 1px solid #D1D1D1;
-    border-radius: 10px;
-    font-size: 21px;
-    font-weight: 400;
-    background-color: rgb(255, 61, 0);
-    color: white;
-    width: 100%;
-    gap: 10px;
-    box-shadow: 0 4px 4px 0 rgb(0 0 0 / 25%);
-}
-
-.checkbox_medium[type="radio"]:checked+label {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 0 10px;
-    gap: 10px;
-    border: 1px solid #D1D1D1;
-    border-radius: 10px;
-    font-size: 21px;
-    font-weight: 400;
-    background-color: rgb(255, 168, 0);
-    color: white;
-    width: 100%;
-    gap: 10px;
-    box-shadow: 0 4px 4px 0 rgb(0 0 0 / 25%);
-}
-
+.checkbox_urgen[type="radio"]:checked+label,
+.checkbox_medium[type="radio"]:checked+label,
 .checkbox_low[type="radio"]:checked+label {
     display: flex;
     flex-direction: row;
@@ -405,7 +370,7 @@ fieldset {
     border-radius: 10px;
     font-size: 21px;
     font-weight: 400;
-    background-color: #7AE229;
+    background-color: rgb(255, 61, 0);
     color: white;
     width: 100%;
     gap: 10px;
@@ -527,6 +492,9 @@ fieldset {
     height: 35px;
 }
 
+.height {
+    height: 750px;
+}
 
 @media(max-width:1400px) {
     .main-container {
@@ -681,5 +649,17 @@ fieldset {
 
     .popUp-content_add_task {
         height: 72%;
+    }
+
+    .prio-btn img {
+        height: 7px;
+        width: 7px;
+    }
+
+    .checkbox_low[type="radio"]:checked+label img, 
+    .checkbox_medium[type="radio"]:checked+label img,
+    .checkbox_urgen[type="radio"]:checked+label img {
+        height: 7px;
+        width: 7px;
     }
 }

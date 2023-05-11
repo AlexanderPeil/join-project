@@ -85,6 +85,11 @@ function loadUsersBoard(task, i) {
 }
 
 
+/**
+ * Shows more users for a given id and hides the corresponding button.
+ * @param {Event} event - The event object that triggered the function.
+ * @param {Number} id - The id of the container to show more users for.
+ */
 function showMoreUsers(event, id) {
     event.stopPropagation();
     document.getElementById('more-user-container' + id).classList.remove('d-none');
@@ -93,6 +98,11 @@ function showMoreUsers(event, id) {
 }
 
 
+/**
+ * Hides users to show max. three users. 
+ * @param {Event} event - The event object that triggered the function.  
+ * @param {*} id - The id of the container to hide users for. 
+ */
 function hideUsers(event, id) {
     event.stopPropagation();
     document.getElementById('more-user-container' + id).classList.add('d-none');
@@ -122,17 +132,6 @@ function loadSubtasks(task, i) {
 
 
 /**
- * Adds a drop area to each split of the Kanban board.
- */
-// function addDropArea() {
-//     for (let i = 0; i < splits.length; i++) {
-//         const split = splits[i];
-//         document.getElementById(split).innerHTML += loadDropArea(split);
-//     }
-// }
-
-
-/**
  * Opens the add task pop-up window.
  * @param {number} id - The id of the task to add.
  */
@@ -159,16 +158,6 @@ function startDragging(id) {
 }
 
 
-
-// function stopDragging() {
-//     document.querySelectorAll('.dropArea').forEach(element => {
-//         element.classList.remove('z-index');
-//     });
-// }
-
-
-
-
 /**
  * Allows elements to be dropped into the drop area.
  * @param {Object} ev - The event object.
@@ -176,7 +165,22 @@ function startDragging(id) {
  */
 function allowDrop(ev, test) {
     ev.preventDefault();
-    document.getElementById('dropArea_' + test).classList.add('borders');
+    const dropArea = document.getElementById('dropArea_' + test);
+    dropArea.classList.add('borders');
+
+    // const windowHeight = window.innerHeight;
+    // // const navHeight = document.getElementById('nav').offsetHeight;
+    // // const headerHeight = document.getElementById('header').offsetHeight;
+    // const visibleHeight = windowHeight - 150;
+    // const dropAreaRect = dropArea.getBoundingClientRect();
+
+    // if (dropAreaRect.bottom < visibleHeight) {
+    //     window.scrollBy(0, 1);
+    // }
+
+    // if (dropAreaRect.top < 100) {
+    //     window.scrollBy(0, -1);
+    // }
 }
 
 
@@ -184,13 +188,8 @@ function allowDrop(ev, test) {
  * Disables drop of elements.
  * @param {string} ev - The event object.
  */
-
-
 function disableDrop(ev) {
     document.getElementById('dropArea_' + ev).classList.remove('borders');
-    // document.querySelectorAll('.dropArea').forEach(element => {
-    //     element.classList.remove('z-index');
-    // });
 }
 
 
@@ -199,9 +198,6 @@ function disableDrop(ev) {
  * @param {string} category - The category to move the element to.
  */
 async function moveTo(category) {
-    document.querySelectorAll('.dropArea').forEach(element => {
-        element.classList.add('z-index');
-    });
     document.getElementById('dropArea_' + category).classList.remove('borders');
     tasks[currentDraggedElement]['split'] = category;
     loadBoard(tasks);
@@ -411,6 +407,10 @@ function openContextMenu(id) {
 }
 
 
+/**
+ * Closes all wish menus by adding 'd-none' class to them.
+ * Sets 'currentWishMenu' to null.
+ */
 function closeAllMenus() {
     const menus = document.querySelectorAll('.popUpWish');
     menus.forEach((menu) => {
