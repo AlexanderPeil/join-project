@@ -56,11 +56,13 @@ function getAssignedUsers() {
  * @returns 
  */
 function isCategoryValid(category) {
+    const categoryRequired = document.getElementById('category-required');
+
     if (category === undefined) {
-        document.getElementById('category-required').classList.remove('d-none');
+        removeClass(categoryRequired, 'd-none');
 
         setTimeout(() => {
-            document.getElementById('category-required').classList.add('d-none');
+            addClass(categoryRequired, 'd-none');
         }, 2000);
         return false;
     }
@@ -109,9 +111,11 @@ async function addNewTask(new_task) {
  * Navigates to the board page, removes popup and unhides board section, and initializes the board
  */
 async function navigateToBoard() {
+    const boardSection = document.getElementById('board-section');
+
     window.location.href = './board.html';
     document.getElementById('popUp').innerHTML = '';
-    document.getElementById('board-section').classList.remove('d-none');
+    removeClass(boardSection, 'd-none');
     await init();
 }
 
@@ -170,6 +174,9 @@ function checkChangedColor(priotity_urgent, priotity_medium, priotity_low) {
 }
 
 
+/**
+ * Sets the priority section to urgent.
+ */
 function setPrioUrgent() {
     document.getElementById('urgentSection').innerHTML = loadPrioIMGWithText('Urgent', 'Prio-urgent-white');
     document.getElementById('mediumSection').innerHTML = loadPrioIMGWithText('Medium', 'Prio-medium');
@@ -177,6 +184,9 @@ function setPrioUrgent() {
 }
 
 
+/**
+ * Sets the priority section to medium.
+ */
 function setPrioMedium() {
     document.getElementById('urgentSection').innerHTML = loadPrioIMGWithText('Urgent', 'Prio-urgent');
     document.getElementById('mediumSection').innerHTML = loadPrioIMGWithText('Medium', 'Prio-medium-white');
@@ -184,6 +194,9 @@ function setPrioMedium() {
 }
 
 
+/**
+ * Sets the priority section to low.
+ */
 function setPrioLow() {
     document.getElementById('urgentSection').innerHTML = loadPrioIMGWithText('Urgent', 'Prio-urgent');
     document.getElementById('mediumSection').innerHTML = loadPrioIMGWithText('Medium', 'Prio-medium');
@@ -201,11 +214,9 @@ async function loadContacts() {
 
 
 /**
- * Adds the existing contacts to the "Assigned to" choices list.
- * First clears the current content of the list, then iterates over
- * the contacts array to generate a checkbox list of each contact's
- * first and last name, and assigns a value to each checkbox consisting
- * of the first initials of the first and last name concatenated.
+ * Adds assigned contacts to the list of choices in the "Add Task" form.
+ * The function clears the previous choices and loops through the contactsAddTask
+ * array to create a new line for each contact, consisting of a checkbox and the contact's full name.
  */
 function addAssignedToList() {
     document.getElementById('assigned-to-choices').innerHTML = '';
@@ -224,20 +235,20 @@ function addAssignedToList() {
  * @param {string} id - The id of the element to toggle.
  */
 function openDropdown(id) {
+    let currentDropDown = document.getElementById(id);
     currentSelectMenu = id;
     if (id == currentSelectMenu && !document.getElementById(id).classList.contains('d-none')) {
-        document.getElementById(id).classList.add('d-none');
+        addClass(currentDropDown, 'd-none');
     } else {
         var dropdowns = document.querySelectorAll('.category-assigned-to');
         for (var i = 0; i < dropdowns.length; i++) {
-            dropdowns[i].classList.add('d-none');
+            addClass(dropdowns[i], 'd-none');
         }
-
         var dropdown = document.getElementById(id);
         if (dropdown.classList.contains('d-none')) {
             dropdown.classList.remove('d-none');
         } else {
-            dropdown.classList.add('d-none');
+            addClass(dropdown, 'd-none');
         }
     }
 }
@@ -248,13 +259,12 @@ function openDropdown(id) {
  * @returns - 
  */
 function closeSelectWrapper() {
-    let category = document.getElementById('category-choices');
-    let assignedTo = document.getElementById('assigned-to-choices');
+    const category = document.getElementById('category-choices');
+    const assignedTo = document.getElementById('assigned-to-choices');
 
     try {
-        category.classList.add('d-none');
-        assignedTo.classList.add('d-none');
-        document.getElementById('popup-add-task').classList.remove('height');
+        addClass(category, 'd-none');
+        addClass(assignedTo, 'd-none');
     } catch (err) {
         return;
     }
@@ -280,22 +290,62 @@ function changeCategoryHeader(name) {
  */
 function categorySelected(categoryId) {
     if (categoryId === 'Marketing') {
-        selectedColor = '#0038ff';
-        category = 'Marketing';
+        categoryMarketing();
     } else if (categoryId === 'Media') {
-        selectedColor = '#ffc702';
-        category = 'Media';
+        categoryMedia();
     } else if (categoryId === 'Backoffice') {
-        selectedColor = '#1FD7C1';
-        category = 'Backoffice';
+        categoryBackoffice();
     } else if (categoryId === 'Design') {
-        selectedColor = '#ff7a00';
-        category = 'Design';
+        categoryDesign();
     } else {
-        selectedColor = '#fc71ff';
-        category = 'Sales';
+        categorySales();
     }
     currentColor = selectedColor;
+}
+
+
+/**
+ * Sets the category to 'Marketing' and the selected color to blue (#0038ff).
+ */
+function categoryMarketing() {
+    selectedColor = '#0038ff';
+    category = 'Marketing';
+}
+
+
+/**
+ * Sets the category to 'Media' and the selected color to yellow  (#ffc702).
+ */
+function categoryMedia() {
+    selectedColor = '#ffc702';
+    category = 'Media';
+}
+
+
+/**
+ * Sets the category to 'Backoffice' and the selected color to teal (#1FD7C1).
+ */
+function categoryBackoffice() {
+    selectedColor = '#1FD7C1';
+    category = 'Backoffice';
+}
+
+
+/**
+ * Sets the category to 'Design' and the selected color to orange (#ff7a00).
+ */
+function categoryDesign() {
+    selectedColor = '#ff7a00';
+    category = 'Design';
+}
+
+
+/**
+ * Sets the category to 'Sales' and the selected color to pink (#fc71ff).
+ */
+function categorySales() {
+    selectedColor = '#fc71ff';
+    category = 'Sales';
 }
 
 
@@ -303,19 +353,33 @@ function categorySelected(categoryId) {
  * Adds a new color category based on the values entered in the input fields.
  */
 function addColorCategory() {
+    const categoryInput = document.getElementById('new-category-input');
+    const categoryAdded = document.getElementById('category-added-cont');
+
     if (!checkNewCategoryInput()) {
         return;
     }
+
     selectedColor = document.getElementById('category-color').value;
-    category = document.getElementById('new-category-input').value;
-    document.getElementById('new-category-input').classList.add('d-none');
-    document.getElementById('category-added-cont').classList.remove('d-none');
-    setTimeout(() => {
-        document.getElementById('category-added-cont').classList.add('d-none');
-        document.getElementById('new-category-input').classList.remove('d-none');
-    }, 1500);
+    category = categoryInput.value;
+    addClass(categoryInput, 'd-none');
+    removeClass(categoryAdded, 'd-none');
+    showCategoryInput(categoryAdded, categoryInput);
     currentCategory = category;
     currentColor = selectedColor;
+}
+
+
+/**
+ * Shows category input and hides category added message after a delay.
+ * @param {*} categoryAdded - The element displaying the message that the category was added 
+ * @param {*} categoryInput - The input element for adding a new category
+ */
+function showCategoryInput(categoryAdded, categoryInput) {
+    setTimeout(() => {
+        addClass(categoryAdded, 'd-none');
+        removeClass(categoryInput, 'd-none');
+    }, 1500);
 }
 
 
@@ -325,14 +389,15 @@ function addColorCategory() {
  * @returns {boolean} Returns true if the input for adding a new category is not empty, otherwise false. 
  */
 function checkNewCategoryInput() {
-    let newCategoryInput = document.getElementById('new-category-input');
+    const newCategoryInput = document.getElementById('new-category-input');
+    const categoryRequired = document.getElementById('category-required');
 
     if (newCategoryInput.value === '') {
-        document.getElementById('category-required').classList.remove('d-none');
-        document.getElementById('new-category-input').classList.add('d-none');
+        removeClass(categoryRequired, 'd-none');
+        addClass(newCategoryInput, 'd-none');
         setTimeout(() => {
-            document.getElementById('category-required').classList.add('d-none');
-            document.getElementById('new-category-input').classList.remove('d-none');
+            addClass(categoryRequired, 'd-none');
+            removeClass(newCategoryInput, 'd-none');
         }, 2000);
         return false;
     }
@@ -344,9 +409,7 @@ function checkNewCategoryInput() {
  * Changes the subtask icons to the "clear" and "add" icons when the subtask input field is clicked.
  */
 function changeSubIcon() {
-    document.getElementById('plusSubtaskImg').classList.add('d-none');
-    document.getElementById('clearSubtaskImg').classList.remove('d-none');
-    document.getElementById('addSubtaskImg').classList.remove('d-none');
+    hideAddSubtaskImg();
 }
 
 
@@ -354,9 +417,22 @@ function changeSubIcon() {
  * Changes the subtask icons to the "clear" and "add" icons when the input field is changed.
  */
 function inputChangeSubIcons() {
-    document.getElementById('plusSubtaskImg').classList.add('d-none');
-    document.getElementById('clearSubtaskImg').classList.remove('d-none');
-    document.getElementById('addSubtaskImg').classList.remove('d-none');
+    hideAddSubtaskImg(); 
+}
+
+
+/**
+ * Sets the subtask images according to their status.
+ * The plus subtask image is hidden and the clear subtask and add subtask images are shown.
+ */
+function hideAddSubtaskImg() {
+    const plusSubtaskimg = document.getElementById('plusSubtaskImg');
+    const clearSubtaskImg = document.getElementById('clearSubtaskImg');
+    const addSubtastImg = document.getElementById('addSubtaskImg');
+
+    addClass(plusSubtaskimg, 'd-none');
+    removeClass(clearSubtaskImg, 'd-none');
+    removeClass(addSubtastImg, 'd-none');
 }
 
 
@@ -365,6 +441,7 @@ function inputChangeSubIcons() {
  */
 function addSubtask() {
     let subtask = document.getElementById('subtask').value;
+
     if (!subtask == '') {
         document.getElementById('subtask-list').innerHTML += `<li>${subtask}</li>`;
         document.getElementById('subtask').value = '';
@@ -373,9 +450,22 @@ function addSubtask() {
             'status': 'undone'
         });
     }
-    document.getElementById('plusSubtaskImg').classList.remove('d-none');
-    document.getElementById('clearSubtaskImg').classList.add('d-none');
-    document.getElementById('addSubtaskImg').classList.add('d-none');
+
+    showAddSubtaskImg();
+}
+
+
+/**
+ * Displays the "Add Subtask" image button and hides the "Clear Subtask" and "Plus Subtask" buttons.
+ */
+function showAddSubtaskImg() {
+    const plusSubtaskimg = document.getElementById('plusSubtaskImg');
+    const clearSubtaskImg = document.getElementById('clearSubtaskImg');
+    const addSubtastImg = document.getElementById('addSubtaskImg');
+
+    removeClass(plusSubtaskimg, 'd-none');
+    addClass(clearSubtaskImg, 'd-none');
+    addClass(addSubtastImg, 'd-none');
 }
 
 
@@ -384,9 +474,7 @@ function addSubtask() {
  */
 function clearSubtask() {
     document.getElementById('subtask').value = "";
-    document.getElementById('plusSubtaskImg').classList.remove('d-none');
-    document.getElementById('clearSubtaskImg').classList.add('d-none');
-    document.getElementById('addSubtaskImg').classList.add('d-none');
+    showAddSubtaskImg();
 }
 
 
@@ -549,8 +637,11 @@ function createEditedTaskJson(id, title, description, assigned_to, due_date) {
  * Opens a new category input field.
  */
 function openAddNewCategory() {
-    document.getElementById('select-wrapper').classList.add('d-none');
-    document.getElementById('new-category').classList.remove('d-none');
+    const selectWrapper = document.getElementById('select-wrapper');
+    const newCategory = document.getElementById('new-category');
+
+    addClass(selectWrapper, 'd-none');
+    removeClass(newCategory, 'd-none');
 }
 
 
@@ -558,8 +649,7 @@ function openAddNewCategory() {
  * Closes the new category input field.
  */
 function closeNewCategory() {
-    document.getElementById('select-wrapper').classList.remove('d-none');
-    document.getElementById('new-category').classList.add('d-none');
+    showNewCategory();
 }
 
 
@@ -567,10 +657,28 @@ function closeNewCategory() {
  * Ads a new category.
  */
 function addNewCategory() {
-    let newCat = document.getElementById('new-category-input').value;
+    const newCat = document.getElementById('new-category-input').value;
     currentCategory = newCat;
 
     document.getElementById('category-header').innerHTML = newCat;
-    document.getElementById('select-wrapper').classList.remove('d-none');
-    document.getElementById('new-category').classList.add('d-none');
+    showNewCategory();
+}
+
+
+function showNewCategory() {
+    const selectWrapper = document.getElementById('select-wrapper');
+    const newCategory = document.getElementById('new-category');
+
+    removeClass(selectWrapper, 'd-none');
+    addClass(newCategory, 'd-none');
+}
+
+
+function addClass(element, className) {
+    element.classList.add(className);
+}
+
+
+function removeClass(element, className) {
+    element.classList.remove(className);
 }
