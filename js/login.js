@@ -7,8 +7,8 @@ function login() {
     let password = document.getElementById('password').value;
 
     currentUser = users.find(u => u.email == email.toLowerCase() && u.password == password);
-    let invalidLogin = document.getElementById('invalid-login');
-    let hideUnderline = document.getElementById('hide-underline');
+    const invalidLogin = document.getElementById('invalid-login');
+    const hideUnderline = document.getElementById('hide-underline');
 
     checkUser(invalidLogin, hideUnderline);
 }
@@ -19,7 +19,7 @@ function login() {
  * @param {HTMLElement} invalidLogin - The HTML element to display an error message if login is invalid.
  * @param {HTMLElement} hideUnderline - The HTML element to hide if login is invalid.
  */
- async function checkUser(invalidLogin, hideUnderline) {
+async function checkUser(invalidLogin, hideUnderline) {
     if (currentUser) {
         await backend.setItem('current-user', JSON.stringify(currentUser));
         checkRememberMe(currentUser);
@@ -36,12 +36,13 @@ function login() {
  * @param {*} hideUnderline - The element to hide when displaying the error message.
  */
 function returnInvalidLogin(invalidLogin, hideUnderline) {
-    hideUnderline.classList.add('d-none');
-        invalidLogin.classList.remove('d-none');
-        setTimeout(function() {
-            invalidLogin.classList.add('d-none');
-            hideUnderline.classList.remove('d-none');
-        }, 3000);
+    addClass(hideUnderline, 'd-none');
+    removeClass(invalidLogin, 'd-none');
+
+    setTimeout(function () {
+        removeClass(hideUnderline, 'd-none');
+        addClass(invalidLogin, 'd-none');
+    }, 3000);
 }
 
 
@@ -66,8 +67,8 @@ function emailSent() {
 /**
  * Logs in a guest user by setting the current user as a guest and redirecting to the summary page.
  */
-  async function guestLogin() {
-    currentUser = {'name': 'Guest'};
+async function guestLogin() {
+    currentUser = { 'name': 'Guest' };
     await backend.setItem('current-user', JSON.stringify(currentUser));
     window.location.href = 'summary.html';
 }
@@ -78,10 +79,11 @@ function emailSent() {
  * It then redirects the user to the password reset page after a 2-second delay.
  */
 function showSentEmailMessage() {
-    let showMessage = document.getElementById('email-sent-text');
-    showMessage.classList.remove('d-none');
+    const showMessage = document.getElementById('email-sent-text');
+    removeClass(showMessage, 'd-none');
 
-    setTimeout(function() {window.location.href = 'reset_password.html';
+    setTimeout(function () {
+        window.location.href = 'reset_password.html';
     }, 2000);
 }
 
@@ -100,16 +102,17 @@ function setUserLocal(currentUser) {
  * 
  */
 function showFailMessage() {
-    let showMessage = document.getElementById('fail-message');
-    let hideSpan = document.getElementById('forgot-pw-span');
+    const showMessage = document.getElementById('fail-message');
+    const hideSpan = document.getElementById('forgot-pw-span');
 
-    hideSpan.classList.add('d-none');
-    showMessage.classList.remove('d-none'); 
-    setTimeout(function() {
-        hideSpan.classList.remove('d-none');
-        showMessage.classList.add('d-none'); 
+    addClass(hideSpan, 'd-none');
+    removeClass(showMessage, 'd-none');
+
+    setTimeout(function () {
+        removeClass(hideSpan, 'd-none');
+        addClass(showMessage, 'd-none');
     }, 3000);
-} 
+}
 
 
 /**
@@ -120,10 +123,11 @@ function showFailMessage() {
 async function setNewPassword() {
     let newPassword = document.getElementById('new-password').value;
     let confirmPassword = document.getElementById('repeat-new-password').value;
-    let hideSpan = document.getElementById('reset-pw-span');
-    let showMessage = document.getElementById('reset-pw-message');
-    let userEmail = localStorage.getItem('user-email');
     let index = users.findIndex(u => u.email == userEmail);
+    const hideSpan = document.getElementById('reset-pw-span');
+    const showMessage = document.getElementById('reset-pw-message');
+    const userEmail = localStorage.getItem('user-email');
+
 
     if (newPassword == confirmPassword) {
         users[index]['password'] = newPassword;
@@ -140,12 +144,13 @@ async function setNewPassword() {
  * @param {*} showMessage - Shows the information that the data is invlaid
  */
 function invalidNewPasswordDatas(hideSpan, showMessage) {
-    hideSpan.classList.add('d-none');
-        showMessage.classList.remove('d-none');
-        setTimeout(function() {
-        hideSpan.classList.remove('d-none');
-        showMessage.classList.add('d-none');
-        }, 3000);
+    addClass(hideSpan, 'd-none');
+    removeClass(showMessage, 'd-none');
+
+    setTimeout(function () {
+        removeClass(hideSpan, 'd-none');
+        addClass(showMessage, 'd-none');
+    }, 3000);
 }
 
 
@@ -153,9 +158,9 @@ function invalidNewPasswordDatas(hideSpan, showMessage) {
  * This ifunction stops the join logo animation in responsive mode after 2.5 seconds.
  */
 function animationMobileStop() {
-    let animationMob = document.getElementById('animation-mobile');    
+    let animationMob = document.getElementById('animation-mobile');
 
-    setTimeout(function() {
-        animationMob.classList.add('animation-stop');
+    setTimeout(function () {
+        addClass(animationMob, 'animation-stop');
     }, 2500);
 }

@@ -6,8 +6,8 @@ function addUser() {
     let email = document.getElementById('email').value;
     let password = document.getElementById('password').value;
 
-    checkUser(name, email, password);   
-}   
+    checkUser(name, email, password);
+}
 
 
 /**
@@ -20,8 +20,8 @@ function addUser() {
 function checkUser(name, email, password) {
     currentUser = users.find(u => u.email == email.toLowerCase() || u.name == name);
     if (currentUser) {
-        let msgBox = document.getElementById('msg-box');
-        let hideUnderline = document.getElementById('hide-underline');
+        const msgBox = document.getElementById('msg-box');
+        const hideUnderline = document.getElementById('hide-underline');
         displayErrorMessage(msgBox, hideUnderline, 'This user already exists!');
     } else {
         pushUser(name, email, password);
@@ -36,16 +36,17 @@ function checkUser(name, email, password) {
  * @param {string} messageText - The text of the error message to display.
  */
 function displayErrorMessage(messageElement, hideElement, messageText) {
-    hideElement.classList.add('d-none');
-    messageElement.classList.remove('d-none');
+    addClass(hideElement, 'd-none');
+    removeClass(messageElement, 'd-none');
     messageElement.innerHTML = messageText;
-    setTimeout(function() {
-        hideElement.classList.remove('d-none');
-        messageElement.classList.add('d-none');
+
+    setTimeout(function () {
+        removeClass(hideElement, 'd-none');
+        addClass(messageElement, 'd-none');
     }, 3000);
 }
 
-  
+
 
 
 /**
@@ -56,7 +57,7 @@ function displayErrorMessage(messageElement, hideElement, messageText) {
  * @returns {void}
  */
 async function pushUser(name, email, password) {
-    users.push({'name': name, 'email': email.toLowerCase(), 'password' : password});
+    users.push({ 'name': name, 'email': email.toLowerCase(), 'password': password });
     await backend.setItem('users', JSON.stringify(users));
 
     successfullyRegistration();
@@ -69,11 +70,11 @@ async function pushUser(name, email, password) {
 function successfullyRegistration() {
     const msgBox = document.getElementById('msg-box');
     const hideUnderline = document.getElementById('hide-underline');
-    
-    hideUnderline.classList.add('d-none');
-    msgBox.classList.remove('d-none');
+
+    addClass(hideUnderline, 'd-none');
+    removeClass(msgBox, 'd-none');
     msgBox.innerHTML = 'Successfully registered!';
-    
+
     setTimeout(() => {
         window.location.href = 'index.html';
     }, 3000);
