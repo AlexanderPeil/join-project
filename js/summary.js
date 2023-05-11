@@ -35,7 +35,7 @@ function showAllCounts() {
  * This function sets a greeting message on a mobile device based on the current time and calls two other functions to display the current user and mobile greeting.
  */
 function showGreetMobile() {
-    let greetElem = document.getElementById("greetMobile");
+    const greetElem = document.getElementById("greetMobile");
     let currentTime = new Date();
     let currentHour = currentTime.getHours();
     if (currentHour < 12) {
@@ -56,14 +56,14 @@ function showGreetMobile() {
 
 function mobileGreet() {
     if (window.innerWidth < 1000) {
-        let greetMobileCont = document.getElementById("greetMobileCont");
-        let mainContainer = document.getElementById('mainContainer');
+        const greetMobileCont = document.getElementById("greetMobileCont");
+        const mainContainer = document.getElementById('mainContainer');
         if (document.referrer.includes("index.html")) {
-            greetMobileCont.classList.remove('d-none');
-            mainContainer.classList.add('d-none');
-            setTimeout(function() {
-                greetMobileCont.classList.add('d-none');
-                mainContainer.classList.remove('d-none');
+            removeClass(greetMobileCont, 'd-none');
+            addClass(mainContainer, 'd-none');
+            setTimeout(function () {
+                addClass(greetMobileCont, 'd-none');
+                removeClass(mainContainer, 'd-none');
             }, 2500);
         }
     }
@@ -74,7 +74,7 @@ function mobileGreet() {
  * This function displays the count of all tasks in the board.
  */
 function showCountInBoard() {
-    let countInBoard = document.getElementById('countInBoard');
+    const countInBoard = document.getElementById('countInBoard');
     countInBoard.innerHTML = allTasks.length;
 }
 
@@ -85,7 +85,7 @@ function showCountInBoard() {
  * @returns The count value of tasks in progress.
  */
 function showCountInProgress() {
-    let countInProgress = document.getElementById('countInProgress');
+    const countInProgress = document.getElementById('countInProgress');
     let count = 0;
     for (let i = 0; i < allTasks.length; i++) {
         if (allTasks[i].split === "in_progress") {
@@ -101,7 +101,7 @@ function showCountInProgress() {
  * @returns The count value of tasks awaiting feedback.
  */
 function showCountAwaitFeedback() {
-    let countAwaitFeedback = document.getElementById('countAwaitFeedback');
+    const countAwaitFeedback = document.getElementById('countAwaitFeedback');
     let count = 0;
     for (let i = 0; i < allTasks.length; i++) {
         if (allTasks[i].split === "awaiting_feedback") {
@@ -116,7 +116,7 @@ function showCountAwaitFeedback() {
  * @returns The count value of urgent tasks.
  */
 function showCountUrgent() {
-    let countUrgent = document.getElementById('countUrgent');
+    const countUrgent = document.getElementById('countUrgent');
     let count = 0;
     for (let i = 0; i < allTasks.length; i++) {
         if (allTasks[i].priotity[0].priotity === "urgent") {
@@ -131,7 +131,7 @@ function showCountUrgent() {
  * @returns The count value of to_do tasks.
  */
 function showCountToDo() {
-    let countToDo = document.getElementById('countToDo');
+    const countToDo = document.getElementById('countToDo');
     let count = 0;
     for (let i = 0; i < allTasks.length; i++) {
         if (allTasks[i].split === "to_do") {
@@ -146,7 +146,7 @@ function showCountToDo() {
  * @returns The count value of done tasks.
  */
 function showCountDone() {
-    let countDone = document.getElementById('countDone');
+    const countDone = document.getElementById('countDone');
     let count = 0;
     for (let i = 0; i < allTasks.length; i++) {
         if (allTasks[i].split === "done") {
@@ -181,7 +181,7 @@ function showDlDate() {
  * This function sets a greeting message on a desktop device based on the current time and calls the functions to display the current user.
  */
 async function showGreetDesktop() {
-    let greetElem = document.getElementById("greet");
+    const greetElem = document.getElementById("greet");
     let currentTime = new Date();
     let currentHour = currentTime.getHours();
 
@@ -209,7 +209,8 @@ async function showCurrentUser() {
  * This function displays the element overDivMobile for 3 seconds on mobile.
  */
 function deletOverDiv() {
-    setTimeout(function() {
-        document.getElementById('overDivMobile').classList.add('d-none');
+    const overDivMobile = document.getElementById('overDivMobile');
+    setTimeout(function () {
+        addClass(overDivMobile, 'd-none');
     }, 300)
 }

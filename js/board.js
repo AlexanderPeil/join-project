@@ -29,7 +29,6 @@ async function init() {
 function loadBoard(choiceTasks) {
     cleanOldBoard();
     loadNewBoard(choiceTasks);
-    // addDropArea();
 }
 
 
@@ -75,12 +74,17 @@ function loadUsersBoard(task, i) {
             additionalUsersHTML += loadUserShortsTmp(user);
         }
     }
-
     document.getElementById('users' + i).innerHTML += usersHTML;
+    checkAdditionalUsers(additionalUsersHTML, showMoreUsers, i);
+}
+
+
+function checkAdditionalUsers(additionalUsersHTML, showMoreUsers, i) {
+    let showuserBtn = document.getElementById('show-users-btn' + i);
 
     if (additionalUsersHTML !== '') {
         document.getElementById('additional-users' + i).innerHTML = loadAdditionalUsersTmp(showMoreUsers.slice(3));
-        document.getElementById('show-users-btn' + i).classList.remove('d-none');
+        removeClass(showuserBtn, 'd-none');
     }
 }
 
@@ -92,9 +96,14 @@ function loadUsersBoard(task, i) {
  */
 function showMoreUsers(event, id) {
     event.stopPropagation();
-    document.getElementById('more-user-container' + id).classList.remove('d-none');
-    document.getElementById('show-users-btn' + id).classList.add('d-none');
-    document.getElementById('hide-users-btn' + id).classList.remove('d-none');
+
+    const moreUserCont = document.getElementById('more-user-container' + id);
+    const showUserBtn = document.getElementById('show-users-btn' + id);
+    const hideuserBtn = document.getElementById('hide-users-btn' + id);
+
+    removeClass(moreUserCont, 'd-none');
+    addClass(showUserBtn, 'd-none');
+    removeClass(hideuserBtn, 'd-none');
 }
 
 
@@ -105,9 +114,14 @@ function showMoreUsers(event, id) {
  */
 function hideUsers(event, id) {
     event.stopPropagation();
-    document.getElementById('more-user-container' + id).classList.add('d-none');
-    document.getElementById('show-users-btn' + id).classList.remove('d-none');
-    document.getElementById('hide-users-btn' + id).classList.add('d-none');
+
+    const moreUserCont = document.getElementById('more-user-container' + id);
+    const showUserBtn = document.getElementById('show-users-btn' + id);
+    const hideuserBtn = document.getElementById('hide-users-btn' + id);
+
+    addClass(moreUserCont, 'd-none');
+    removeClass(showUserBtn, 'd-none');
+    addClass(hideuserBtn, 'd-none');
 }
 
 
@@ -136,13 +150,17 @@ function loadSubtasks(task, i) {
  * @param {number} id - The id of the task to add.
  */
 function openAddTask(id) {
+    const boardSection = document.getElementById('board-section');
+    const popupBG = document.getElementById('popUp-background');
+
     currentTaskCard = id;
     document.getElementById('popUp').innerHTML = loadAddTaskTmp();
-    document.getElementById('board-section').classList.add('d-none');
+    addClass(boardSection, 'd-none');
     addAssignedToList();
     setDateToday();
+
     try {
-        document.getElementById('popUp-background').classList.add('filter');
+        addClass(popupBG, 'filter');
     } catch (err) {
         return;
     }
@@ -165,22 +183,9 @@ function startDragging(id) {
  */
 function allowDrop(ev, test) {
     ev.preventDefault();
-    const dropArea = document.getElementById('dropArea_' + test);
-    dropArea.classList.add('borders');
+    let dropArea = document.getElementById('dropArea_' + test);
 
-    // const windowHeight = window.innerHeight;
-    // // const navHeight = document.getElementById('nav').offsetHeight;
-    // // const headerHeight = document.getElementById('header').offsetHeight;
-    // const visibleHeight = windowHeight - 150;
-    // const dropAreaRect = dropArea.getBoundingClientRect();
-
-    // if (dropAreaRect.bottom < visibleHeight) {
-    //     window.scrollBy(0, 1);
-    // }
-
-    // if (dropAreaRect.top < 100) {
-    //     window.scrollBy(0, -1);
-    // }
+    addClass(dropArea, 'borders');
 }
 
 
@@ -189,7 +194,9 @@ function allowDrop(ev, test) {
  * @param {string} ev - The event object.
  */
 function disableDrop(ev) {
-    document.getElementById('dropArea_' + ev).classList.remove('borders');
+    let dropArea = document.getElementById('dropArea_' + ev); 
+
+    removeClass(dropArea, 'borders');
 }
 
 
@@ -198,7 +205,9 @@ function disableDrop(ev) {
  * @param {string} category - The category to move the element to.
  */
 async function moveTo(category) {
-    document.getElementById('dropArea_' + category).classList.remove('borders');
+    let dropArea = document.getElementById('dropArea_' + category);
+
+    removeClass(dropArea, 'borders');
     tasks[currentDraggedElement]['split'] = category;
     loadBoard(tasks);
     await saveNotes();
@@ -231,6 +240,8 @@ function openTaskFull(choiceTask) {
     document.getElementById('popUp').innerHTML = loadCardFullText(tasks, choiceTask);
     loadSubtaksToFullTask(choiceTask);
     loadUsersToFullTask(choiceTask);
+
+    addBodyOverflow();
 }
 
 
@@ -246,12 +257,10 @@ function loadSubtaksToFullTask(choiceTask) {
             if (subtasks[i]['status'] == 'undone') {
                 taskDone = '';
             }
-            document.getElementById('subtaskSection').innerHTML += `
-            <label for="subtask_${i}">${tasks[choiceTask]['subtasks'][i]['subtaskName']}<input type="checkbox" ${taskDone} id="subtask_${i}"></label>
-            `
+            document.getElementById('subtaskSection').innerHTML += 
+            `<label for="subtask_${i}">${tasks[choiceTask]['subtasks'][i]['subtaskName']}<input type="checkbox" ${taskDone} id="subtask_${i}"></label>`
         }
-    }
-    else {
+    } else {
         document.getElementById('subtaskSectionCheck').innerHTML = '';
     }
 }
@@ -276,6 +285,7 @@ function loadUsersToFullTask(choiceTask) {
  * @param {number} currentCard - The index of the task in the array of tasks.
  */
 async function closePopUp(currentCard) {
+    removeBodyOverflow();
     checkSubtaskDone(currentCard)
     await saveNotes();
     document.getElementById('popUp').innerHTML = '';
@@ -317,11 +327,14 @@ async function delCard(choicCard) {
  * Closes the pop-up for adding a task.
  */
 function closePopUpAddTask() {
+    const boardSection = document.getElementById('board-section');
+    const closeAddTask = document.getElementById('close-add-task');
+
     try {
         document.getElementById('popUp').innerHTML = '';
-        document.getElementById('board-section').classList.remove('d-none');
-        document.body.classList.remove('overflow-hidden');
-        document.getElementById('close-add-task').classList.remove('filter');
+        removeClass(boardSection, 'd-none');
+        removeBodyOverflow();
+        removeClass(closeAddTask, 'filter');
     } catch (err) {
         return;
     }
@@ -336,6 +349,7 @@ function closePopUpAddTask() {
  */
 function searchKanbanBoard(kanbanBoard, searchQuery) {
     const results = [];
+
     for (const card of kanbanBoard) {
         if (card.body_header.toLowerCase().includes(searchQuery) || card.body_content.toLowerCase().includes(searchQuery)) {
             results.push(card);
@@ -350,7 +364,8 @@ function searchKanbanBoard(kanbanBoard, searchQuery) {
  */
 function findTasks() {
     let searchQuery = document.getElementById('findTask').value;
-    searchQuery = searchQuery.toLowerCase()
+    searchQuery = searchQuery.toLowerCase();
+
     let searchedTasks = searchKanbanBoard(tasks, searchQuery);
     loadBoard(searchedTasks);
 }
@@ -401,9 +416,10 @@ function checkMobile() {
  * @param {string} id - The task ID.
  */
 function openContextMenu(id) {
-    document.getElementById(`contextMenu${id}`).classList.remove('d-none');
+    let contextMenu = document.getElementById(`contextMenu${id}`);
+
+    removeClass(contextMenu, 'd-none');
     currentWishMenu = id;
-    // document.body.classList.add('overflow-hidden')
 }
 
 
@@ -413,6 +429,7 @@ function openContextMenu(id) {
  */
 function closeAllMenus() {
     const menus = document.querySelectorAll('.popUpWish');
+    
     menus.forEach((menu) => {
         menu.classList.add('d-none');
     });
@@ -425,8 +442,8 @@ function closeAllMenus() {
  * @param {string} id - The ID of the context menu to hide.
  */
 function closeHeadContextMenu(id) {
-    document.getElementById(`contextMenu${id}`).classList.add('d-none');
-    // document.body.classList.remove('overflow-hidden');
+    let contextmenu = document.getElementById(`contextMenu${id}`);
+    addClass(contextmenu, 'd-none');
 }
 
 
@@ -440,7 +457,7 @@ function closeWishMenu() {
     try {
         id = currentWishMenu;
         closeHeadContextMenu(id);
-        document.body.classList.remove('overflow-hidden');
+        removeBodyOverflow();
     } catch (error) {
         return;
     }
@@ -465,12 +482,14 @@ async function changeSplit(split, id) {
  * @param {string} id - The id of the task to edit
  */
 function editTask(id) {
+    const closeAddTask = document.getElementById('close-add-task');
+
     document.getElementById('popUp').innerHTML = loadEditAddTaskTmp(id);
     addAssignedToList();
     setDateToday();
     fillTheTasks(id)
-    document.body.classList.add('overflow-hidden');
-    document.getElementById('close-add-task').classList.add('filter');
+    addBodyOverflow();
+    addClass(closeAddTask, 'filter');
 }
 
 
@@ -479,8 +498,10 @@ function editTask(id) {
  * @param {string} currentCard - The ID of the card for which to close the popup.
  */
 function closePopup(currentCard) {
-    document.getElementById(`close-popup${currentCard}`).classList.add('d-none');
-    document.body.classList.remove('overflow-hidden');
+    let closePopup = document.getElementById(`close-popup${currentCard}`); 
+
+    addClass(closePopup, 'd-none');
+    removeBodyOverflow();
 }
 
 
@@ -488,8 +509,11 @@ function closePopup(currentCard) {
  * Closes the add task popup window.
  */
 function closePopupAddTask() {
-    document.getElementById('popUp-background').classList.add('d-none');
-    document.getElementById('board-section').classList.remove('d-none');
+    const popupBG = document.getElementById('popUp-background');
+    const boardSection = document.getElementById('board-section');
+
+    addClass(popupBG, 'd-none');
+    removeClass(boardSection, 'd-none');
 }
 
 
@@ -497,7 +521,9 @@ function closePopupAddTask() {
  * Closes add task popup.
  */
 function closeAddtask() {
-    document.getElementById('close-add-task').classList.add('d-none');
-    document.body.classList.remove('overflow-hidden');
-    document.getElementById('close-add-task').classList.remove('filter');
+    const closeAddTask = document.getElementById('close-add-task');
+
+    addClass(closeAddTask, 'd-none');
+    removeBodyOverflow();
+    removeClass(closeAddTask, 'filter');
 } 

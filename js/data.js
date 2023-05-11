@@ -162,3 +162,39 @@ function checkStatus() {
         return 'to_do'
     }
 }
+
+
+/**
+ * Adds a CSS class to the specified element.
+ * @param {Element} element - The element to add the class to.
+ * @param {string} className - The name of the class to add.
+ */
+function addClass(element, className) {
+    element.classList.add(className);
+}
+
+
+/**
+ * Removes a CSS class from the specified element.
+ * @param {Element} element - The element to remove the class from.
+ * @param {string} className - The name of the class to remove.
+ */
+function removeClass(element, className) {
+    element.classList.remove(className);
+}
+
+
+/**
+ * Add overflow to the body.
+ */
+function addBodyOverflow() {
+    document.body.classList.add('overflow-hidden');
+}
+
+
+/**
+ * Remove overflow from the body.
+ */
+function removeBodyOverflow() {
+    document.body.classList.remove('overflow-hidden');
+}
