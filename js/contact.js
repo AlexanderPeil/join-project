@@ -47,10 +47,11 @@ function addContacts() {
  * Shows a popup message indicating that a contact has been successfully created.
  */
 function popupSuccess() {
-    const popup = document.createElement('div');
-    popup.classList.add('popup-contact-added');
+    let popup = document.createElement('div');
+    addClass(popup, 'popup-contact-added');
     popup.innerHTML = `<p>contact successfully created</p>`;
     document.body.appendChild(popup);
+
     setTimeout(() => {
         popup.remove();
     }, 2000);
@@ -93,7 +94,7 @@ function loadContacts() {
         }
     }
     firstLetters.sort();
-    let contactList = document.getElementById('contactList');
+    const contactList = document.getElementById('contactList');
     contactList.innerHTML = '';
     showContactList(contactList, firstLetters);
 }
@@ -125,15 +126,16 @@ function showContactList(contactList, firstLetters) {
  * @param {*} i - The index of the selected contact in the contacts array 
  */
 function showContactDetails(i) {
-    let contactSelection = document.getElementById('contactSelection');
+    const contactSelection = document.getElementById('contactSelection');
+    const contactOverlay = document.getElementById('contactOverlay');
     contactSelection.innerHTML = '';
     let selectedContact = contacts[i];
     let userShort = selectedContact['firstName'].charAt(0).toLowerCase() + selectedContact['lastName'].charAt(0).toLowerCase()
     contactSelection.innerHTML += showContactDetailsHTML(selectedContact, i, userShort);
-    document.getElementById('contactOverlay').classList.add('show-contact-selection-overlay');
-    
+    addClass(contactOverlay, 'show-contact-selection-overlay');
+
     if (window.innerWidth < 1000) {
-        document.body.classList.add('overflow-hidden');
+        addBodyOverflow();
     }
 }
 
@@ -144,10 +146,10 @@ function showContactDetails(i) {
  */
 function hightlightContact(i) {
     let currentHighlightContact = document.getElementById('highlight-' + i);
-    currentHighlightContact.classList.add('selected-contact-box');
+    addClass(currentHighlightContact, 'selected-contact-box');
 
     if (previouslySelectedContact !== null) {
-        previouslySelectedContact.classList.remove('selected-contact-box');
+        removeClass(previouslySelectedContact, 'selected-contact-box');
     }
     previouslySelectedContact = currentHighlightContact;
 }
@@ -157,8 +159,9 @@ function hightlightContact(i) {
  * Close contact details
  */
 function closeContactOverlay() {
-    document.getElementById('contactOverlay').classList.remove('show-contact-selection-overlay');
-    document.body.classList.remove('overflow-hidden');
+    const contactOverlay = document.getElementById('contactOverlay');
+    removeClass(contactOverlay, 'show-contact-selection-overlay');
+    removeBodyOverflow();
 }
 
 
@@ -166,7 +169,7 @@ function closeContactOverlay() {
  * Update contact list and load contacts
  */
 function updateContactList() {
-    let contactList = document.getElementById('contactList');
+    const contactList = document.getElementById('contactList');
     contactList.innerHTML = '';
     loadContacts();
     closeContactOverlay();
@@ -177,7 +180,7 @@ function updateContactList() {
  * Update contact selection and load contacts
  */
 function updateContactSelection() {
-    let contactSelection = document.getElementById('contactSelection');
+    const contactSelection = document.getElementById('contactSelection');
     contactSelection.innerHTML = '';
     loadContacts();
 }
@@ -217,11 +220,15 @@ function updateContact() {
  * Show contact form
  */
 function showContactForm() {
-    let contactForm = document.getElementById("contactForm");
-    contactForm.classList.remove("d-none");
-    document.getElementById('contact-add-btn').classList.add('d-none');
-    document.getElementById('hide-contacts').classList.add('d-none');
-    document.getElementById('new-contact-bg').classList.remove('d-none');
+    const contactForm = document.getElementById("contactForm");
+    const contactAddBtn = document.getElementById('contact-add-btn');
+    const hideContacts = document.getElementById('hide-contacts');
+    const newContactBG = document.getElementById('new-contact-bg');
+
+    removeClass(contactForm, "d-none");
+    addClass(contactAddBtn, 'd-none');
+    addClass(hideContacts, 'd-none');
+    removeClass(newContactBG, 'd-none');
 }
 
 
@@ -230,7 +237,7 @@ function showContactForm() {
  */
 function openAddContactForm() {
     let contactForm = document.getElementById("contactForm");
-    contactForm.classList.remove("d-none");
+    removeClass(contactForm, "d-none");
 }
 
 
@@ -238,11 +245,20 @@ function openAddContactForm() {
  * Close contact form to add new contact
  */
 function closeAddContactForm() {
-    let contactForm = document.getElementById("contactForm");
-    contactForm.classList.add("d-none");
-    document.getElementById('contact-add-btn').classList.remove('d-none');
-    document.getElementById('hide-contacts').classList.remove('d-none');
-    document.getElementById('new-contact-bg').classList.add('d-none');
+    const contactForm = document.getElementById("contactForm");
+    const contactAddBtn = document.getElementById('contact-add-btn');
+    const hideContacts = document.getElementById('hide-contacts');
+    const newContactBG = document.getElementById('new-contact-bg');
+
+    try {
+        addClass(contactForm, "d-none");
+        removeClass(contactAddBtn, 'd-none');
+        removeClass(hideContacts, 'd-none');
+        addClass(newContactBG, 'd-none');
+    } catch (err) {
+        return;
+    }
+
 }
 
 
@@ -255,8 +271,10 @@ function editContact(i) {
     const formEditContainer = document.getElementById("formContainer");
     formEditContainer.innerHTML += openEditContactFormHTML(selectedContact);
     currentFormId = document.getElementById('contactFormEdit');
-    document.getElementById('contactFormEdit-bg').classList.remove('d-none');
-    document.getElementById('nav').classList.add('filter');
+
+    const contactFormEditBG = document.getElementById('contactFormEdit-bg');
+    removeClass(contactFormEditBG, 'd-none');
+    addNavFilter();
 }
 
 
@@ -277,20 +295,34 @@ function deleteSelectedContact(i) {
  * Open contact form to add new task with assigned contact
  * @param {string} userShort - The short name of the contact to assign the task to
  */
-async function addTaskContact(userShort) {
-    const formTaskContainer = document.getElementById("formContainer");
-    if (!formTaskContainer) {
+function addTaskContact(userShort) {
+    const formContainer = document.getElementById("formContainer");
+    const formTaskContainer = document.getElementById('formTaskContainer');
+
+    if (!formContainer) {
         console.error('Error: formContainer is null or undefined.');
         return;
     }
-    formTaskContainer.innerHTML += openAddTaskContactFormHTML();
+    addTaskContactFn(userShort, formContainer, formTaskContainer);
+}
+
+
+/**
+ * Adds a task to a contact and displays the form for adding a task, 
+ * while also modifying the UI to show the associated task form container.
+ * @param {string} userShort - The user's short name.
+ * @param {HTMLElement} formContainer - The container element for the contact form. 
+ * @param {HTMLElement} formTaskContainer - The container element for the task form.
+ * @param {HTMLElement} nav - The navigation element to add the 'filter' CSS class to.
+ */
+async function addTaskContactFn(userShort, formContainer, formTaskContainer) {
+    formContainer.innerHTML += openAddTaskContactFormHTML();
     addAssignedToList();
     await loadNotes();
     setDateToday();
     checkAssignedTo(userShort);
-    document.getElementById('formTaskContainer').classList.remove('d-none');
     currentFormId = document.getElementById('formTaskContainer');
-    document.getElementById('nav').classList.add('filter');
+    addNavFilter();
 }
 
 
@@ -314,17 +346,22 @@ function checkAssignedTo(userShort) {
  */
 function closeFormById(formId) {
     try {
-        const form = document.getElementById(formId);
-        form.remove();
-        document.getElementById('contactFormEdit-bg').remove();
-        document.getElementById('nav').classList.remove('filter');
+        removeForm(formId);
     } catch (e) {
         try {
-            document.getElementById('nav').classList.remove('filter');
+            removeNavFilter();
         } catch (err) {
             return;
         }
     }
+}
+
+
+function removeForm(formId) {
+    const form = document.getElementById(formId);
+    form.remove();
+    document.getElementById('contactFormEdit-bg').remove();
+    removeNavFilter();
 }
 
 
@@ -354,13 +391,25 @@ function tryCloseFormById() {
     try {
         currentFormId.remove();
         document.getElementById('contact-addTask-bg').remove();
-        document.getElementById('nav').classList.remove('filter');
+        removeNavFilter();
     } catch (e) {
         try {
             document.getElementById('contactFormEdit-bg').remove();
-            document.getElementById('nav').classList.remove('filter');
+            removeNavFilter();
         } catch (err) {
             return;
         }
     }
+}
+
+
+/**
+ * Removes the current form and its associated background overlay element
+ *  and removes the 'filter' CSS class from the specified navigation element.
+ * @param {HTMLElement} nav - The navigation element to remove the 'filter' CSS class from.
+ */
+function removeCurrentForm() {
+    currentFormId.remove();
+    document.getElementById('contact-addTask-bg').remove();
+    removeNavFilter();
 }

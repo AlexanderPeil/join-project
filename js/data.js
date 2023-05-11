@@ -198,3 +198,19 @@ function addBodyOverflow() {
 function removeBodyOverflow() {
     document.body.classList.remove('overflow-hidden');
 }
+
+
+/**
+ * Add Filter to the nav.
+ */
+function addNavFilter() {
+    addClass(nav, 'filter');
+}
+
+
+/**
+ * Remove Filter from the nav.
+ */
+function removeNavFilter() {
+    removeClass(nav, 'filter');
+}
