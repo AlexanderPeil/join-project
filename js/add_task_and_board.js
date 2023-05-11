@@ -443,7 +443,8 @@ function addSubtask() {
     let subtask = document.getElementById('subtask').value;
 
     if (!subtask == '') {
-        document.getElementById('subtask-list').innerHTML += `<li>${subtask}</li>`;
+        const uniqueId = Date.now().toString() + '-delete-subtask';
+        document.getElementById('subtask-list').innerHTML += `<li id="${uniqueId}">${subtask}<img src="./assets/img/xicon.png" class="delete-subtask" onclick="deleteSubtask('${uniqueId}')"></li>`;
         document.getElementById('subtask').value = '';
         subtasks.push({
             'subtaskName': subtask,
@@ -452,6 +453,14 @@ function addSubtask() {
     }
 
     showAddSubtaskImg();
+}
+
+
+function deleteSubtask(uniqueId) {
+    const subtaskElement = document.getElementById(uniqueId);
+    if (subtaskElement) {
+        subtaskElement.remove();
+    }
 }
 
 
@@ -603,7 +612,7 @@ async function editAddTask(id) {
     new_task = createEditedTaskJson(id, title, description, assigned_to, due_date);
     tasks[id] = new_task;
     await saveNotes();
-    subtasks = [];
+    // subtasks = [];
     window.location.href = './board.html';
 }
 
