@@ -164,10 +164,10 @@ function showCountDone() {
  * @returns {string} The formatted earliest date as a string.
  */
 function showDlDate() {
-    let dlDate = allTasks[0].date; /*Die Variable dlDate wird initialisiert und mit dem Datumswert des ersten Elements im tasksTest-Array initialisiert:*/
+    let dlDate = allTasks[0].date; 
     for (let i = 1; i < allTasks.length; i++) {
-        if (new Date(allTasks[i].date) < new Date(dlDate)) { /*Innerhalb der Schleife wird geprüft, ob das Datum des aktuellen Elements kleiner ist als das gespeicherte Datum "dlDate".*/
-            dlDate = allTasks[i].date; /*Wenn das Datum des aktuellen Elements kleiner ist als das gespeicherte Datum, wird das Datum des aktuellen Elements als neues "dlDate" gespeichert*/
+        if (new Date(allTasks[i].date) < new Date(dlDate)) { 
+            dlDate = allTasks[i].date; 
         }
     }
     const date = new Date(dlDate);

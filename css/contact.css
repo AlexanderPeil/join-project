@@ -17,11 +17,6 @@ body {
     border: 0px solid black !important;
 }
 
-/* .container::-webkit-scrollbar-track {
-    background-color: #f1f1f1 !important; 
-    border-radius: 10px !important;
-  } */
-
 .overflow-hidden {
     overflow: hidden;
 }
@@ -51,11 +46,9 @@ h1 {
     display: flex;
     justify-content: center;
     width: 360px;
-    /* height: calc(100vh + 150px); */
     background-color: white;
     overflow: auto;
     scroll-behavior: smooth;
-    /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1); */
 }
 
 #contactList {
@@ -173,12 +166,10 @@ h1 {
     cursor: pointer;
 }
 
-.contact-cancel-icon:hover {
-    background-color: #94d5f0;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.contact-cancel-icon-mobile:hover {
+.contact-cancel-icon:hover,
+.contact-cancel-icon-mobile:hover,
+.contact-edit-icon:hover,
+.contact-trash-icon:hover   {
     background-color: #94d5f0;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
@@ -230,11 +221,6 @@ h1 {
     transition: all 225ms ease-in-out;
 }
 
-.contact-edit-icon:hover {
-    background-color: #94d5f0;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
 .contact-edit-tools {
     display: flex;
     justify-content: space-between;
@@ -256,8 +242,6 @@ h1 {
 }
 
 .contact-trash-icon:hover {
-    background-color: #94d5f0;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
 }
 
@@ -371,12 +355,9 @@ h1 {
 
 .contact-form-overlay {
     position: relative;
-    /* top: 25%;
-    left: 23%; */
     display: flex;
     box-shadow: 0 0 14px 3px rgb(0 0 0 / 4%);
     border-radius: 10px;
-    /* background: white; */
     overflow: hidden;
     z-index: 211;
 }
@@ -398,8 +379,6 @@ h1 {
     flex-direction: column;
     justify-content: center;
     background-color: white;
-    /* border-bottom-left-radius: 30px;
-    border-top-left-radius: 30px; */
     padding: 30px;
 }
 
@@ -409,8 +388,6 @@ h1 {
     justify-content: center;
     background-color: #2A3647;
     color: white;
-    /* border-bottom-left-radius: 30px;
-    border-top-left-radius: 30px; */
     padding: 30px;
 }
 
@@ -418,8 +395,6 @@ h1 {
     display: flex;
     align-items: center;
     background-color: white;
-    /* border-bottom-right-radius: 30px;
-    border-top-right-radius: 30px; */
 }
 
 .contact-form-user-icon {
@@ -677,7 +652,6 @@ select::-ms-expand {
 
 .plus-icon {
     cursor: pointer;
-    /* padding: 10px; */
 }
 
 .mobile-contact-back-icon {
@@ -759,18 +733,6 @@ select::-ms-expand {
     top: 15% !important;
 }
 
-/* @media(max-width: 1300px) {
-    .contact-form-overlay {
-        left: 8%;
-    }
-} */
-
-/* @media(max-width: 1200px) {
-    .contact-form-overlay {
-        left: 4%;
-    }
-} */
-
 @media(max-width: 1000px) and (max-height: 1000px) {
 
     #formTaskContainer {
@@ -829,8 +791,6 @@ select::-ms-expand {
     .contact-form-overlay {
         display: unset;
         overflow: auto;
-        /* top: 12%;
-        left: 29%; */
         max-height: calc(100vh - 150px);
     }
 
@@ -846,7 +806,6 @@ select::-ms-expand {
 
     .contact-list-container {
         padding-bottom: 80px;
-        /* height: 100%; */
         overflow: hidden;
     }
 
@@ -1030,11 +989,6 @@ select::-ms-expand {
 }
 
 @media(max-width: 600px) {
-    /* .contact-form-overlay {
-        left: 6%;
-    } */
-
-
     #formTaskCont {
         left: 2px;
         width: 99%;
@@ -1042,13 +996,11 @@ select::-ms-expand {
 
     #formTaskContainer {
         left: 1%;
-        /* right: 1%; */
     }
 }
 
 @media(max-width: 500px) {
     #formTaskContainer {
-        /* left: 1%; */
         right: 1%;
     }
 
@@ -1072,39 +1024,12 @@ select::-ms-expand {
 @media(max-width: 400px) {
 
     #contactForm {
-        /* top: 12% !important; */
         max-height: calc(100vh - 161px) !important;
     }
 
     #contactFormEdit {
-        /* top: 10% !important; */
         max-height: calc(99vh - 150px) !important;
     }
-
-    /* .contact-form-overlay {
-        left: 8%;
-        top: 1%;
-    } */
-
-    /* .contact-form-left {
-        border-top-left-radius: unset;
-        border-top-right-radius: unset;
-    }
-
-    .contact-form-right {
-        border-bottom-left-radius: unset;
-        border-bottom-right-radius: unset;
-    }
-
-    .add-form-left {
-        border-top-right-radius: unset;
-        border-top-left-radius: unset;
-    }
-
-    .add-form-right {
-        border-bottom-left-radius: unset;
-        border-bottom-right-radius: unset;
-    } */
 
     .contact-input-field {
         width: 280px;
@@ -1126,9 +1051,3 @@ select::-ms-expand {
     }
 
 }
-
-/* @media(max-height: 800px) {
-    #contactForm {
-        top: 15% !important;
-    }
-} */

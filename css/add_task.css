@@ -105,7 +105,6 @@ select,
 .select-wrapper {
     display: flex;
     flex-direction: column;
-    /* cursor: pointer; */
     padding: 0;
 }
 
@@ -430,7 +429,6 @@ fieldset {
     display: flex;
     justify-content: space-between;
     padding: 7px 20px;
-    /* cursor: pointer; */
 }
 
 .assigned-to-wrapper {
@@ -505,14 +503,12 @@ fieldset {
 }
 
 @media(max-width:1400px) {
-
     .main-container {
         margin-right: 10px;
     }
 }
 
 @media(max-width:1200px) {
-
     .right-container {
         margin-top: -20px;
     }
@@ -561,7 +557,6 @@ fieldset {
 }
 
 @media(max-width: 1000px) {
-
     .right-container {
         margin-top: 30px;
     }

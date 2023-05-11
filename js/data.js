@@ -214,3 +214,12 @@ function addNavFilter() {
 function removeNavFilter() {
     removeClass(nav, 'filter');
 }
+
+
+/**
+ * Prevents an event from propagating to parent elements.
+ * @param {Event} event - The event to prevent from propagating.
+ */
+function dontClose(event) {
+    event.stopPropagation();
+}

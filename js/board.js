@@ -492,9 +492,9 @@ async function changeSplit(split, id) {
  * @param {string} id - The id of the task to edit
  */
 function editTask(id) {
-    const closeAddTask = document.getElementById('close-add-task');
-
     document.getElementById('popUp').innerHTML = loadEditAddTaskTmp(id);
+    const closeAddTask = document.getElementById('close-add-task');
+    
     addAssignedToList();
     setDateToday();
     fillTheTasks(id)
