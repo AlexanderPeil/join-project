@@ -269,7 +269,9 @@ function loadSubtaksToFullTask(choiceTask) {
                 taskDone = '';
             }
             document.getElementById('subtaskSection').innerHTML += 
-            `<label for="subtask_${i}">${tasks[choiceTask]['subtasks'][i]['subtaskName']}<input type="checkbox" ${taskDone} id="subtask_${i}"></label>`
+            `<label for="subtask_${i}">${tasks[choiceTask]['subtasks'][i]['subtaskName']}<input type="checkbox" ${taskDone} id="subtask_${i}">
+            <img src="./assets/img/xicon.png" class="delete-subtask" onclick="deleteSubtaskFromCard('subtask_${i}')">
+            </label>`
         }
     } else {
         document.getElementById('subtaskSectionCheck').innerHTML = '';

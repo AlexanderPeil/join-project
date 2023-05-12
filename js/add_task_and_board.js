@@ -9,8 +9,6 @@ let category;
 let selectedColor;
 let currentSelectMenu = null;
 
-
-
 /**
  * Adds a new task to the tasks array and saves it to storage when the "Add" button is clicked.
  * @returns {Promise<void>}
@@ -21,11 +19,9 @@ async function addTask() {
     const assigned_to = getAssignedUsers();
     const due_date = document.getElementById('date').value;
     const currentSplit = checkStatus();
-
     if (!isCategoryValid(category)) {
         return;
     }
-
     new_task = createNewTaskJson(title, description, due_date, currentSplit, assigned_to);
     await addNewTask(new_task);
     await navigateToBoard();
@@ -57,7 +53,6 @@ function getAssignedUsers() {
  */
 function isCategoryValid(category) {
     const categoryRequired = document.getElementById('category-required');
-
     if (category === undefined) {
         removeClass(categoryRequired, 'd-none');
 
@@ -112,7 +107,6 @@ async function addNewTask(new_task) {
  */
 async function navigateToBoard() {
     const boardSection = document.getElementById('board-section');
-
     window.location.href = './board.html';
     document.getElementById('popUp').innerHTML = '';
     removeClass(boardSection, 'd-none');
@@ -150,7 +144,6 @@ function changeColor() {
     priotity_urgent = document.getElementById('urgentBtn').checked;
     priotity_medium = document.getElementById('mediumBtn').checked;
     priotity_low = document.getElementById('lowBtn').checked;
-
     checkChangedColor(priotity_urgent, priotity_medium, priotity_low);
 }
 
@@ -261,7 +254,6 @@ function openDropdown(id) {
 function closeSelectWrapper() {
     const category = document.getElementById('category-choices');
     const assignedTo = document.getElementById('assigned-to-choices');
-
     try {
         addClass(category, 'd-none');
         addClass(assignedTo, 'd-none');
@@ -279,7 +271,6 @@ function changeCategoryHeader(name) {
     document.getElementById('category-header').innerHTML = name;
     category = name;
     currentCategory = category;
-
     categorySelected(name);
 }
 
@@ -355,11 +346,9 @@ function categorySales() {
 function addColorCategory() {
     const categoryInput = document.getElementById('new-category-input');
     const categoryAdded = document.getElementById('category-added-cont');
-
     if (!checkNewCategoryInput()) {
         return;
     }
-
     selectedColor = document.getElementById('category-color').value;
     category = categoryInput.value;
     addClass(categoryInput, 'd-none');
@@ -391,7 +380,6 @@ function showCategoryInput(categoryAdded, categoryInput) {
 function checkNewCategoryInput() {
     const newCategoryInput = document.getElementById('new-category-input');
     const categoryRequired = document.getElementById('category-required');
-
     if (newCategoryInput.value === '') {
         removeClass(categoryRequired, 'd-none');
         addClass(newCategoryInput, 'd-none');
@@ -429,7 +417,6 @@ function hideAddSubtaskImg() {
     const plusSubtaskimg = document.getElementById('plusSubtaskImg');
     const clearSubtaskImg = document.getElementById('clearSubtaskImg');
     const addSubtastImg = document.getElementById('addSubtaskImg');
-
     addClass(plusSubtaskimg, 'd-none');
     removeClass(clearSubtaskImg, 'd-none');
     removeClass(addSubtastImg, 'd-none');
@@ -441,7 +428,6 @@ function hideAddSubtaskImg() {
  */
 function addSubtask() {
     let subtask = document.getElementById('subtask').value;
-
     if (!subtask == '') {
         const uniqueId = Date.now().toString() + '-delete-subtask';
         document.getElementById('subtask-list').innerHTML += `<li id="${uniqueId}">${subtask}<img src="./assets/img/xicon.png" class="delete-subtask" onclick="deleteSubtask('${uniqueId}')"></li>`;
@@ -451,17 +437,27 @@ function addSubtask() {
             'status': 'undone'
         });
     }
-
     showAddSubtaskImg();
 }
 
 
+/**
+ * Deletes a subtask element from the UI and removes it from the subtasks array.
+ * @param {string} uniqueId - The unique identifier of the subtask element to delete.
+ */
 function deleteSubtask(uniqueId) {
     const subtaskElement = document.getElementById(uniqueId);
     if (subtaskElement) {
         subtaskElement.remove();
     }
+    subtasks.splice(uniqueId, 1);
 }
+
+
+function deleteSubtaskFromCard(i) {
+    subtasks.splice(i, 1);
+}
+
 
 
 /**
@@ -471,7 +467,6 @@ function showAddSubtaskImg() {
     const plusSubtaskimg = document.getElementById('plusSubtaskImg');
     const clearSubtaskImg = document.getElementById('clearSubtaskImg');
     const addSubtastImg = document.getElementById('addSubtaskImg');
-
     removeClass(plusSubtaskimg, 'd-none');
     addClass(clearSubtaskImg, 'd-none');
     addClass(addSubtastImg, 'd-none');
@@ -525,7 +520,6 @@ function fillTheTasks(id) {
     let date = tasks[id]['date'];
     let prio = tasks[id]['priotity'][0]['priotity'];
     let thisSubtasks = tasks[id]['subtasks'];
-
     checkPrioButton(prio);
     changeColor();
     getValueFromTaskInputs(title, text, category, date);
@@ -596,7 +590,7 @@ function loopThroughSubtasks(thisSubtasks) {
 
 
 /**
- * Edits an existing task by updating its properties and saves the changes to local storage.
+ * Edits an existing task by updating its properties and saves the changes.
  * @param {*} id - The id of the task to be edited. 
  */
 async function editAddTask(id) {
@@ -606,14 +600,22 @@ async function editAddTask(id) {
     selectedColor = currentColor || tasks[id]['color'];
     let assigned_to = getAssignedUsers();
     let due_date = document.getElementById('date').value;
-
     if (!isCategoryValid(category)) return;
-
-    new_task = createEditedTaskJson(id, title, description, assigned_to, due_date);
+    let existingSubtasks = tasks[id]['subtasks'];
+    new_task = createEditedTaskJson(id, title, description, assigned_to, due_date, existingSubtasks);
     tasks[id] = new_task;
     await saveNotes();
-    // subtasks = [];
-    window.location.href = './board.html';
+    showBoard();
+}
+
+
+/**
+ * Removes the popup-add-task and close-add-task elements and enables the body overflow.
+ */
+function showBoard() {
+    document.getElementById('popup-add-task').remove();
+    document.getElementById('close-add-task').remove();
+    removeBodyOverflow();
 }
 
 
@@ -648,7 +650,6 @@ function createEditedTaskJson(id, title, description, assigned_to, due_date) {
 function openAddNewCategory() {
     const selectWrapper = document.getElementById('select-wrapper');
     const newCategory = document.getElementById('new-category');
-
     addClass(selectWrapper, 'd-none');
     removeClass(newCategory, 'd-none');
 }
@@ -668,16 +669,17 @@ function closeNewCategory() {
 function addNewCategory() {
     const newCat = document.getElementById('new-category-input').value;
     currentCategory = newCat;
-
     document.getElementById('category-header').innerHTML = newCat;
     showNewCategory();
 }
 
 
+/**
+ * Displays the "select category" dropdown and hides the "new category" input field.
+ */
 function showNewCategory() {
     const selectWrapper = document.getElementById('select-wrapper');
     const newCategory = document.getElementById('new-category');
-
     removeClass(selectWrapper, 'd-none');
     addClass(newCategory, 'd-none');
 }
