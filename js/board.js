@@ -330,6 +330,7 @@ async function delCard(choicCard) {
     await saveNotes();
     document.getElementById('popUp').innerHTML = '';
     loadBoard(tasks);
+    closeAddTaskRemoveStyle();
 }
 
 
@@ -337,14 +338,9 @@ async function delCard(choicCard) {
  * Closes the pop-up for adding a task.
  */
 function closePopUpAddTask() {
-    const boardSection = document.getElementById('board-section');
-    const closeAddTask = document.getElementById('close-add-task');
-
     try {
         document.getElementById('popUp').innerHTML = '';
-        removeClass(boardSection, 'd-none');
-        removeBodyOverflow();
-        removeClass(closeAddTask, 'filter');
+        closeAddTaskRemoveStyle();
     } catch (err) {
         return;
     }
@@ -537,3 +533,21 @@ function closeAddtask() {
     removeBodyOverflow();
     removeClass(closeAddTask, 'filter');
 } 
+
+
+/**
+ * Removes styles applied to the UI when the "Add Task" form is closed.
+ * @returns {void}
+ */
+function closeAddTaskRemoveStyle() {
+    const boardSection = document.getElementById('board-section');
+    const closeAddTask = document.getElementById('close-add-task');
+
+    try {
+        removeClass(boardSection, 'd-none');
+        removeBodyOverflow();
+        removeClass(closeAddTask, 'filter');
+    } catch (err) {
+        return;
+    }
+}
