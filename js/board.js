@@ -163,11 +163,12 @@ function openAddTask(id) {
     currentTaskCard = id;
     document.getElementById('popUp').innerHTML = loadAddTaskTmp();
     addClass(boardSection, 'd-none');
+    // addClass(popupBG, 'filter');
     addAssignedToList();
     setDateToday();
 
     try {
-        addClass(popupBG, 'filter');
+        document.getElementById('popUp-background').classList.add('filter');
     } catch (err) {
         return;
     }

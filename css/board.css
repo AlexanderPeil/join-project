@@ -454,9 +454,9 @@ a {
 }
 
 @media(max-width: 1000px) {
-    .popUp-background {
+    /* .popUp-background {
         overflow: hidden;
-    }
+    } */
 
     .headline-mobile {
         display: block !important;
