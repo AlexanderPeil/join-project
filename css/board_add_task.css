@@ -610,6 +610,10 @@ fieldset {
         height: 79%;
         margin-bottom: 8px;
     }
+
+    ::-webkit-scrollbar {
+        width: 0;
+      }
 }
 
 @media(max-width:600px) {

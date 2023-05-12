@@ -248,9 +248,7 @@ function openTaskFull(choiceTask) {
     document.getElementById('popUp').innerHTML = loadCardFullText(tasks, choiceTask);
     loadSubtaksToFullTask(choiceTask);
     loadUsersToFullTask(choiceTask);
-
-    addBodyOverflow();
-    
+    addBodyOverflow();    
     let closePopup = document.getElementById('close-popup' + choiceTask);
     addClass(closePopup, 'filter');
 }
@@ -270,7 +268,6 @@ function loadSubtaksToFullTask(choiceTask) {
             }
             document.getElementById('subtaskSection').innerHTML += 
             `<label for="subtask_${i}">${tasks[choiceTask]['subtasks'][i]['subtaskName']}<input type="checkbox" ${taskDone} id="subtask_${i}">
-            <img src="./assets/img/xicon.png" class="delete-subtask" onclick="deleteSubtaskFromCard('subtask_${i}')">
             </label>`
         }
     } else {
@@ -298,11 +295,15 @@ function loadUsersToFullTask(choiceTask) {
  * @param {number} currentCard - The index of the task in the array of tasks.
  */
 async function closePopUp(currentCard) {
-    removeBodyOverflow();
-    checkSubtaskDone(currentCard)
-    await saveNotes();
-    document.getElementById('popUp').innerHTML = '';
-    loadBoard(tasks);
+    try {
+        removeBodyOverflow();
+        checkSubtaskDone(currentCard)
+        await saveNotes();
+        document.getElementById('popUp').innerHTML = '';
+        loadBoard(tasks);
+    } catch (err) {
+        return;
+    }
 }
 
 
@@ -506,12 +507,14 @@ function editTask(id) {
  * Hides the the popup.
  * @param {string} currentCard - The ID of the card for which to close the popup.
  */
-function closePopup(currentCard) {
-    let closePopup = document.getElementById(`close-popup${currentCard}`); 
+// async function closePopup(currentCard) {
+//     let closePopup = document.getElementById(`close-popup${currentCard}`); 
 
-    addClass(closePopup, 'd-none');
-    removeBodyOverflow();
-}
+//     checkSubtaskDone(currentCard)
+//     await saveNotes();
+//     addClass(closePopup, 'd-none');
+//     removeBodyOverflow();
+// }
 
 
 /**

@@ -7,11 +7,6 @@ body {
     overflow-y: scroll;
 }
 
-body::-webkit-scrollbar {
-    display: none;
-    /* for Chrome, Safari, and Opera */
-}
-
 :root {
     --design: #ff7a00;
     --sales: #fc71ff;
@@ -146,6 +141,7 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
+    min-width: 290px;
 }
 
 .card-content {
@@ -157,7 +153,7 @@ a {
     width: 90%;
     cursor: pointer;
     overflow-y: auto;
-    height: 170px;
+    min-height: 190px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -300,8 +296,9 @@ a {
     background: white;
     border-radius: 30px;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
-    padding: 50px;
     margin: 10px;
+    padding: 50px;
+    overflow-y: scroll;
 }
 
 .makeRow {
@@ -454,10 +451,6 @@ a {
 }
 
 @media(max-width: 1000px) {
-    /* .popUp-background {
-        overflow: hidden;
-    } */
-
     .headline-mobile {
         display: block !important;
         font-size: 16px;
@@ -535,9 +528,23 @@ a {
         width: 360px;
     }
 
+    body::-webkit-scrollbar {
+        display: none;
+        /* for Chrome, Safari, and Opera */
+    }
+
+    .popUp-content {
+        max-height: 75vh;
+        padding: 25px 50px;
+    }
+
     @media(max-width: 400px) {
         .width {
             width: 330px;
+        }
+
+        .popUp-content {
+            padding: 25px;
         }
     }
 }

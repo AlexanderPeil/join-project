@@ -454,12 +454,6 @@ function deleteSubtask(uniqueId) {
 }
 
 
-function deleteSubtaskFromCard(i) {
-    subtasks.splice(i, 1);
-}
-
-
-
 /**
  * Displays the "Add Subtask" image button and hides the "Clear Subtask" and "Plus Subtask" buttons.
  */
@@ -601,8 +595,9 @@ async function editAddTask(id) {
     let assigned_to = getAssignedUsers();
     let due_date = document.getElementById('date').value;
     if (!isCategoryValid(category)) return;
-    let existingSubtasks = tasks[id]['subtasks'];
-    new_task = createEditedTaskJson(id, title, description, assigned_to, due_date, existingSubtasks);
+    // let existingSubtasks = tasks[id]['subtasks'];
+    // new_task = createEditedTaskJson(id, title, description, assigned_to, due_date, existingSubtasks);
+    subtasks = [];
     tasks[id] = new_task;
     await saveNotes();
     showBoard();

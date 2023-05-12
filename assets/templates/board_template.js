@@ -6,7 +6,7 @@
  */
 function loadCardFullText(task_name, choiceTask) {
     return `
-    <div class="popUp-background" id="close-popup${choiceTask}" onclick="closePopup(${choiceTask})">
+    <div class="popUp-background" id="close-popup${choiceTask}" onclick="closePopUp(${choiceTask})">
             <div class="popUp-content" onclick="event.stopPropagation()">
                 <div class="popUp-close" id="close-task"><img class="popup-img" src="./assets/img/xicon.png" onclick="closePopUp(${choiceTask})"></div>
                 <div class="card-head" style="background-color: ${task_name[choiceTask]['color']};">${task_name[choiceTask]['category']}</div>
