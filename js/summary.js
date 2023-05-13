@@ -176,7 +176,6 @@ function showDlDate() {
     return document.getElementById('dlDate').innerHTML = formattedDate;
 }
 
-
 /**
  * This function sets a greeting message on a desktop device based on the current time and calls the functions to display the current user.
  */

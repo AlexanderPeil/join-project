@@ -504,20 +504,6 @@ function editTask(id) {
 
 
 /**
- * Hides the the popup.
- * @param {string} currentCard - The ID of the card for which to close the popup.
- */
-// async function closePopup(currentCard) {
-//     let closePopup = document.getElementById(`close-popup${currentCard}`); 
-
-//     checkSubtaskDone(currentCard)
-//     await saveNotes();
-//     addClass(closePopup, 'd-none');
-//     removeBodyOverflow();
-// }
-
-
-/**
  * Closes the add task popup window.
  */
 function closePopupAddTask() {

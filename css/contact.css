@@ -997,6 +997,10 @@ select::-ms-expand {
     #formTaskContainer {
         left: 1%;
     }
+
+    .contact-form-overlay {
+        top: 80px;
+    }
 }
 
 @media(max-width: 500px) {

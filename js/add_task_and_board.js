@@ -594,12 +594,13 @@ async function editAddTask(id) {
     selectedColor = currentColor || tasks[id]['color'];
     let assigned_to = getAssignedUsers();
     let due_date = document.getElementById('date').value;
+
     if (!isCategoryValid(category)) return;
-    // let existingSubtasks = tasks[id]['subtasks'];
-    // new_task = createEditedTaskJson(id, title, description, assigned_to, due_date, existingSubtasks);
-    subtasks = [];
+
+    new_task = createEditedTaskJson(id, title, description, assigned_to, due_date);
     tasks[id] = new_task;
     await saveNotes();
+    subtasks = [];
     showBoard();
 }
 

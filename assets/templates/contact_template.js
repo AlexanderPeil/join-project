@@ -5,7 +5,7 @@
  * @returns 
  */
 function generateContactList(contact, i) {
-    return `
+    return /*html*/`
     <div id="highlight-${i}" onclick="showContactDetails(${i}); hightlightContact(${i})" class="contact-list-box" title="show contact details">
         <div id="contactColor" class="contact-letters small-letters" style="background-color: ${contact.color}">
                 ${contact.lastName.charAt(0).toUpperCase()}${contact.firstName.charAt(0).toUpperCase()}
@@ -25,7 +25,7 @@ function generateContactList(contact, i) {
  * @returns 
  */
 function showContactFirstLettersHTML(firstLetter) {
-    return `
+    return /*html*/`
             <h2 class="contact-index">${firstLetter.toUpperCase()}</h2>
             <div class="contact-underline"></div>
         `;
@@ -40,7 +40,7 @@ function showContactFirstLettersHTML(firstLetter) {
  * @returns 
  */
 function showContactDetailsHTML(selectedContact, i, userShort) {
-    return `
+    return /*html*/`
         <div onclick="closeContactOverlay()" class="close-btn close-btn-overlay">
             <img class="close-icon" title="back" src="./assets/img/arrow_left.svg" alt="#">
         </div>
@@ -73,7 +73,7 @@ function showContactDetailsHTML(selectedContact, i, userShort) {
  * @returns 
  */
 function openEditContactFormHTML(selectedContact) {
-    return `
+    return /*html*/`
     <div id="contactFormEdit-bg" class="contact-popup-bg">
         <div id="contactFormEdit" class="contact-form-overlay contact-form-edit" onclick="event.stopPropagation()">
             <div class="contact-form-left">
@@ -126,7 +126,7 @@ function openEditContactFormHTML(selectedContact) {
  * @returns 
  */
 function openAddTaskContactFormHTML() {
-    return `
+    return /*html*/`
     <div id="contact-addTask-bg" class="contact-popup-bg"">
     <form id="formTaskContainer" class="contact-form-overlay" onsubmit="addTask(); return false;" onclick="event.stopPropagation()">
         <div class="add-form-left">

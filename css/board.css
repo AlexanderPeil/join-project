@@ -101,6 +101,7 @@ a {
     justify-content: space-between;
     margin-left: 70px;
     margin-right: 70px;
+    gap: 50px;
 }
 
 .splits-head {
@@ -108,7 +109,7 @@ a {
     justify-content: space-between;
     align-items: center;
     font-size: 1.2rem;
-    width: 250px;
+    width: 260px;
 }
 
 .splits {
@@ -141,7 +142,7 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 290px;
+    min-width: 260px;
 }
 
 .card-content {
@@ -151,9 +152,9 @@ a {
     box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
     margin: 25px 0;
     width: 90%;
+    min-height: 180px;
     cursor: pointer;
     overflow-y: auto;
-    min-height: 190px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -244,7 +245,7 @@ a {
 }
 
 .dropArea {
-    width: 250px;
+    width: 260px;
     height: 88%;
     border-radius: 25px;
     flex: 1;

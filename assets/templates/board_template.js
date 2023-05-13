@@ -5,7 +5,7 @@
  * @returns {string} The HTML code for the full view of the task card.
  */
 function loadCardFullText(task_name, choiceTask) {
-    return `
+    return /*html*/ `
     <div class="popUp-background" id="close-popup${choiceTask}" onclick="closePopUp(${choiceTask})">
             <div class="popUp-content" onclick="event.stopPropagation()">
                 <div class="popUp-close" id="close-task"><img class="popup-img" src="./assets/img/xicon.png" onclick="closePopUp(${choiceTask})"></div>
@@ -35,7 +35,7 @@ function loadCardFullText(task_name, choiceTask) {
  * @returns {string} The HTML code for the task card in a board view.
  */
 function loadCardBoardText(tasks_name, id) {
-    return `
+    return /*html*/`
     <div id="single-cards${id}" class="single-cards">
     <div id="card-head-${id}" class="card" id=card${id} draggable="true" ondragstart="startDragging(${id})" onclick="checkWhichMenu(${id}); event.stopPropagation();">
         
@@ -237,7 +237,7 @@ function loadAddTaskTmp() {
  * @returns {string} - The HTML code for the progress bar
  */
 function loadSubtaskBoardtmp(doneTasks, sumTasks) {
-    return `
+    return /*html*/`
     <div class="progress_bar">
         <div style="width: 70%; background-color: lightgrey; border-radius: 3px;">
             <div style="background: #0D99FF; height:12px;width:${doneTasks / sumTasks * 100}%; border-radius: 3px;">
@@ -279,8 +279,9 @@ function loadAdditionalUsersTmp(showMoreUsers) {
  * @returns {string} - The HTML code for the row
  */
 function loadTextUsersForFullTask(users, u) {
-    return `<div class="makeRow">
-    <p class="circle" style="background-color: ${users[u]['color'] || 'blue'}; margin-right: 20px;">${users[u]['userShort']}</p><p>${users[u]['userFullName']}</p>
+    return /*html*/`
+    <div class="makeRow">
+        <p class="circle" style="background-color: ${users[u]['color'] || 'blue'}; margin-right: 20px;">${users[u]['userShort']}</p><p>${users[u]['userFullName']}</p>
     </div>`
 }
 
@@ -297,7 +298,8 @@ function loadPrioIMGWithText(pri, prioIMG) {
 
 
 function loadEditAddTaskTmp(id) {
-  return `<div class="popUp-background" id="close-add-task" onclick="closeAddtask()">
+    return /*html*/`
+    <div class="popUp-background" id="close-add-task" onclick="closeAddtask()">
     <div class="popUp-content_add_task" id="popup-add-task" onclick="closeSelectWrapper(), event.stopPropagation()">
     <div class="headerPopUp"><h2>Add Task</h2><img src="./assets/img/xicon.png" onclick="closePopUpAddTask()"></div>
     <form onsubmit="editAddTask(${id});return false">
