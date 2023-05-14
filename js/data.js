@@ -3,6 +3,7 @@ let currentUser;
 let currentTaskCard;
 let previousMenuItem = null;
 let currentSection;
+let saveNewCategory = [];
 
 
 
@@ -223,3 +224,28 @@ function removeNavFilter() {
 function dontClose(event) {
     event.stopPropagation();
 }
+
+
+async function saveNewCatgeoryToBackend() {
+    let newCatAsJson = JSON.stringify(saveNewCategory);
+    await backend.setItem('newCat', newCatAsJson);
+}
+
+
+async function loadNewCatgeoryFromBackend() {
+    await downloadFromServer();
+    saveNewCategory = JSON.parse(backend.getItem('newCat')) || [];
+}
+
+
+function selectNewCategory(newCat, newColor) {
+    category = newCat;
+    selectedColor = newColor;
+    document.getElementById('category-header').innerHTML = newCat;
+}
+
+
+function delCategory(index) {
+    saveNewCategory.splice(index, 1); 
+    backend.setItem('newCat', JSON.stringify(saveNewCategory));
+  }

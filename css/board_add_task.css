@@ -500,6 +500,15 @@ fieldset {
     padding-left: 15px;
 }
 
+.del-newCat {
+    margin-left: auto;
+}
+
+.del-newCat img {
+    height: 15px;
+    width: 15px;
+}
+
 @media(max-width:1400px) {
     .main-container {
         margin-right: 10px;

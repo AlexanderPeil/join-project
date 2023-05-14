@@ -440,4 +440,13 @@ function loadEditAddTaskTmp(id) {
 }
 
 
+function generateNewCategroy(showNewCategory, newCategoryIndex) {
+    return /*html*/ `
+    <div class="category" onclick="selectNewCategory('${showNewCategory['new-category']}', '${showNewCategory['new-color']}')">
+        <div>${showNewCategory['new-category']} </div>
+        <div class="circle" style="background:${showNewCategory['new-color']}"></div>
+        <div class="del-newCat"><img class="del-newCat" src="./assets/img/xicon.png" alt="#" onclick="delCategory(${newCategoryIndex})"></div>
+    </div>
+`
+}
 

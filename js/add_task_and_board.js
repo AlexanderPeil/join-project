@@ -290,7 +290,7 @@ function categorySelected(categoryId) {
         categoryDesign();
     } else {
         categorySales();
-    }
+    } 
     currentColor = selectedColor;
 }
 
@@ -343,7 +343,7 @@ function categorySales() {
 /**
  * Adds a new color category based on the values entered in the input fields.
  */
-function addColorCategory() {
+async function addColorCategory() {
     const categoryInput = document.getElementById('new-category-input');
     const categoryAdded = document.getElementById('category-added-cont');
     if (!checkNewCategoryInput()) {
@@ -356,6 +356,20 @@ function addColorCategory() {
     showCategoryInput(categoryAdded, categoryInput);
     currentCategory = category;
     currentColor = selectedColor;
+    saveNewCategory.push({'new-category': category, 'new-color': selectedColor});
+    await saveNewCatgeoryToBackend();
+    addNewCategoryToMenu(selectedColor, category);
+}
+
+
+function addNewCategoryToMenu(selectedColor, category) {
+    document.getElementById('category-choices').innerHTML +=
+        `
+        <div class="category" onclick="selectNewCategory('${category}')">
+            <div>${category}</div>
+            <div class="circle" style="background: ${selectedColor};"></div>
+        </div>
+        `
 }
 
 
@@ -405,7 +419,7 @@ function changeSubIcon() {
  * Changes the subtask icons to the "clear" and "add" icons when the input field is changed.
  */
 function inputChangeSubIcons() {
-    hideAddSubtaskImg(); 
+    hideAddSubtaskImg();
 }
 
 
@@ -429,7 +443,7 @@ function hideAddSubtaskImg() {
 function addSubtask() {
     let subtask = document.getElementById('subtask').value;
     if (!subtask == '') {
-        const uniqueId = Date.now().toString() + '-delete-subtask';
+        let uniqueId = Date.now().toString() + '-delete-subtask';
         document.getElementById('subtask-list').innerHTML += `<li id="${uniqueId}">${subtask}<img src="./assets/img/xicon.png" class="delete-subtask" onclick="deleteSubtask('${uniqueId}')"></li>`;
         document.getElementById('subtask').value = '';
         subtasks.push({

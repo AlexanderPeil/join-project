@@ -502,6 +502,11 @@ fieldset {
     cursor: pointer;
 }
 
+.delete-subtask {
+    height: 15px;
+    padding-left: 15px;
+}
+
 @media(max-width:1400px) {
     .main-container {
         margin-right: 10px;

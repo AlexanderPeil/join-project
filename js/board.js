@@ -156,14 +156,18 @@ function loadSubtasks(task, i) {
  * Opens the add task pop-up window.
  * @param {number} id - The id of the task to add.
  */
-function openAddTask(id) {
+async function openAddTask(id) {
     const boardSection = document.getElementById('board-section');
-    const popupBG = document.getElementById('popUp-background');
-
+    const popup = document.getElementById('popUp');
+    const newCategoryIndex = saveNewCategory.length - 1;
+    await loadNewCatgeoryFromBackend();
     currentTaskCard = id;
-    document.getElementById('popUp').innerHTML = loadAddTaskTmp();
+    popup.innerHTML = loadAddTaskTmp();
+    for (let i = 0; i < saveNewCategory.length; i++) {
+        const showNewCategory = saveNewCategory[i];
+        document.getElementById('category-choices').innerHTML += generateNewCategroy(showNewCategory, newCategoryIndex);
+    };
     addClass(boardSection, 'd-none');
-    // addClass(popupBG, 'filter');
     addAssignedToList();
     setDateToday();
 
@@ -491,8 +495,14 @@ async function changeSplit(split, id) {
  * Function to edit a task
  * @param {string} id - The id of the task to edit
  */
-function editTask(id) {
-    document.getElementById('popUp').innerHTML = loadEditAddTaskTmp(id);
+async function editTask(id) {
+    await loadNewCatgeoryFromBackend();
+    const popup = document.getElementById('popUp');
+    popup.innerHTML = loadEditAddTaskTmp(id);
+    for (let i = 0; i < saveNewCategory.length; i++) {
+        const showNewCategory = saveNewCategory[i];
+        document.getElementById('category-choices').innerHTML += generateNewCategroy(showNewCategory);
+    };
     const closeAddTask = document.getElementById('close-add-task');
     
     addAssignedToList();
