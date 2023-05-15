@@ -213,6 +213,9 @@ function updateContact() {
     updateContactSelection();
     const contactForm = document.getElementById("contactFormEdit");
     contactForm.remove(); // close form again
+    const contactFormEditBG = document.getElementById('contactFormEdit-bg');
+    addClass(contactFormEditBG, 'd-none');
+    removeNavFilter()
 }
 
 
