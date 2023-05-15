@@ -288,7 +288,7 @@ function generateNewCategroy(showNewCategory, index) {
 
 
 /**
- * Deletes the selected category from the list of saved categories.
+ * Deletes the selected category from the dropdown menu of saved categories.
  * @param {number} index - The index of the category in the saved categories array.
  * @param {string} categoryId - The id of the category element in the DOM.
  */
