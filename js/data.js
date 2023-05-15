@@ -292,8 +292,8 @@ function generateNewCategroy(showNewCategory, index) {
  * @param {number} index - The index of the category in the saved categories array.
  * @param {string} categoryId - The id of the category element in the DOM.
  */
-function delCategory(index, categoryId) {
+async function delCategory(index, categoryId) {
     saveNewCategory.splice(index, 1);
-    backend.setItem('newCat', JSON.stringify(saveNewCategory));
+    await backend.setItem('newCat', JSON.stringify(saveNewCategory));
     document.getElementById(categoryId).remove();
 }

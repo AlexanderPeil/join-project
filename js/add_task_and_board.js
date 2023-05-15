@@ -358,8 +358,8 @@ async function addColorCategory() {
     currentColor = selectedColor;
     saveNewCategory.push({'new-category': category, 'new-color': selectedColor});
     await saveNewCatgeoryToBackend();
-    loadSavedCategories();
-    // addNewCategoryToMenu(selectedColor, category);
+    // loadSavedCategories();
+    addNewCategoryToMenu(selectedColor, category);
 }
 
 
@@ -369,14 +369,29 @@ async function addColorCategory() {
  * @param {string} category - The name of the new category.
  */
 function addNewCategoryToMenu(selectedColor, category) {
+    const categoryId = `category-${saveNewCategory.length - 1}`;
     document.getElementById('category-choices').innerHTML +=
         `
-        <div class="category" onclick="selectNewCategory('${category}')">
+        <div id="${categoryId}" class="category" onclick="selectNewCategory('${category}')">
             <div>${category}</div>
             <div class="circle" style="background: ${selectedColor};"></div>
+            <div class="del-newCat"><img class="del-newCat" src="./assets/img/xicon.png" alt="#" onclick="delCurrentCat(${saveNewCategory.length - 1}, '${categoryId}')"></div>
         </div>
-        `
+        `;
 }
+
+
+/**
+ * Deletes the selected category from the list of saved categories in the backend and removes it from the DOM.
+ * @param {number} index - The index of the category in the saved categories array.
+ * @param {string} categoryId - The id of the category element in the DOM.
+ */
+async function delCurrentCat(index, categoryId) {
+    saveNewCategory.splice(index, 1);
+    await backend.setItem('newCat', JSON.stringify(saveNewCategory));
+    document.getElementById(categoryId).remove();
+}
+
 
 
 /**
