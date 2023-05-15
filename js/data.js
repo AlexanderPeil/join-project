@@ -226,18 +226,29 @@ function dontClose(event) {
 }
 
 
+/**
+ * Saves new category to the backend.
+ */
 async function saveNewCatgeoryToBackend() {
     let newCatAsJson = JSON.stringify(saveNewCategory);
     await backend.setItem('newCat', newCatAsJson);
 }
 
 
+/**
+ * Loads new added categories from the backend.
+ */
 async function loadNewCatgeoryFromBackend() {
     await downloadFromServer();
     saveNewCategory = JSON.parse(backend.getItem('newCat')) || [];
 }
 
 
+/**
+ * Selects a new category and updates the category header and selected color in the UI.
+ * @param {string} newCat - The name of the new category.
+ * @param {string} newColor - The color of the new category in hex format.
+ */
 function selectNewCategory(newCat, newColor) {
     category = newCat;
     selectedColor = newColor;
@@ -245,6 +256,9 @@ function selectNewCategory(newCat, newColor) {
 }
 
 
+/**
+ * Loads saved categories from the backend and generates HTML code to display them on the webpage.
+ */
 async function loadSavedCategories() {
     await loadNewCatgeoryFromBackend();
     for (let i = 0; i < saveNewCategory.length; i++) {
@@ -254,6 +268,13 @@ async function loadSavedCategories() {
 }
 
 
+/**
+ * Generates the HTML code for a new category element.
+ * @param {Object} showNewCategory - The category object to generate HTML for.
+ * @param {number} index - The index of the category in the saved categories list.
+ * @returns {string} - The HTML code for the category element.
+ * @returns 
+ */
 function generateNewCategroy(showNewCategory, index) {
     const categoryId = `category-${index}`;
     return /*html*/ `
@@ -266,6 +287,11 @@ function generateNewCategroy(showNewCategory, index) {
 }
 
 
+/**
+ * Deletes the selected category from the list of saved categories.
+ * @param {number} index - The index of the category in the saved categories array.
+ * @param {string} categoryId - The id of the category element in the DOM.
+ */
 function delCategory(index, categoryId) {
     saveNewCategory.splice(index, 1);
     backend.setItem('newCat', JSON.stringify(saveNewCategory));

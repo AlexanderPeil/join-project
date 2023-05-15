@@ -362,6 +362,11 @@ async function addColorCategory() {
 }
 
 
+/**
+ * Adds a new category to the menu of categories in the UI.
+ * @param {string} selectedColor - The selected color for the new category.
+ * @param {string} category - The name of the new category.
+ */
 function addNewCategoryToMenu(selectedColor, category) {
     document.getElementById('category-choices').innerHTML +=
         `

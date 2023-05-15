@@ -159,17 +159,12 @@ function loadSubtasks(task, i) {
 async function openAddTask(id) {
     const boardSection = document.getElementById('board-section');
     const popup = document.getElementById('popUp');
-    await loadNewCatgeoryFromBackend();
     currentTaskCard = id;
     popup.innerHTML = loadAddTaskTmp();
-    for (let i = 0; i < saveNewCategory.length; i++) {
-        let showNewCategory = saveNewCategory[i];
-        document.getElementById('category-choices').innerHTML += generateNewCategroy(showNewCategory, i);
-    };
+    loadSavedCategories();
     addClass(boardSection, 'd-none');
     addAssignedToList();
     setDateToday();
-
     try {
         document.getElementById('popUp-background').classList.add('filter');
     } catch (err) {
@@ -401,7 +396,6 @@ function checkWhichMenu(id) {
     if (currentWishMenu !== null && currentWishMenu !== id) {
         closeAllMenus();
     }
-
     let check = false;
     if (checkMobile()) {
         check = true;

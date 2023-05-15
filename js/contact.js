@@ -358,6 +358,10 @@ function closeFormById(formId) {
 }
 
 
+/**
+ * Removes a form from the DOM and removes the background overlay.
+ * @param {string} formId - The ID of the form element to be removed.
+ */
 function removeForm(formId) {
     const form = document.getElementById(formId);
     form.remove();
