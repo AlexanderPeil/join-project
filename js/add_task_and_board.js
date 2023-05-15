@@ -358,7 +358,8 @@ async function addColorCategory() {
     currentColor = selectedColor;
     saveNewCategory.push({'new-category': category, 'new-color': selectedColor});
     await saveNewCatgeoryToBackend();
-    addNewCategoryToMenu(selectedColor, category);
+    loadSavedCategories();
+    // addNewCategoryToMenu(selectedColor, category);
 }
 
 
