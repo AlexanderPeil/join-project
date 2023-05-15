@@ -356,9 +356,7 @@ fieldset {
     display: none;
 }
 
-.checkbox_urgen[type="radio"]:checked+label,
-.checkbox_medium[type="radio"]:checked+label,
-.checkbox_low[type="radio"]:checked+label {
+.checkbox_urgen[type="radio"]:checked+label {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -370,6 +368,42 @@ fieldset {
     font-size: 21px;
     font-weight: 400;
     background-color: rgb(255, 61, 0);
+    color: white;
+    width: 100%;
+    gap: 10px;
+    box-shadow: 0 4px 4px 0 rgb(0 0 0 / 25%);
+}
+
+.checkbox_medium[type="radio"]:checked+label {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    gap: 10px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    font-size: 21px;
+    font-weight: 400;
+    background-color: rgb(255, 168, 0);
+    color: white;
+    width: 100%;
+    gap: 10px;
+    box-shadow: 0 4px 4px 0 rgb(0 0 0 / 25%);
+}
+
+.checkbox_low[type="radio"]:checked+label {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    gap: 10px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    font-size: 21px;
+    font-weight: 400;
+    background-color: #7AE229;
     color: white;
     width: 100%;
     gap: 10px;
