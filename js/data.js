@@ -245,7 +245,29 @@ function selectNewCategory(newCat, newColor) {
 }
 
 
-function delCategory(index) {
-    saveNewCategory.splice(index, 1); 
+async function loadSavedCategories() {
+    await loadNewCatgeoryFromBackend();
+    for (let i = 0; i < saveNewCategory.length; i++) {
+        let showNewCategory = saveNewCategory[i];
+        document.getElementById('category-choices').innerHTML += generateNewCategroy(showNewCategory, i);
+    };
+}
+
+
+function generateNewCategroy(showNewCategory, index) {
+    const categoryId = `category-${index}`;
+    return /*html*/ `
+    <div id="${categoryId}" class="category" onclick="selectNewCategory('${showNewCategory['new-category']}', '${showNewCategory['new-color']}')">
+        <div>${showNewCategory['new-category']} </div>
+        <div class="circle" style="background:${showNewCategory['new-color']}"></div>
+        <div class="del-newCat"><img class="del-newCat" src="./assets/img/xicon.png" alt="#" onclick="delCategory(${index}, '${categoryId}')"></div>
+    </div>
+`
+}
+
+
+function delCategory(index, categoryId) {
+    saveNewCategory.splice(index, 1);
     backend.setItem('newCat', JSON.stringify(saveNewCategory));
-  }
+    document.getElementById(categoryId).remove();
+}

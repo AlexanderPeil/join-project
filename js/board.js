@@ -159,13 +159,12 @@ function loadSubtasks(task, i) {
 async function openAddTask(id) {
     const boardSection = document.getElementById('board-section');
     const popup = document.getElementById('popUp');
-    const newCategoryIndex = saveNewCategory.length - 1;
     await loadNewCatgeoryFromBackend();
     currentTaskCard = id;
     popup.innerHTML = loadAddTaskTmp();
     for (let i = 0; i < saveNewCategory.length; i++) {
-        const showNewCategory = saveNewCategory[i];
-        document.getElementById('category-choices').innerHTML += generateNewCategroy(showNewCategory, newCategoryIndex);
+        let showNewCategory = saveNewCategory[i];
+        document.getElementById('category-choices').innerHTML += generateNewCategroy(showNewCategory, i);
     };
     addClass(boardSection, 'd-none');
     addAssignedToList();
@@ -496,13 +495,9 @@ async function changeSplit(split, id) {
  * @param {string} id - The id of the task to edit
  */
 async function editTask(id) {
-    await loadNewCatgeoryFromBackend();
     const popup = document.getElementById('popUp');
     popup.innerHTML = loadEditAddTaskTmp(id);
-    for (let i = 0; i < saveNewCategory.length; i++) {
-        const showNewCategory = saveNewCategory[i];
-        document.getElementById('category-choices').innerHTML += generateNewCategroy(showNewCategory);
-    };
+    loadSavedCategories();
     const closeAddTask = document.getElementById('close-add-task');
     
     addAssignedToList();

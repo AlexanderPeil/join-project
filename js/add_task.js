@@ -13,6 +13,7 @@ async function init() {
     addAssignedToList();
     setDateToday();
     setCurrentSectionStyle();
+    loadSavedCategories();
 }
 
 

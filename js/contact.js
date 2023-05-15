@@ -297,13 +297,13 @@ function deleteSelectedContact(i) {
  */
 function addTaskContact(userShort) {
     const formContainer = document.getElementById("formContainer");
-    const formTaskContainer = document.getElementById('formTaskContainer');
+    // const formTaskContainer = document.getElementById('formTaskContainer');
 
     if (!formContainer) {
         console.error('Error: formContainer is null or undefined.');
         return;
     }
-    addTaskContactFn(userShort, formContainer, formTaskContainer);
+    addTaskContactFn(userShort, formContainer);
 }
 
 
@@ -315,8 +315,9 @@ function addTaskContact(userShort) {
  * @param {HTMLElement} formTaskContainer - The container element for the task form.
  * @param {HTMLElement} nav - The navigation element to add the 'filter' CSS class to.
  */
-async function addTaskContactFn(userShort, formContainer, formTaskContainer) {
+async function addTaskContactFn(userShort, formContainer) {
     formContainer.innerHTML += openAddTaskContactFormHTML();
+    loadSavedCategories();
     addAssignedToList();
     await loadNotes();
     setDateToday();

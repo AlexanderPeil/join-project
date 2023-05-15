@@ -404,6 +404,7 @@ fieldset {
     display: flex;
     align-items: center;
     padding: 7px 20px;
+    cursor: pointer;
 }
 
 .assigned-to {
@@ -505,6 +506,16 @@ fieldset {
 .delete-subtask {
     height: 15px;
     padding-left: 15px;
+}
+
+.del-newCat {
+    margin-left: auto;
+}
+
+.del-newCat img {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
 }
 
 @media(max-width:1400px) {

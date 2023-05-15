@@ -998,7 +998,11 @@ select::-ms-expand {
         left: 1%;
     }
 
-    .contact-form-overlay {
+    #contactForm {
+        top: 120px;
+    }
+
+    #contactFormEdit {
         top: 80px;
     }
 }
