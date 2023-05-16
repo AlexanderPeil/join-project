@@ -315,7 +315,7 @@ h1 {
 }
 
 .contact-btn-position {
-    position: absolute;
+    position: fixed;
     right: 32px;
     bottom: 64px;
     font-size: 18px;

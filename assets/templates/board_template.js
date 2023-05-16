@@ -113,11 +113,11 @@ function loadAddTaskTmp() {
                             <textarea placeholder="Enter a description" id="description_textfield" required></textarea>
                         </div>
                         <div class="selection-container prevent-select">
-                            <label>Category</label>
+                        <label id="category-headline">Category</label>
+                        <div id="category-required" class="category-added-cont d-none">Please enter a category!</div>
                             <div id="new-category" class="new-cat input-new-cat d-none">
                                 <input id="new-category-input" type="name" placeholder="Category Name ...">
                                 <div id="category-added-cont" class="category-added-cont d-none" >New Category added!</div>
-                                <div id="category-required" class="category-added-cont d-none">Please enter a category!</div>
                                 <div class="new-category-icons">
                                     <input id="category-color" type="color" value="#2a3647" required>
                                     <img src="./assets/img/checkmark.png" alt="#" onclick="addColorCategory()">
@@ -127,6 +127,7 @@ function loadAddTaskTmp() {
                                 <div class="select-wrapper" id="select-wrapper" onclick="openDropdown('category-choices'), event.stopPropagation()">
                                     <div class="sector_top" id="sector-top">
                                         <p id="category-header">Select your Category</p>
+                                        <div id="category-required-header" class="category-added-cont d-none">Please enter a category!</div>
                                         <img src="./assets/img/arrow_down.png">
                                     </div>
                                     <div class="category-assigned-to d-none" id="category-choices">
@@ -156,7 +157,8 @@ function loadAddTaskTmp() {
                             </div>
                         </div>
                         <div class="selection-container prevent-select">
-                            <label>Assigned To</label>
+                        <label id="assignedto-headline">Assigned To</label>
+                        <div id="member-required" class="category-added-cont d-none">Please select a member!</div>
                             <div class="select-wrapper assigned-to-wrapper">
                                 <div class="sector_top" onclick="openDropdown('assigned-to-choices'), event.stopPropagation()">
                                     <p id="assigned-to-header">Select your Members</p><img src="./assets/img/arrow_down.png">
@@ -314,11 +316,11 @@ function loadEditAddTaskTmp(id) {
                     <textarea placeholder="Enter a description" id="description_textfield" required></textarea>
                 </div>
                 <div class="selection-container prevent-select">
-                    <label>Category</label>
+                <label id="category-headline">Category</label>
+                <div id="category-required" class="category-added-cont d-none">Please enter a category!</div>
                 <div id="new-category" class="new-cat input-new-cat d-none">
                     <input id="new-category-input" type="name" placeholder="Category Name ...">
                     <div id="category-added-cont" class="category-added-cont d-none" >New Category added!</div>
-                    <div id="category-required" class="category-added-cont d-none">Please enter a category!</div>
                 <div class="new-category-icons">
                     <input id="category-color" type="color" value="#2a3647" required>
                     <img src="./assets/img/checkmark.png" alt="#" onclick="addColorCategory()">
@@ -335,6 +337,7 @@ function loadEditAddTaskTmp(id) {
             <div class="select-wrapper" id="select-wrapper" onclick="openDropdown('category-choices'), event.stopPropagation()">
                 <div class="sector_top">
                     <p id="category-header">Select your Category</p><img src="./assets/img/arrow_down.png">
+                    <div id="category-required-header" class="category-added-cont d-none">Please enter a category!</div>
                 </div>
                 <div class="category-choices category-assigned-to d-none" id="category-choices">
                     <div class="category" onclick="openAddNewCategory('category-choices')">New Category<img class="new-category-img" src="assets/img/add_task_mob.svg">
@@ -363,7 +366,8 @@ function loadEditAddTaskTmp(id) {
             </div>
         </div>
         <div class="selection-container prevent-select">
-            <label>Assigned To</label>
+        <label id="assignedto-headline">Assigned To</label>
+        <div id="member-required" class="category-added-cont d-none">Please select a member!</div>
             <div class="select-wrapper assigned-to-wrapper">
                 <div class="sector_top" onclick="openDropdown('assigned-to-choices'), event.stopPropagation()">
                     <p id="assigned-to-header">Select your Members</p><img

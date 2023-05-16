@@ -141,11 +141,12 @@ function openAddTaskContactFormHTML() {
                     <textarea placeholder="Enter a description" id="description_textfield" required></textarea>
                 </div>
                 <div class="selection-container prevent-select">
-                    <label>Category</label>
+                <label id="category-headline">Category</label>
+                <div id="category-required" class="category-added-cont d-none">Please enter a category!</div>
                     <div id="new-category" class="new-cat input-new-cat d-none">
                     <input id="new-category-input" type="name" placeholder="Category Name ...">
                     <div id="category-added-cont" class="category-added-cont d-none" >New Category added!</div>
-                    <div id="category-required" class="category-added-cont d-none">Please enter a category!</div>
+
                     <div class="new-category-icons">
                     <input id="category-color" type="color" value="#2a3647">
                     <img src="./assets/img/checkmark.png" alt="#" onclick="addColorCategory()">
@@ -155,6 +156,7 @@ function openAddTaskContactFormHTML() {
                     <div class="select-wrapper"  id="select-wrapper"  onclick="openDropdown('category-choices')">
                         <div class="sector_top">
                             <p id="category-header">Select your Category</p><img src="./assets/img/arrow_down.png">
+                            <div id="category-required-header" class="category-added-cont d-none">Please enter a category!</div>
                         </div>
                         <div class="category-assigned-to d-none" id="category-choices">
                         <div class="category" onclick="openAddNewCategory('category-choices')">New Category<img class="new-category-img" src="assets/img/add_task_mob.svg"></div>
@@ -182,7 +184,8 @@ function openAddTaskContactFormHTML() {
                     </div>
                 </div>
                 <div class="selection-container prevent-select">
-                    <label>Assigned To</label>
+                <label id="assignedto-headline">Assigned To</label>
+                <div id="member-required" class="category-added-cont d-none">Please select a member!</div>
                     <div class="select-wrapper assigned-to-wrapper">
                         <div class="sector_top" onclick="openDropdown('assigned-to-choices')">
                             <p id="assigned-to-header">Select your Members</p><img

@@ -22,6 +22,9 @@ async function addTask() {
     if (!isCategoryValid(category)) {
         return;
     }
+    if (!isUserSelected()) {
+        return;
+    }
     new_task = createNewTaskJson(title, description, due_date, currentSplit, assigned_to);
     await addNewTask(new_task);
     await navigateToBoard();
@@ -53,15 +56,36 @@ function getAssignedUsers() {
  */
 function isCategoryValid(category) {
     const categoryRequired = document.getElementById('category-required');
-    if (category === undefined) {
+    const categoryHeadline = document.getElementById('category-headline');
+    const assignedUsers = getAssignedUsers();
+    if (category === undefined && assignedUsers.length <= 0) {
         removeClass(categoryRequired, 'd-none');
-
+        addClass(categoryHeadline, 'd-none');
         setTimeout(() => {
             addClass(categoryRequired, 'd-none');
+            removeClass(categoryHeadline, 'd-none');
         }, 2000);
         return false;
     }
     return true;
+}
+
+
+function isUserSelected() {
+    const assignedUsers = getAssignedUsers();
+    const assignedToHeadline = document.getElementById('assignedto-headline');
+    const memberRequired = document.getElementById('member-required');
+    if (assignedUsers.length <= 0) {
+        removeClass(memberRequired, 'd-none');
+        addClass(assignedToHeadline, 'd-none');
+        setTimeout(() => {
+            addClass(memberRequired, 'd-none');
+            removeClass(assignedToHeadline, 'd-none');
+        }, 2000);
+        return false;
+    } else {
+        return true;
+    }
 }
 
 
@@ -636,6 +660,7 @@ async function editAddTask(id) {
     tasks[id] = new_task;
     await saveNotes();
     subtasks = [];
+    loadBoard(tasks);
     showBoard();
 }
 
